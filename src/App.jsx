@@ -1,14 +1,12 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './sections/Hero';
-import BrandIntro from './sections/BrandIntro';
 import About from './sections/About';
 import Services from './sections/Services';
 import Projects from './sections/Projects';
 import BeforeAfterSlider from './sections/BeforeAfterSlider';
 import Process from './sections/Process';
-import WhyAmcom from './sections/WhyAmcom';
-import Philosophy from './sections/Philosophy';
+import GoogleReviews from './sections/GoogleReviews';
 import CTA from './sections/CTA';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
@@ -25,38 +23,32 @@ export default function App() {
         {/* 2. Full-screen Hero */}
         <Hero />
 
-        {/* 3. Brand Introduction */}
-        <BrandIntro />
-
-        {/* 4. About AMCOM */}
+        {/* 3. About AMCOM */}
         <About />
 
-        {/* 5. Services */}
+        {/* 4. Services */}
         <Services />
 
-        {/* 6. Selected Projects */}
+        {/* 5. Selected Projects */}
         <Projects />
 
-        {/* 7. Before & After Slider */}
+        {/* 6. Before & After Slider */}
         <BeforeAfterSlider />
 
-        {/* 8. Design Process */}
+        {/* 7. Design Process */}
         <Process />
 
-        {/* 9. Why AMCOM */}
-        <WhyAmcom />
+        {/* 8. Google Reviews */}
+        <GoogleReviews />
 
-        {/* 10. Material / Design Philosophy */}
-        <Philosophy />
-
-        {/* 11. CTA */}
+        {/* 9. CTA */}
         <CTA />
 
-        {/* 12. Contact */}
+        {/* 10. Contact */}
         <Contact />
       </main>
 
-      {/* 13. Footer */}
+      {/* 11. Footer */}
       <Footer />
 
       {/* Floating WhatsApp CTA */}

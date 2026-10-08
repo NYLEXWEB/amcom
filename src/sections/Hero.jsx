@@ -100,8 +100,8 @@ export default function Hero() {
 
       {/* Subtle Scroll Indicator */}
       <a
-        href="#intro"
-        aria-label="Scroll down to introduction"
+        href="#about"
+        aria-label="Scroll down to about section"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group cursor-pointer"
       >
         <span className="text-[10px] tracking-[0.25em] font-mono uppercase text-white/60 group-hover:text-white transition-colors">
