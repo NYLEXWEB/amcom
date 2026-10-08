@@ -1,58 +1,45 @@
 import React from 'react';
-import { brandInfo } from '../data/siteData';
-import { MessageSquare, ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 
 export default function Hero() {
-  const whatsappLink = `https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`;
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#172022]"
+      className="relative h-screen min-h-[600px] max-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#172022]"
     >
-      {/* FULL-BLEED HERO BACKGROUND IMAGE */}
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000 scale-100 ease-out"
-        style={{
-          backgroundImage: "url('/images/amcom-hero.jpg')",
-          backgroundPosition: 'center 45%',
-        }}
-        role="img"
-        aria-label="Contemporary Kerala residential interior living room designed by AMCOM Interiors"
-      />
+      {/* 1. HERO BACKGROUND VIDEO */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover scale-100"
+        poster="/images/amcom-hero.jpg"
+      >
+        <source src="/hero/flow-5ec0a798-5ad4-4af7-9c4f--erasio.mp4" type="video/mp4" />
+        {/* Fallback if browser doesn't play video */}
+        Your browser does not support the video tag.
+      </video>
 
-      {/* 1. HORIZONTAL LIGHT BLACK FADE (LEFT TO RIGHT) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 via-45% to-black/15 pointer-events-none" />
+      {/* 2. SUBTLE ARCHITECTURAL OVERLAY (CLEAN, NO HEAVY BLACK FADE) */}
+      <div className="absolute inset-0 bg-black/35 pointer-events-none" />
 
-      {/* 2. SUBTLE TOP GRADIENT FOR UNSCROLLED NAVBAR READABILITY */}
-      <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none" />
+      {/* Top spacer for floating navbar */}
+      <div className="h-20 sm:h-24 shrink-0" />
 
-      {/* 3. SUBTLE BOTTOM FADE FOR SMOOTH TRANSITION TO NEXT SECTION */}
-      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#172022]/80 to-transparent pointer-events-none" />
-
-      {/* Subtle architectural grid lines (very faint) */}
-      <div className="absolute inset-0 pointer-events-none opacity-10">
-        <div className="max-w-7xl mx-auto h-full px-6 md:px-12 grid grid-cols-2 md:grid-cols-4">
-          <div className="border-r border-white/20 h-full" />
-          <div className="border-r border-white/20 h-full hidden md:block" />
-          <div className="border-r border-white/20 h-full hidden md:block" />
-          <div className="h-full" />
-        </div>
-      </div>
-
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 pt-28 pb-20 md:py-32 flex flex-col justify-center min-h-screen">
-        <div className="max-w-3xl">
+      {/* 3. HERO MAIN CONTENT (CENTERED & FITTED PERFECTLY IN ONE SCREEN) */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 my-auto">
+        <div className="max-w-2xl sm:max-w-3xl">
           {/* Overline Badge */}
-          <div className="inline-flex items-center gap-3 px-3 py-1.5 bg-black/40 backdrop-blur-md border border-white/15 mb-6 text-white/90">
-            <span className="w-1.5 h-1.5 bg-[#6E9297] rounded-none animate-pulse" />
-            <span className="text-[11px] md:text-xs font-mono tracking-[0.25em] uppercase text-white/90">
+          <div className="inline-flex items-center gap-2.5 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/20 mb-4 sm:mb-5 text-white/95 rounded-full">
+            <span className="w-1.5 h-1.5 bg-[#6E9297] rounded-full animate-pulse" />
+            <span className="text-[10px] sm:text-xs font-mono tracking-[0.25em] uppercase">
               AMCOM INTERIORS • EST. 1999
             </span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#F8F9F7] leading-[1.08] mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#F8F9F7] leading-[1.08] mb-4 sm:mb-5">
             Crafting Timeless Interiors <br />
             <span className="font-normal italic font-serif tracking-normal text-[#F8F9F7]/95">
               Since 1999.
@@ -60,57 +47,54 @@ export default function Hero() {
           </h1>
 
           {/* Supporting Text */}
-          <p className="text-base sm:text-lg md:text-xl text-[#F8F9F7]/85 font-light leading-relaxed max-w-2xl mb-10 tracking-[-0.01em]">
+          <p className="text-sm sm:text-base md:text-lg text-[#F8F9F7]/90 font-light leading-relaxed max-w-xl mb-6 sm:mb-8 tracking-[-0.01em]">
             Thoughtfully designed interiors where architecture, functionality and timeless aesthetics come together. Serving Kozhikode, Kannur, and across Kerala.
           </p>
 
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
+          {/* SINGLE ROUNDED BLACK CTA BUTTON: "Explore Our Work" WITH ROUNDED ARROW */}
+          <div>
             <a
               href="#projects"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#F8F9F7] text-[#172022] text-sm font-medium tracking-wide hover:bg-white hover:shadow-lg transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="inline-flex items-center gap-4 pl-6 sm:pl-7 pr-2 sm:pr-2.5 py-2 sm:py-2.5 bg-black hover:bg-[#172022] text-white rounded-full transition-all duration-300 group shadow-xl border border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              <span>Explore Our Work</span>
-              <ArrowRight className="w-4 h-4 text-[#174C55] transition-transform duration-300 group-hover:translate-x-1" />
+              <span className="text-xs sm:text-sm font-medium tracking-wide">
+                Explore Our Work
+              </span>
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#172022] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shadow-sm">
+                <ArrowRight className="w-4 h-4 text-[#172022]" />
+              </div>
             </a>
-
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#174C55] text-[#F8F9F7] border border-white/20 text-sm font-medium tracking-wide hover:bg-[#123b42] transition-colors duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6E9297]"
-            >
-              <MessageSquare className="w-4 h-4 text-[#6E9297]" />
-              <span>WhatsApp Us</span>
-            </a>
-          </div>
-
-          {/* Location micro-tag */}
-          <div className="mt-12 pt-6 border-t border-white/15 flex items-center gap-6 text-white/70 text-xs tracking-wider font-light">
-            <span>KOZHIKODE</span>
-            <span className="w-1 h-1 bg-white/40" />
-            <span>CALICUT</span>
-            <span className="w-1 h-1 bg-white/40" />
-            <span>KANNUR</span>
-            <span className="w-1 h-1 bg-white/40" />
-            <span>KERALA</span>
           </div>
         </div>
       </div>
 
-      {/* Subtle Scroll Indicator */}
-      <a
-        href="#about"
-        aria-label="Scroll down to about section"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group cursor-pointer"
-      >
-        <span className="text-[10px] tracking-[0.25em] font-mono uppercase text-white/60 group-hover:text-white transition-colors">
-          SCROLL
-        </span>
-        <div className="w-[1px] h-8 bg-white/20 relative overflow-hidden">
-          <div className="w-full h-1/2 bg-white animate-pulse" />
+      {/* 4. BOTTOM BAR: LOCATION TAG & SCROLL INDICATOR */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 pb-6 sm:pb-8 shrink-0 flex items-end justify-between border-t border-white/15 pt-4">
+        {/* Location micro-tag */}
+        <div className="flex items-center gap-3 sm:gap-6 text-white/75 text-[10px] sm:text-xs tracking-widest font-light font-mono">
+          <span>KOZHIKODE</span>
+          <span className="w-1 h-1 bg-white/40" />
+          <span>CALICUT</span>
+          <span className="w-1 h-1 bg-white/40" />
+          <span>KANNUR</span>
+          <span className="w-1 h-1 bg-white/40" />
+          <span>KERALA</span>
         </div>
-      </a>
+
+        {/* Scroll Indicator */}
+        <a
+          href="#about"
+          aria-label="Scroll down to about section"
+          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group cursor-pointer"
+        >
+          <span className="text-[10px] tracking-[0.25em] font-mono uppercase text-white/60 group-hover:text-white transition-colors hidden sm:inline">
+            SCROLL
+          </span>
+          <div className="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+            <ArrowDown className="w-3 h-3 text-white animate-bounce" />
+          </div>
+        </a>
+      </div>
     </section>
   );
 }
