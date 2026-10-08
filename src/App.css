@@ -1,0 +1,9 @@
+/* Clean architecture CSS utilities */
+.editorial-text {
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.subtle-border {
+  border-color: #DCE3E2;
+}

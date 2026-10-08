@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --color-porcelain: #F8F9F7;
+  --color-teal-deep: #174C55;
+  --color-mineral-blue: #6E9297;
+  --color-graphite: #172022;
+  --color-graphite-muted: #687477;
+  --color-border-subtle: #DCE3E2;
+  --color-light-section: #F1F4F2;
+}
+
+:root {
+  --bg-porcelain: #F8F9F7;
+  --teal-deep: #174C55;
+  --mineral-blue: #6E9297;
+  --graphite: #172022;
+  --graphite-muted: #687477;
+  --border-subtle: #DCE3E2;
+  --light-section: #F1F4F2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Manrope', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F8F9F7;
+  color: #172022;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F4F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DCE3E2;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6E9297;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
