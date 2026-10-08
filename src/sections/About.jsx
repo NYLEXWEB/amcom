@@ -1,27 +1,11 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Compass, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function About() {
   const [activeTab, setActiveTab] = useState(0);
 
-  const pillars = [
-    {
-      label: "Spatial Clarity",
-      desc: "Balancing volume, natural daylight, and unhurried movement.",
-      tag: "ARCHITECTURE",
-    },
-    {
-      label: "Material Honesty",
-      desc: "Authentic teak timber, honed travertine stone, and lime-wash plaster.",
-      tag: "MATERIALITY",
-    },
-    {
-      label: "Turnkey Execution",
-      desc: "Direct in-house craftspeople from civil alterations to final millwork.",
-      tag: "CONSTRUCTION",
-    },
-  ];
-
+  
   return (
     <section id="about" className="py-24 md:py-32 bg-[#F8F9F7] border-b border-[#DCE3E2] relative overflow-hidden">
       {/* Background Architectural Subtle Grid */}
@@ -44,9 +28,7 @@ export default function About() {
               01 / ABOUT THE STUDIO
             </span>
           </div>
-          <span className="text-xs font-mono tracking-widest text-[#687477]">
-            KOZHIKODE • SINCE 1999
-          </span>
+
         </div>
 
         {/* Main Split Grid: Minimal Copy + Layered Visual Composition */}
@@ -70,44 +52,19 @@ export default function About() {
               Founded in 1999 in Kozhikode, AMCOM Interiors unites architectural sensibility with hands-on construction mastery. We build spaces defined by quiet proportions, honest textures, and enduring Kerala living rituals.
             </p>
 
-            {/* Interactive Pillar Highlights with Subtle Micro-Animations */}
-            <div className="space-y-3 mb-10">
-              {pillars.map((item, idx) => (
-                <div
-                  key={idx}
-                  onMouseEnter={() => setActiveTab(idx)}
-                  className={`p-4 border transition-all duration-300 cursor-pointer ${
-                    activeTab === idx
-                      ? 'bg-white border-[#174C55] shadow-sm translate-x-1.5'
-                      : 'bg-transparent border-[#DCE3E2] hover:border-[#6E9297]'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-semibold text-[#172022]">
-                      {item.label}
-                    </span>
-                    <span className="text-[10px] font-mono tracking-wider text-[#6E9297] uppercase">
-                      {item.tag}
-                    </span>
-                  </div>
-                  <p className="text-xs text-[#687477] leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-
             {/* Clean Action Link */}
             <div>
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.15em] font-semibold text-[#174C55] hover:text-[#123b42] group"
-              >
-                <span>Explore Signature Spaces</span>
-                <div className="w-7 h-7 rounded-full bg-[#174C55]/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#174C55]" />
-                </div>
-              </a>
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-4 pl-6 sm:pl-7 pr-2 sm:pr-2.5 py-2 sm:py-2.5 bg-black hover:bg-[#172022] text-white rounded-full transition-all duration-300 group shadow-xl border border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              <span className="text-xs sm:text-sm font-medium tracking-wide">
+                Explore Signature Spaces
+              </span>
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#172022] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shadow-sm">
+                <ArrowRight className="w-4 h-4 text-[#172022]" />
+              </div>
+            </a>
             </div>
           </div>
 
@@ -121,11 +78,7 @@ export default function About() {
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
               />
-              
-              {/* Subtle top-right badge */}
-              <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-sm border border-white/60 text-[10px] font-mono tracking-widest uppercase text-[#172022]">
-                AMCOM CRAFT • 2024
-              </div>
+
 
               {/* Subtle gradient vignette */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />

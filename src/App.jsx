@@ -11,6 +11,7 @@ import CTA from './sections/CTA';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import Gallery from './sections/Gallery';
 
 export default function App() {
   return (
@@ -37,6 +38,8 @@ export default function App() {
 
         {/* 7. Design Process */}
         <Process />
+
+        <Gallery />
 
         {/* 8. Google Reviews */}
         <GoogleReviews />

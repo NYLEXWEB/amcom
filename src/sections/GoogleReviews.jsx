@@ -186,27 +186,6 @@ export default function GoogleReviews() {
 
           </div>
 
-          {/* GOOGLE CHIP FILTERS */}
-          <div className="pt-6 flex items-center flex-wrap gap-2.5">
-            <span className="text-xs font-semibold text-[#5f6368] mr-2">Filter by:</span>
-            {filterCategories.map((cat) => {
-              const isSelected = activeFilter === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setActiveFilter(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 border ${
-                    isSelected
-                      ? 'bg-[#E8F0FE] text-[#1967D2] border-[#D2E3FC] shadow-xs'
-                      : 'bg-white text-[#3C4043] border-[#DADCE0] hover:bg-[#F1F3F4]'
-                  }`}
-                >
-                  {cat === "ALL" ? "All Reviews (4.9 ★)" : cat}
-                </button>
-              );
-            })}
-          </div>
         </div>
 
         {/* REVIEWS GRID (GOOGLE THEMED CARDS) */}

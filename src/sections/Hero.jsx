@@ -30,13 +30,7 @@ export default function Hero() {
       {/* 3. HERO MAIN CONTENT (CENTERED & FITTED PERFECTLY IN ONE SCREEN) */}
       <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 my-auto">
         <div className="max-w-2xl sm:max-w-3xl">
-          {/* Overline Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/20 mb-4 sm:mb-5 text-white/95 rounded-full">
-            <span className="w-1.5 h-1.5 bg-[#6E9297] rounded-full animate-pulse" />
-            <span className="text-[10px] sm:text-xs font-mono tracking-[0.25em] uppercase">
-              AMCOM INTERIORS • EST. 1999
-            </span>
-          </div>
+
 
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#F8F9F7] leading-[1.08] mb-4 sm:mb-5">

@@ -89,33 +89,7 @@ export default function BeforeAfterSlider() {
           </div>
 
           <div className="max-w-md">
-            <p className="text-base text-[#687477] font-normal leading-relaxed mb-4">
-              See the transformation before and after a thoughtful interior intervention. Drag the divider below to inspect the architectural execution.
-            </p>
-            {/* Quick preset buttons */}
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setSliderPos(100)}
-                className="px-2.5 py-1 text-[11px] font-mono tracking-wider border border-[#DCE3E2] bg-white/60 hover:bg-[#174C55] hover:text-white transition-colors"
-              >
-                100% BEFORE
-              </button>
-              <button
-                type="button"
-                onClick={() => setSliderPos(50)}
-                className="px-2.5 py-1 text-[11px] font-mono tracking-wider border border-[#DCE3E2] bg-white/60 hover:bg-[#174C55] hover:text-white transition-colors"
-              >
-                50 / 50 SPLIT
-              </button>
-              <button
-                type="button"
-                onClick={() => setSliderPos(0)}
-                className="px-2.5 py-1 text-[11px] font-mono tracking-wider border border-[#DCE3E2] bg-white/60 hover:bg-[#174C55] hover:text-white transition-colors"
-              >
-                100% AFTER
-              </button>
-            </div>
+
           </div>
         </div>
 

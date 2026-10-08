@@ -71,9 +71,7 @@ export default function Services() {
               WHAT WE DO
             </h2>
           </div>
-          <p className="max-w-md text-sm sm:text-base text-white/60 font-normal leading-relaxed">
-            Select or hover over any discipline to preview corresponding architectural execution and specifications.
-          </p>
+
         </div>
 
         {/* 2-Column Layout: Left (Service Headings List) | Right (Interactive Image & Details) */}
@@ -157,9 +155,7 @@ export default function Services() {
                 <h4 className="text-2xl font-light text-white tracking-[-0.02em]">
                   {activeService.title}
                 </h4>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E9297]">
-                  KOZHIKODE & KERALA
-                </span>
+        
               </div>
 
               {/* Service Description */}
@@ -189,9 +185,7 @@ export default function Services() {
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
 
-                <span className="text-[11px] font-mono text-white/40 hidden sm:inline">
-                  AMCOM CRAFT • EST. 1999
-                </span>
+            
               </div>
             </div>
           </div>
