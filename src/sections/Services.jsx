@@ -64,9 +64,6 @@ export default function Services() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-16 border-b border-white/15 gap-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-3">
-              02 / CAPABILITIES & DISCIPLINES
-            </span>
             <h2 className="text-4xl sm:text-5xl font-light text-white tracking-[-0.035em]">
               WHAT WE DO
             </h2>

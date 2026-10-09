@@ -45,16 +45,11 @@ export default function Process() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-12 border-b border-[#DCE3E2] gap-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-3">
-              05 / METHODOLOGY
-            </span>
             <h2 className="text-4xl sm:text-5xl font-light text-[#172022] tracking-[-0.035em]">
               THE PROCESS
             </h2>
           </div>
-          <p className="max-w-md text-sm sm:text-base text-[#687477] font-normal leading-relaxed">
-            Hover or click any stage to explore our disciplined four-phase delivery framework from left to right.
-          </p>
+
         </div>
 
         {/* 4 HORIZONTAL EXPANDING BARS (LEFT TO RIGHT ACCORDION) */}

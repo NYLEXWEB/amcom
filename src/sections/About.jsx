@@ -21,15 +21,7 @@ export default function About() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         {/* Top Minimal Editorial Tag */}
-        <div className="flex items-center justify-between pb-6 mb-16 border-b border-[#DCE3E2]">
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 bg-[#174C55] rounded-full animate-pulse" />
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297]">
-              01 / ABOUT THE STUDIO
-            </span>
-          </div>
-
-        </div>
+       
 
         {/* Main Split Grid: Minimal Copy + Layered Visual Composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -42,9 +34,8 @@ export default function About() {
 
             {/* Editorial Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#172022] tracking-[-0.03em] leading-[1.12] mb-6">
-              Thoughtful Design. <br />
-              <span className="font-normal text-[#174C55]">Turnkey Precision.</span> <br />
-              Crafted to Endure.
+              ABOUT <span></span>
+              <span className="font-normal text-[#174C55]">US</span> 
             </h2>
 
             {/* Concise, Refined Description (No Long Dense Paragraphs) */}

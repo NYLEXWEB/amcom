@@ -22,9 +22,7 @@ export default function Projects() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-12 border-b border-[#DCE3E2] gap-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-3">
-              03 / ARCHITECTURAL ARCHIVE
-            </span>
+
             <h2 className="text-4xl sm:text-5xl font-light text-[#172022] tracking-[-0.035em]">
               SELECTED SPACES
             </h2>
@@ -90,9 +88,6 @@ export default function Projects() {
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#687477] font-normal leading-relaxed line-clamp-2">
-                {project.description}
-              </p>
             </div>
           ))}
         </div>

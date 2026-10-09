@@ -61,16 +61,12 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-[#DCE3E2] gap-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-3">
-              04 / VISUAL ARCHIVE
-            </span>
+   
             <h2 className="text-4xl sm:text-5xl font-light text-[#172022] tracking-[-0.035em]">
               CURATED GALLERY
             </h2>
           </div>
-          <p className="max-w-md text-sm text-[#687477] font-normal leading-relaxed">
-            Hover over any space to pause the stream and inspect details. Continuous architectural perspectives from across Kerala.
-          </p>
+
         </div>
       </div>
 
@@ -100,19 +96,11 @@ export default function Gallery() {
                 {/* Subtle Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-                {/* Floating Architectural Badge */}
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase bg-black/60 backdrop-blur-sm text-white/90 border border-white/15">
-                    {item.location}
-                  </span>
-                </div>
 
                 {/* Bottom Details */}
                 <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 flex items-end justify-between">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#6E9297] block mb-0.5">
-                      {item.category}
-                    </span>
+
                     <h3 className="text-sm sm:text-base font-light text-white tracking-[-0.01em]">
                       {item.title}
                     </h3>
@@ -150,19 +138,11 @@ export default function Gallery() {
                 {/* Subtle Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-                {/* Floating Architectural Badge */}
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase bg-black/60 backdrop-blur-sm text-white/90 border border-white/15">
-                    {item.location}
-                  </span>
-                </div>
+ 
 
                 {/* Bottom Details */}
                 <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 flex items-end justify-between">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#6E9297] block mb-0.5">
-                      {item.category}
-                    </span>
                     <h3 className="text-sm sm:text-base font-light text-white tracking-[-0.01em]">
                       {item.title}
                     </h3>

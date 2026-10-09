@@ -32,15 +32,13 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-16 border-b border-[#DCE3E2] gap-6">
           <div>
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-3">
-              08 / GET IN TOUCH
+              GET IN TOUCH
             </span>
             <h2 className="text-4xl sm:text-5xl font-light text-[#172022] tracking-[-0.035em]">
               CONTACT STUDIO
             </h2>
           </div>
-          <p className="max-w-md text-sm sm:text-base text-[#687477] font-normal leading-relaxed">
-            We welcome consultations for bespoke homes, modular kitchens, renovations, and commercial interiors.
-          </p>
+
         </div>
 
         {/* Contact Layout */}
@@ -128,32 +126,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Social Channels */}
-            <div className="p-6 bg-[#F8F9F7] border border-[#DCE3E2]">
-              <h4 className="text-xs font-mono uppercase tracking-widest text-[#6E9297] mb-3">
-                OFFICIAL CHANNELS
-              </h4>
-              <div className="grid grid-cols-2 gap-4">
-                <a
-                  href={brandInfo.social.instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 p-3 border border-[#DCE3E2] hover:border-[#174C55] hover:text-[#174C55] text-xs text-[#172022] transition-colors"
-                >
-                  <InstagramIcon className="w-4 h-4 text-[#174C55]" />
-                  <span>{brandInfo.social.instagram.handle}</span>
-                </a>
-                <a
-                  href={brandInfo.social.facebook.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 p-3 border border-[#DCE3E2] hover:border-[#174C55] hover:text-[#174C55] text-xs text-[#172022] transition-colors"
-                >
-                  <FacebookIcon className="w-4 h-4 text-[#174C55]" />
-                  <span>{brandInfo.social.facebook.handle}</span>
-                </a>
-              </div>
-            </div>
+
           </div>
 
           {/* Right Column: Clean Architectural Consultation Form */}

@@ -79,9 +79,6 @@ export default function BeforeAfterSlider() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-12 border-b border-[#DCE3E2] gap-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-3">
-              04 / ARCHITECTURAL RENOVATION
-            </span>
             <h2 className="text-4xl sm:text-5xl font-light text-[#172022] tracking-[-0.035em]">
               FROM ORDINARY <br />
               <span className="text-[#174C55] font-normal">TO EXTRAORDINARY.</span>

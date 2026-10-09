@@ -38,7 +38,7 @@ export default function Header() {
             aria-label="AMCOM Interiors Home"
           >
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 bg-[#174C55] rounded-none group-hover:scale-110 transition-transform duration-300" />
+              
               <span className="text-lg md:text-xl font-bold tracking-[-0.04em] text-[#172022]">
                 AMCOM
               </span>
