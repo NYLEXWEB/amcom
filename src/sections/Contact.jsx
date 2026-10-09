@@ -26,7 +26,7 @@ export default function Contact() {
   const whatsappDirect = `https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`;
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#F1F4F2] border-b border-[#DCE3E2]">
+    <section id="contact" className="py-12 md:py-16 bg-[#F1F4F2] border-b border-[#DCE3E2]">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-16 border-b border-[#DCE3E2] gap-6">

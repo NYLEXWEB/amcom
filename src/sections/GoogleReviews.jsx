@@ -67,7 +67,7 @@ export default function GoogleReviews() {
   };
 
   return (
-    <section id="reviews" className="py-24 md:py-32 bg-[#F8F9FA] border-b border-[#E8EAED] relative">
+    <section id="reviews" className="py-12 md:py-16 bg-[#F8F9FA] border-b border-[#E8EAED] relative">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         
         {/* GOOGLE BUSINESS PROFILE HEADER CARD */}

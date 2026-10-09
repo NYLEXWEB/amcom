@@ -17,7 +17,7 @@ export default function Projects() {
   });
 
   return (
-    <section id="projects" className="py-24 md:py-32 bg-[#F8F9F7] border-b border-[#DCE3E2]">
+    <section id="projects" className="py-18 md:py-22 bg-[#F8F9F7] border-b border-[#DCE3E2]">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-12 border-b border-[#DCE3E2] gap-6">

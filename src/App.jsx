@@ -12,6 +12,7 @@ import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Gallery from './sections/Gallery';
+import SocialMedia from './sections/SocialMedia';
 
 export default function App() {
   return (
@@ -43,6 +44,8 @@ export default function App() {
 
         {/* 8. Google Reviews */}
         <GoogleReviews />
+
+        <SocialMedia />
 
         {/* 9. CTA */}
         <CTA />

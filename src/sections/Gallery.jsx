@@ -57,7 +57,7 @@ const galleryRow2 = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="py-24 md:py-32 bg-[#F8F9F7] border-b border-[#DCE3E2] overflow-hidden">
+    <section id="gallery" className="py-12 md:py-16 bg-[#F8F9F7] border-b border-[#DCE3E2] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-[#DCE3E2] gap-6">
           <div>

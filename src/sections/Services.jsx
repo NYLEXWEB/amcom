@@ -56,7 +56,7 @@ export default function Services() {
   )}`;
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-black text-[#F8F9F7] border-b border-white/10 relative overflow-hidden">
+    <section id="services" className="py-16 md:py-20 bg-black text-[#F8F9F7] border-b border-white/10 relative overflow-hidden">
       {/* Subtle background ambient glow */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#174C55]/15 rounded-full blur-3xl pointer-events-none" />
 
