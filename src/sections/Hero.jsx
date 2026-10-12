@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 
 const heroSlides = [
@@ -27,84 +27,135 @@ const heroSlides = [
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
 
-  // Auto-switch slide every 3.5 seconds
+  // Preload all hero images on initial render to prevent decoding lag
   useEffect(() => {
+    heroSlides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
+
+  // Snappy, faster image switching (3000ms interval) with smooth progress bar
+  useEffect(() => {
+    const slideDuration = 3000;
+    const updateFreq = 50;
+    const step = (updateFreq / slideDuration) * 100;
+
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % heroSlides.length);
-    }, 3500);
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setCurrentIndex((curr) => {
+            setPrevIndex(curr);
+            return (curr + 1) % heroSlides.length;
+          });
+          return 0;
+        }
+        return prev + step;
+      });
+    }, updateFreq);
+
     return () => clearInterval(timer);
   }, []);
+
+  const handleManualSlide = (idx) => {
+    if (idx === currentIndex) return;
+    setPrevIndex(currentIndex);
+    setCurrentIndex(idx);
+    setProgress(0);
+  };
 
   const currentSlide = heroSlides[currentIndex];
 
   return (
     <section
       id="hero"
-      className="relative h-screen min-h-[580px] max-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#111618] select-none"
+      className="relative h-screen min-h-[620px] max-h-screen w-full flex flex-col justify-between overflow-hidden select-none bg-[#1a2225]"
     >
-      {/* 1. BACKGROUND SLIDESHOW WITH SMOOTH CROSSFADE & KEN BURNS ZOOM */}
-      {heroSlides.map((slide, idx) => {
-        const isActive = currentIndex === idx;
-        return (
-          <div
-            key={slide.image}
-            className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${
-              isActive
-                ? 'opacity-100 scale-105 z-0'
-                : 'opacity-0 scale-100 -z-10 pointer-events-none'
-            }`}
-          >
-            <img
-              src={slide.image}
-              alt="AMCOM Interiors Architectural Project"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        );
-      })}
+      {/* 
+        1. SEAMLESS ZERO-BLACKNESS CROSSFADE SLIDESHOW
+        The outgoing image stays 100% visible at z-10 while incoming fades in at z-20.
+        Eliminates any black flash or gap between transitions.
+      */}
+      <div className="absolute inset-0 w-full h-full">
+        {heroSlides.map((slide, idx) => {
+          const isCurrent = currentIndex === idx;
+          const isPrev = prevIndex === idx;
 
-      {/* 2. REFINED ARCHITECTURAL OVERLAY (PRESERVES IMAGE CLARITY & TEXT CONTRAST) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/40 z-10 pointer-events-none" />
+          // Layering: Current slide on top (z-20), previous underneath (z-10)
+          let layerClass = 'z-0 opacity-0 pointer-events-none';
+          if (isCurrent) {
+            layerClass = 'z-20 opacity-100';
+          } else if (isPrev) {
+            layerClass = 'z-10 opacity-100';
+          }
 
-      {/* Top spacer for header */}
-      <div className="h-20 sm:h-24 shrink-0" />
+          return (
+            <div
+              key={slide.image}
+              className={`absolute inset-0 w-full h-full transition-opacity duration-600 ease-out ${layerClass}`}
+            >
+              <img
+                src={slide.image}
+                alt="AMCOM Interiors Architectural Project"
+                className={`w-full h-full object-cover object-center transition-transform duration-6000 ease-out ${
+                  isCurrent ? 'scale-105' : 'scale-100'
+                }`}
+                loading="eager"
+              />
+            </div>
+          );
+        })}
+      </div>
 
-      {/* 3. DYNAMIC CONTENT: HEADING & NEW PREMIUM BUTTON (NO DESCRIPTION) */}
-      <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 my-auto">
+      {/* 
+        2. CLEAN LIGHTING: REMOVED HEAVY BLACK SHADE
+        The heavy black overlay has been removed to preserve natural photo clarity and colors.
+        Only gentle directional left feathering protects headline contrast.
+      */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent z-20 pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/70 via-black/25 to-transparent z-20 pointer-events-none" />
+
+      {/* Top spacer for floating header */}
+      <div className="h-24 sm:h-28 shrink-0" />
+
+      {/* 3. DYNAMIC HERO CONTENT: HEADLINE & PREMIUM TEAL PILL BUTTON */}
+      <div className="relative z-30 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 my-auto">
         <div className="max-w-3xl lg:max-w-4xl">
           
           {/* Animated Slide Content Box */}
           <div
             key={currentIndex}
-            className="transition-all duration-700 transform animate-fade-in"
+            className="transition-all duration-500 transform animate-fade-in"
           >
-            {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/20 mb-3 sm:mb-5 text-white/90 rounded-full">
-              <span className="w-1.5 h-1.5 bg-[#6E9297] rounded-full animate-pulse" />
-              <span className="text-[10px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.25em] uppercase">
+            {/* Tagline Frosted Glass Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-md border border-white/25 mb-4 sm:mb-6 text-white rounded-full shadow-lg">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              <span className="text-[10px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.24em] uppercase text-white/95">
                 {currentSlide.tagline}
               </span>
             </div>
 
-            {/* Large Bold Architectural Headline (No description) */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.04em] text-white leading-[1.05] mb-6 sm:mb-8 uppercase break-words">
+            {/* Large Bold Architectural Headline with crisp drop shadow */}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[-0.035em] text-white leading-[1.04] mb-6 sm:mb-8 uppercase break-words drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
               {currentSlide.line1} <br />
-              <span className="font-light italic font-serif text-[#F8F9F7]/95">
+              <span className="font-light italic font-serif text-[#F8F9F7] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
                 {currentSlide.line2}
               </span>
             </h1>
 
-            {/* NEW PREMIUM ARCHITECTURAL BUTTON */}
+            {/* PREMIUM ARCHITECTURAL ACTION BUTTON */}
             <div>
               <a
                 href="#projects"
-                className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-3 sm:py-4 bg-[#174C55] hover:bg-[#123b42] text-white rounded-full transition-all duration-300 group shadow-[0_10px_30px_rgba(23,76,85,0.45)] border border-white/30 backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#174C55] hover:bg-[#123b42] text-white rounded-full transition-all duration-300 group shadow-[0_12px_35px_rgba(23,76,85,0.55)] border border-white/30 backdrop-blur-sm hover:scale-[1.03] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase font-mono">
+                <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase font-mono">
                   {currentSlide.buttonText}
                 </span>
-                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#174C55] flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shadow-sm shrink-0">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#174C55] flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shadow-sm shrink-0">
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               </a>
@@ -114,45 +165,53 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 4. BOTTOM BAR: LOCATION TAGS, SLIDE INDICATORS & SCROLL LINK */}
-      <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 pb-5 sm:pb-8 shrink-0 flex items-center justify-between border-t border-white/20 pt-4 gap-2">
+      {/* 4. BOTTOM BAR: LOCATION TAGS, INTERACTIVE TIMER BARS & SCROLL LINK */}
+      <div className="relative z-30 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 pb-5 sm:pb-7 shrink-0 flex items-center justify-between border-t border-white/20 pt-4 gap-2">
         
         {/* Left: Location Micro-Tags */}
-        <div className="flex items-center gap-2 sm:gap-4 text-white/75 text-[9px] sm:text-xs tracking-widest font-light font-mono truncate">
+        <div className="flex items-center gap-2 sm:gap-4 text-white/90 text-[10px] sm:text-xs tracking-widest font-mono truncate drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
           <span>KOZHIKODE</span>
-          <span className="w-1 h-1 bg-white/40 hidden sm:inline" />
+          <span className="w-1 h-1 bg-white/60 hidden sm:inline rounded-full" />
           <span className="hidden sm:inline">CALICUT</span>
-          <span className="w-1 h-1 bg-white/40" />
+          <span className="w-1 h-1 bg-white/60 rounded-full" />
           <span>KERALA</span>
         </div>
 
-        {/* Center: Interactive 3-Slide Progress Indicators */}
-        <div className="flex items-center gap-2 shrink-0">
-          {heroSlides.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setCurrentIndex(idx)}
-              className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
-                currentIndex === idx
-                  ? 'w-6 sm:w-8 bg-white'
-                  : 'w-2 bg-white/30 hover:bg-white/60'
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+        {/* Center: Interactive 3-Slide Progress Indicators with live timer fill */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {heroSlides.map((_, idx) => {
+            const isActive = currentIndex === idx;
+            return (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => handleManualSlide(idx)}
+                className="group relative h-2 w-10 sm:w-14 rounded-full bg-white/25 overflow-hidden transition-all duration-300 hover:bg-white/40 cursor-pointer p-0"
+                aria-label={`Jump to slide ${idx + 1}`}
+              >
+                {isActive ? (
+                  <div
+                    className="h-full bg-white rounded-full transition-all duration-75 ease-linear shadow-sm"
+                    style={{ width: `${progress}%` }}
+                  />
+                ) : (
+                  <div className="h-full w-0 bg-transparent rounded-full" />
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* Right: Scroll Indicator */}
         <a
           href="#about"
           aria-label="Scroll down to about section"
-          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group cursor-pointer shrink-0"
+          className="flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300 group cursor-pointer shrink-0 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
         >
-          <span className="text-[10px] tracking-[0.25em] font-mono uppercase text-white/60 group-hover:text-white transition-colors hidden sm:inline">
+          <span className="text-[10px] tracking-[0.25em] font-mono uppercase text-white/80 group-hover:text-white transition-colors hidden sm:inline">
             SCROLL
           </span>
-          <div className="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+          <div className="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center group-hover:border-white transition-colors bg-black/20 backdrop-blur-sm">
             <ArrowDown className="w-3 h-3 text-white animate-bounce" />
           </div>
         </a>

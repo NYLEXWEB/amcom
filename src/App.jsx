@@ -6,6 +6,7 @@ import About from './sections/About';
 import Services from './sections/Services';
 import ServicesPage from './sections/ServicesPage';
 import VideosPage from './sections/VideosPage';
+import GalleryPage from './sections/GalleryPage';
 import Projects from './sections/Projects';
 import BeforeAfterSlider from './sections/BeforeAfterSlider';
 import Process from './sections/Process';
@@ -23,6 +24,7 @@ export default function App() {
     if (typeof window !== 'undefined') {
       if (window.location.hash === '#/services') return 'services';
       if (window.location.hash === '#/videos') return 'videos';
+      if (window.location.hash === '#/gallery') return 'gallery';
     }
     return 'home';
   });
@@ -31,8 +33,13 @@ export default function App() {
     const handleHashChange = () => {
       if (window.location.hash === '#/services') {
         setCurrentView('services');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (window.location.hash === '#/videos') {
         setCurrentView('videos');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (window.location.hash === '#/gallery') {
+        setCurrentView('gallery');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentView('home');
       }
@@ -50,6 +57,12 @@ export default function App() {
   const handleNavigateToVideos = () => {
     window.location.hash = '/videos';
     setCurrentView('videos');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateToGallery = () => {
+    window.location.hash = '/gallery';
+    setCurrentView('gallery');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -72,8 +85,18 @@ export default function App() {
   // If user navigated to the dedicated separate Videos page:
   if (currentView === 'videos') {
     return (
-      <div className="min-h-screen bg-[#0E1315] text-[#F8F9F7] font-sans antialiased selection:bg-[#174C55] selection:text-[#F8F9F7]">
+      <div className="min-h-screen bg-[#F8F9F7] text-[#172022] font-sans antialiased selection:bg-[#174C55] selection:text-[#F8F9F7]">
         <VideosPage onBackToHome={handleBackToHome} />
+        <FloatingContactIsland />
+      </div>
+    );
+  }
+
+  // If user navigated to the dedicated separate Gallery page:
+  if (currentView === 'gallery') {
+    return (
+      <div className="min-h-screen bg-[#F8F9F7] text-[#172022] font-sans antialiased selection:bg-[#174C55] selection:text-[#F8F9F7]">
+        <GalleryPage onBackToHome={handleBackToHome} />
         <FloatingContactIsland />
       </div>
     );
@@ -109,7 +132,7 @@ export default function App() {
         <Process />
 
         {/* 9. Curated Gallery */}
-        <Gallery />
+        <Gallery onNavigateToGallery={handleNavigateToGallery} />
 
         {/* Real On-Site Video Showcase */}
         <VideoSection onNavigateToVideos={handleNavigateToVideos} />

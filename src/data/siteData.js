@@ -35,14 +35,24 @@ export const brandInfo = {
   whatsappDefaultMsg: "Hello AMCOM Interiors, I would like to discuss an interior project.",
 };
 
+export const productNavItems = [
+  { id: "kitchen", label: "Kitchen", href: "#/products/kitchen", desc: "Modular Kitchens & Islands" },
+  { id: "bedroom", label: "Bedroom", href: "#/products/bedroom", desc: "Master Suites & Wardrobes" },
+  { id: "dining-room", label: "Dining Room", href: "#/products/dining-room", desc: "Crockery Units & Dining Sets" },
+  { id: "living-room", label: "Living Room", href: "#/products/living-room", desc: "TV Consoles & Wall Paneling" },
+  { id: "decorative-units", label: "Decorative Units", href: "#/products/decorative-units", desc: "Foyer, Partitions & Shelves" },
+  { id: "kids-room", label: "Kids Room", href: "#/products/kids-room", desc: "Bunk Beds & Study Spaces" },
+];
+
 export const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "Products", href: "#/products", hasDropdown: true },
+  { label: "Packages", href: "#/packages", badge: "Pricing" },
+  { label: "Services", href: "#/services" },
   { label: "Projects", href: "#projects" },
   { label: "Before & After", href: "#before-after" },
   { label: "Videos", href: "#videos" },
-  { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },
 ];
 

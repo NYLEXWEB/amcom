@@ -55,18 +55,30 @@ const galleryRow2 = [
   },
 ];
 
-export default function Gallery() {
+export default function Gallery({ onNavigateToGallery }) {
   return (
     <section id="gallery" className="py-12 md:py-16 bg-[#F8F9F7] border-b border-[#DCE3E2] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 mb-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-[#DCE3E2] gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 border-b border-[#DCE3E2] gap-6">
           <div>
-   
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-2 font-semibold">
+              ORIGINAL SITE PHOTOGRAPHY
+            </span>
             <h2 className="text-4xl sm:text-5xl font-light text-[#172022] tracking-[-0.035em]">
               CURATED GALLERY
             </h2>
           </div>
 
+          <div>
+            <button
+              type="button"
+              onClick={onNavigateToGallery}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#174C55] hover:bg-[#123b42] text-white text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 shadow-sm cursor-pointer group"
+            >
+              <span>Explore All 42+ Photographs</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -83,6 +95,7 @@ export default function Gallery() {
             {[...galleryRow1, ...galleryRow1, ...galleryRow1].map((item, idx) => (
               <div
                 key={`r1-${idx}`}
+                onClick={onNavigateToGallery}
                 className="w-[300px] sm:w-[380px] md:w-[420px] h-[210px] sm:h-[260px] relative rounded-none overflow-hidden border border-[#DCE3E2] shadow-sm bg-[#172022] group shrink-0 cursor-pointer"
               >
                 {/* Image */}
@@ -125,6 +138,7 @@ export default function Gallery() {
             {[...galleryRow2, ...galleryRow2, ...galleryRow2].map((item, idx) => (
               <div
                 key={`r2-${idx}`}
+                onClick={onNavigateToGallery}
                 className="w-[300px] sm:w-[380px] md:w-[420px] h-[210px] sm:h-[260px] relative rounded-none overflow-hidden border border-[#DCE3E2] shadow-sm bg-[#172022] group shrink-0 cursor-pointer"
               >
                 {/* Image */}
