@@ -101,9 +101,6 @@ export default function Header() {
                           <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#174C55] font-bold">
                             INTERIOR PRODUCTS &amp; ROOMS
                           </span>
-                          <span className="text-[10px] font-mono text-[#687477] bg-white px-2 py-0.5 rounded-full border border-[#DCE3E2] font-medium">
-                            6 CATEGORIES
-                          </span>
                         </div>
 
                         {/* Items List with Animated Hover Effects */}

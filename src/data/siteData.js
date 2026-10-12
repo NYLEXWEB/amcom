@@ -47,7 +47,7 @@ export const productNavItems = [
 export const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "Products", href: "#/products", hasDropdown: true },
-  { label: "Packages", href: "#/packages" },
+  { label: "Packages", href: "#packages" },
   { label: "Services", href: "#/services" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },

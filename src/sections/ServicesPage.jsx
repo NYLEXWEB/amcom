@@ -103,19 +103,7 @@ export default function ServicesPage({ onBackToHome }) {
         3. EDITORIAL SECTION INSPIRED BY REFERENCE SCREENSHOT:
         "Custom-Made Home Interiors" + Deep Narrative
       */}
-      <section className="py-16 sm:py-20 bg-white border-b border-[#DCE3E2]">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#172022] tracking-tight mb-6">
-            Custom-Made Home Interiors
-          </h2>
-          <p className="text-base sm:text-lg text-[#687477] font-normal leading-relaxed mb-6">
-            <span className="italic font-serif text-[#172022]">"Made for you"</span> is an accurate phrase to express what we do in interiors. We have been designing and executing exquisite home interiors since 1999. Custom-made interior is the best way to ensure that modular kitchens, wardrobes, and customized furniture fit your space perfectly.
-          </p>
-          <p className="text-xs sm:text-sm text-[#687477]/90 font-light leading-relaxed max-w-2xl mx-auto">
-            Our interior designers and master craftspeople possess impeccable ability to understand client requirements and provide the finest space planning for your villa, apartment, or commercial workspace across Kozhikode, Kannur, and Kerala.
-          </p>
-        </div>
-      </section>
+
 
       {/* 
         4. COMPLETE 19-SERVICES ARCHITECTURAL DIRECTORY
@@ -132,9 +120,6 @@ export default function ServicesPage({ onBackToHome }) {
               ALL 19 INTERIOR SERVICES &amp; SOLUTIONS
             </h3>
           </div>
-          <p className="max-w-md text-xs sm:text-sm text-[#687477] font-normal leading-relaxed">
-            From bespoke modular kitchens to acoustic ceilings, tailored wardrobes, and civil execution.
-          </p>
         </div>
 
         {/* Category Filter Chips */}
@@ -186,9 +171,6 @@ export default function ServicesPage({ onBackToHome }) {
                       </span>
                     </div>
                     <div className="absolute top-3 right-3">
-                      <span className="px-2.5 py-1 text-[10px] font-mono tracking-wider uppercase bg-white/95 text-[#172022] border border-white/40">
-                        {service.category}
-                      </span>
                     </div>
                   </div>
 
@@ -214,10 +196,6 @@ export default function ServicesPage({ onBackToHome }) {
                     <span>Inquire via WhatsApp</span>
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                   </a>
-
-                  <span className="text-[10px] font-mono text-[#687477]">
-                    AMCOM DIRECT
-                  </span>
                 </div>
               </div>
             );
