@@ -21,17 +21,6 @@ export default function PackagesSection({ onNavigateToPackages }) {
               INTERIOR PACKAGES &amp; PRICING
             </h2>
           </div>
-
-          <div>
-            <button
-              type="button"
-              onClick={onNavigateToPackages}
-              className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#174C55] hover:text-[#123b42] transition-colors font-semibold"
-            >
-              <span>Explore All Packages (1 - 4 BHK)</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-          </div>
         </div>
 
         {/* 3 Package Cards Grid with Top Images & Minimal Clean Content */}
@@ -131,19 +120,6 @@ export default function PackagesSection({ onNavigateToPackages }) {
           })}
         </div>
 
-        {/* Minimal 4 BHK Villa Note */}
-        <div className="mt-8 p-4 sm:p-5 bg-white rounded-xl border border-[#DCE3E2] flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-          <p className="text-xs text-[#687477]">
-            <strong className="text-[#172022]">Designing a 4 BHK Villa or Duplex in Kerala?</strong> Custom turnkey execution starting at ₹11.85 Lakhs.
-          </p>
-          <button
-            type="button"
-            onClick={onNavigateToPackages}
-            className="text-xs font-mono uppercase tracking-wider text-[#174C55] hover:text-[#123b42] font-semibold shrink-0"
-          >
-            See 4 BHK Package &rarr;
-          </button>
-        </div>
 
       </div>
     </section>

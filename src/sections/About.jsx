@@ -215,34 +215,6 @@ export default function About() {
               </div>
             </div>
 
-            {/* Overlapping Floating Frosted Card (Architectural Heritage) */}
-            <div className="sm:absolute -bottom-8 -left-6 sm:max-w-xs w-full mt-6 sm:mt-0 p-5 bg-white/95 backdrop-blur-md border border-[#DCE3E2] rounded-lg shadow-xl transition-transform duration-300 hover:-translate-y-1 z-30">
-              <div className="flex items-center gap-3 mb-2.5">
-                <div className="w-9 h-9 rounded-md bg-[#174C55] text-white flex items-center justify-center text-xs font-mono font-bold shadow-sm">
-                  25+
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-[#172022] tracking-wide uppercase">
-                    Years of Heritage
-                  </h4>
-                  <span className="text-[10px] font-mono text-[#6E9297]">
-                    ESTABLISHED 1999 • KERALA
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs text-[#687477] leading-relaxed">
-                Every detail is engineered with local Kerala materials, structural precision, and architectural discipline.
-              </p>
-            </div>
-
-            {/* Secondary Accent Detail Badge (Top-Right Floating) */}
-            <div className="hidden md:flex absolute -top-5 -right-5 items-center gap-2 px-3.5 py-2 bg-white/95 backdrop-blur-md border border-[#DCE3E2] rounded-lg shadow-lg z-20">
-              <Sparkles className="w-3.5 h-3.5 text-[#174C55]" />
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#172022] font-medium">
-                100% Real Execution
-              </span>
-            </div>
-
           </div>
 
         </div>

@@ -83,10 +83,6 @@ _Submitted via AMCOM Interiors Official Portal_`;
               BEGIN AN ARCHITECTURAL DIALOGUE
             </h2>
           </div>
-
-          <p className="text-xs sm:text-sm text-[#687477] max-w-md font-normal leading-relaxed">
-            From initial spatial planning to turnkey interior handover in Kozhikode and Kannur. Visit our studio or connect directly with our principal designers.
-          </p>
         </div>
 
         {/* Contact Layout */}
@@ -234,10 +230,6 @@ _Submitted via AMCOM Interiors Official Portal_`;
                   <h3 className="text-2xl sm:text-3xl font-light text-[#172022] tracking-[-0.03em]">
                     Tell Us About Your Vision
                   </h3>
-                </div>
-                <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F1F4F2] text-[11px] font-mono text-[#174C55]">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Free Spatial Assessment</span>
                 </div>
               </div>
 

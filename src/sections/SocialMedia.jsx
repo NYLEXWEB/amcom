@@ -27,12 +27,6 @@ export default function SocialMedia() {
       actionLabel: "Follow on Instagram",
       actionBg: "group-hover:bg-[#E1306C] group-hover:text-white",
       url: brandInfo.social.instagram.url,
-      statsPill: (
-        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-[#E1306C] bg-[#FFF0F5] px-2.5 py-1 rounded-full border border-[#E1306C]/20">
-          <Sparkles className="w-3 h-3 text-[#E1306C]" />
-          <span>Active Feed</span>
-        </span>
-      ),
     },
     {
       id: "whatsapp",
@@ -51,12 +45,7 @@ export default function SocialMedia() {
       actionLabel: "Chat on WhatsApp",
       actionBg: "group-hover:bg-[#25D366] group-hover:text-white",
       url: `https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`,
-      statsPill: (
-        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-[#128C7E] bg-[#E8F8F0] px-2.5 py-1 rounded-full border border-[#25D366]/20">
-          <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-          <span>Typical Reply: 10m</span>
-        </span>
-      ),
+      
     },
     {
       id: "google",
@@ -75,12 +64,7 @@ export default function SocialMedia() {
       actionLabel: "View Reviews & Directions",
       actionBg: "group-hover:bg-[#174C55] group-hover:text-white",
       url: brandInfo.googleMapsUrl,
-      statsPill: (
-        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-[#B45309] bg-[#FEF3C7] px-2.5 py-1 rounded-full border border-[#F59E0B]/30">
-          <Star className="w-3 h-3 fill-[#F59E0B] text-[#F59E0B]" />
-          <span>4.9 / 5.0 Rating</span>
-        </span>
-      ),
+    
     },
     {
       id: "facebook",
@@ -99,12 +83,7 @@ export default function SocialMedia() {
       actionLabel: "Explore Facebook Page",
       actionBg: "group-hover:bg-[#1877F2] group-hover:text-white",
       url: brandInfo.social.facebook.url,
-      statsPill: (
-        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-[#1877F2] bg-[#EFF6FF] px-2.5 py-1 rounded-full border border-[#1877F2]/20">
-          <CheckCircle2 className="w-3 h-3 text-[#1877F2]" />
-          <span>Verified Page</span>
-        </span>
-      ),
+
     },
   ];
 
@@ -134,9 +113,6 @@ export default function SocialMedia() {
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-[#687477] max-w-md font-normal leading-relaxed">
-            Follow our ongoing interior builds, review verified client feedback, or start an immediate project conversation with our principal architects.
-          </p>
         </div>
 
         {/* 4 Premium Cards Grid */}
@@ -173,11 +149,6 @@ export default function SocialMedia() {
                     {card.tagline}
                   </p>
                 </div>
-
-                {/* Body Description */}
-                <p className="text-xs text-[#687477] leading-relaxed mb-6 font-normal">
-                  {card.description}
-                </p>
               </div>
 
               {/* Bottom Interactive CTA Action */}

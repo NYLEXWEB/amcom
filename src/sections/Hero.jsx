@@ -130,13 +130,6 @@ export default function Hero() {
             key={currentIndex}
             className="transition-all duration-500 transform animate-fade-in"
           >
-            {/* Tagline Frosted Glass Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-md border border-white/20 mb-4 sm:mb-6 text-white rounded-full shadow-lg">
-              <span className="w-1.5 h-1.5 bg-white/80 rounded-full" />
-              <span className="text-[10px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.24em] uppercase text-white/95">
-                {currentSlide.tagline}
-              </span>
-            </div>
 
             {/* Large Bold Architectural Headline with crisp drop shadow */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[-0.035em] text-white leading-[1.04] mb-6 sm:mb-8 uppercase break-words drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">

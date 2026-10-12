@@ -83,15 +83,10 @@ export default function FloatingContactIsland() {
       }`}
     >
       {/* Dynamic Island Outer Container */}
-      <div className="relative flex flex-col items-center bg-[#090D0E]/90 hover:bg-[#090D0E]/95 backdrop-blur-2xl border border-white/[0.12] rounded-full p-1.5 sm:p-2 shadow-[0_16px_40px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.08)] transition-all duration-300">
+      <div className="relative flex flex-col items-center bg-[#090D0E]/90 hover:bg-[#090D0E]/95 backdrop-blur-2xl border border-white/[0.12] rounded-full p-1.5 sm:p-2 transition-all duration-300">
         
-        {/* Sleek Dynamic Island Top Notch / Status Pill */}
-        <div className="my-1 flex items-center justify-center">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" title="AMCOM Studio Active" />
-        </div>
 
-        {/* Vertical Divider */}
-        <div className="w-4 h-[1px] bg-white/10 mb-1.5" />
+
 
         {/* 3 Icons Vertical Stack */}
         <div className="flex flex-col gap-2">
@@ -110,14 +105,11 @@ export default function FloatingContactIsland() {
                     : 'opacity-0 translate-x-2'
                 }`}
               >
-                <div className="bg-[#090D0E]/95 backdrop-blur-xl border border-white/15 text-white px-3.5 py-2 rounded-xl shadow-2xl flex items-center gap-3 whitespace-nowrap">
+                <div className="bg-[#090D0E]/95 backdrop-blur-xl border border-white/15 text-white px-3.5 py-2 rounded-xl flex items-center gap-3 whitespace-nowrap">
                   <div className="text-left">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-semibold tracking-wide text-white">
                         {item.name}
-                      </span>
-                      <span className={`text-[9px] font-mono uppercase px-1.5 py-0.2 rounded-full border ${item.badgeColor}`}>
-                        {item.badge}
                       </span>
                     </div>
                     <span className="text-[11px] text-[#A2B1B4] font-medium block">
@@ -143,14 +135,7 @@ export default function FloatingContactIsland() {
             </div>
           ))}
         </div>
-
-        {/* Vertical Divider */}
-        <div className="w-4 h-[1px] bg-white/10 mt-1.5" />
-
-        {/* Bottom subtle aesthetic pill bar */}
-        <div className="my-1 flex items-center justify-center">
-          <div className="w-3 h-0.5 rounded-full bg-white/30" />
-        </div>
+       
       </div>
     </aside>
   );

@@ -67,43 +67,7 @@ export default function Footer() {
       <div className="absolute bottom-0 right-10 w-80 h-80 bg-[#6E9297]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-        
-        {/* Pre-Footer Action Banner */}
-        <div className="pb-12 mb-14 border-b border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-3">
-              <Sparkles className="w-3 h-3 text-[#6E9297]" />
-              <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#6E9297] font-semibold">
-                TIMELESS ARCHITECTURAL SPACES
-              </span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-light text-white tracking-[-0.02em]">
-              Ready to elevate your living environment?
-            </h3>
-            <p className="text-xs text-white/60 font-light mt-1">
-              Connect with our Kozhikode studio for spatial evaluations and tailored design estimates.
-            </p>
-          </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-mono uppercase tracking-wider font-semibold transition-all shadow-md hover:shadow-lg"
-            >
-              <OriginalWhatsAppIcon className="w-4 h-4" />
-              <span>WhatsApp Direct</span>
-            </a>
-            <a
-              href={`tel:${brandInfo.primaryPhoneRaw}`}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/15 text-xs font-mono uppercase tracking-wider font-medium transition-all"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#6E9297]" />
-              <span>Call Studio</span>
-            </a>
-          </div>
-        </div>
 
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/10">
@@ -120,9 +84,6 @@ export default function Footer() {
                 />
               </div>
 
-              <h4 className="text-xl font-light text-white tracking-[-0.02em] mb-1">
-                AMCOM INTERIORS
-              </h4>
               <p className="text-xs font-mono tracking-wider text-[#6E9297] uppercase mb-4">
                 CRAFTING TIMELESS INTERIORS SINCE 1999
               </p>
@@ -138,27 +99,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Social Media Row with Authentic Original Icons */}
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E9297] block mb-3 font-semibold">
-                OFFICIAL SOCIAL DESKS
-              </span>
-              <div className="flex items-center gap-2.5">
-                {socialLinks.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.label}
-                    title={item.label}
-                    className={`p-2.5 rounded-xl bg-white/5 border border-white/10 text-white transition-all duration-300 hover:scale-110 shadow-sm ${item.hoverBorder}`}
-                  >
-                    {item.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Col 2: Architectural Services (2.5 Cols) */}
@@ -240,13 +180,7 @@ export default function Footer() {
                 </div>
 
                 {/* Studio Hours */}
-                <div className="flex items-start gap-3 text-white/80 pt-2 border-t border-white/5">
-                  <Clock className="w-4 h-4 text-[#6E9297] shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-medium text-white block mb-0.5">Working Hours</span>
-                    <span className="text-white/60 font-light">Mon – Sat: 9:00 AM – 7:30 PM</span>
-                  </div>
-                </div>
+             
 
                 {/* Phone Lines */}
                 <div className="flex items-start gap-3 text-white/80 pt-2 border-t border-white/5">
