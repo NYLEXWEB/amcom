@@ -171,10 +171,7 @@ export default function About() {
 
               {/* Top Floating Bar: Live Tag + Audio Mute/Unmute */}
               <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 pointer-events-none">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono tracking-wider">
-                  <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-                  <span className="uppercase">STUDIO WALKTHROUGH</span>
-                </div>
+            
 
                 {/* Sound Toggle Button (Clickable, Default Sound On) */}
                 <button
