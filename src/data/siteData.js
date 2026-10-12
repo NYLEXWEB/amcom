@@ -46,13 +46,10 @@ export const productNavItems = [
 
 export const navLinks = [
   { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
   { label: "Products", href: "#/products", hasDropdown: true },
-  { label: "Packages", href: "#/packages", badge: "Pricing" },
+  { label: "Packages", href: "#/packages" },
   { label: "Services", href: "#/services" },
   { label: "Projects", href: "#projects" },
-  { label: "Before & After", href: "#before-after" },
-  { label: "Videos", href: "#videos" },
   { label: "Contact", href: "#contact" },
 ];
 

@@ -435,7 +435,7 @@ export default function GalleryPage({ onBackToHome }) {
       {/* Footer */}
       <footer className="py-6 border-t border-[#DCE3E2] bg-white text-center text-xs text-[#687477]">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>&copy; {new Date().getFullYear()} AMCOM INTERIORS. All rights reserved.</span>
+          <span>&copy; 2026 AMCOM INTERIORS. All rights reserved.</span>
           <span className="font-mono text-[11px]">Crafting Timeless Interiors Since 1999 • Kozhikode, Kerala</span>
         </div>
       </footer>

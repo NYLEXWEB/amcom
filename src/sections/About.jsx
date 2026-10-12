@@ -1,11 +1,40 @@
-import React, { useState } from 'react';
-import { ArrowUpRight, Compass, ShieldCheck, Sparkles } from 'lucide-react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { 
+  ArrowRight, 
+  Volume2, 
+  VolumeX, 
+  Play, 
+  Pause, 
+  Sparkles, 
+  Award, 
+  Compass, 
+  ShieldCheck 
+} from 'lucide-react';
 
 export default function About() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
-  
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    if (!videoRef.current) return;
+    const nextMuted = !isMuted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
+  };
+
   return (
     <section id="about" className="py-24 md:py-32 bg-[#F8F9F7] border-b border-[#DCE3E2] relative overflow-hidden">
       {/* Background Architectural Subtle Grid */}
@@ -20,65 +49,128 @@ export default function About() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-        {/* Top Minimal Editorial Tag */}
-       
-
-        {/* Main Split Grid: Minimal Copy + Layered Visual Composition */}
+        {/* Main Split Grid: Minimal Copy + Layered Architectural Video Composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT COLUMN: Minimal, Punchy Editorial Content */}
           <div className="lg:col-span-5 flex flex-col justify-center">
-            <span className="text-xs font-mono tracking-widest uppercase text-[#174C55] font-semibold mb-3">
-              TIMELESS ARCHITECTURAL INTERIORS
-            </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#174C55]/10 border border-[#174C55]/20 rounded-full mb-3.5 self-start">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#174C55]" />
+              <span className="text-[11px] font-mono tracking-widest uppercase text-[#174C55] font-semibold">
+                TIMELESS ARCHITECTURAL INTERIORS
+              </span>
+            </div>
 
             {/* Editorial Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#172022] tracking-[-0.03em] leading-[1.12] mb-6">
-              ABOUT <span></span>
-              <span className="font-normal text-[#174C55]">US</span> 
+              ABOUT <span className="font-normal text-[#174C55]">US</span> 
             </h2>
 
-            {/* Concise, Refined Description (No Long Dense Paragraphs) */}
-            <p className="text-base sm:text-lg text-[#687477] font-normal leading-relaxed mb-8">
+            {/* Concise, Refined Description */}
+            <p className="text-base sm:text-lg text-[#687477] font-normal leading-relaxed mb-6">
               Founded in 1999 in Kozhikode, AMCOM Interiors unites architectural sensibility with hands-on construction mastery. We build spaces defined by quiet proportions, honest textures, and enduring Kerala living rituals.
             </p>
 
-            {/* Clean Action Link */}
-            <div>
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-4 pl-6 sm:pl-7 pr-2 sm:pr-2.5 py-2 sm:py-2.5 bg-black hover:bg-[#172022] text-white rounded-full transition-all duration-300 group shadow-xl border border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <span className="text-xs sm:text-sm font-medium tracking-wide">
-                Explore Signature Spaces
-              </span>
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#172022] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shadow-sm">
-                <ArrowRight className="w-4 h-4 text-[#172022]" />
+            {/* Micro Feature Highlights */}
+            <div className="grid grid-cols-2 gap-3 mb-8 pt-2 border-t border-[#DCE3E2]/60">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#172022]">
+                <ShieldCheck className="w-4 h-4 text-[#174C55]" />
+                <span>Turnkey Accountability</span>
               </div>
-            </a>
+              <div className="flex items-center gap-2 text-xs font-mono text-[#172022]">
+                <Compass className="w-4 h-4 text-[#174C55]" />
+                <span>Bespoke Kerala Joinery</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex items-center gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-4 pl-6 sm:pl-7 pr-2.5 py-2.5 bg-[#172022] hover:bg-[#174C55] text-white rounded-full transition-all duration-300 group shadow-lg border border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#174C55]"
+              >
+                <span className="text-xs sm:text-sm font-medium tracking-wide">
+                  Explore Signature Spaces
+                </span>
+                <div className="w-8 h-8 rounded-full bg-white text-[#172022] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shadow-sm">
+                  <ArrowRight className="w-4 h-4 text-[#172022]" />
+                </div>
+              </a>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Layered Architectural Visual Gallery */}
+          {/* RIGHT COLUMN: Layered Architectural Video Player */}
           <div className="lg:col-span-7 relative">
-            {/* Primary Large Image Container */}
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-[#F1F4F2] border border-[#DCE3E2] shadow-md group">
-              <img
-                src="/images/amcom-kitchen.jpg"
-                alt="Contemporary AMCOM modular kitchen with natural teak and courtyard view"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+            
+            {/* Primary Video Container */}
+            <div 
+              onClick={togglePlay}
+              className="relative aspect-[4/3] sm:aspect-[16/11] md:aspect-[16/10] overflow-hidden rounded-xl bg-[#0F1719] border border-[#DCE3E2] shadow-2xl group cursor-pointer"
+            >
+              {/* HTML5 Autoplaying Video */}
+              <video
+                ref={videoRef}
+                src="/about/VID-20261012-WA0062.mp4"
+                autoPlay
+                loop
+                muted={isMuted}
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               />
 
+              {/* Subtle Ambient Vignettes for Text Legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
 
-              {/* Subtle gradient vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+              {/* Top Floating Bar: Live Tag + Audio Mute/Unmute */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 pointer-events-none">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+                  <span className="uppercase">STUDIO WALKTHROUGH</span>
+                </div>
+
+                {/* Sound Toggle Button (Clickable) */}
+                <button
+                  type="button"
+                  onClick={toggleMute}
+                  className="pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/25 text-white text-[11px] font-mono tracking-wider transition-all duration-200 cursor-pointer shadow-md"
+                  aria-label={isMuted ? "Unmute video audio" : "Mute video audio"}
+                >
+                  {isMuted ? (
+                    <>
+                      <VolumeX className="w-3.5 h-3.5 text-[#6E9297]" />
+                      <span className="uppercase text-[10px]">SOUND OFF</span>
+                    </>
+                  ) : (
+                    <>
+                      <Volume2 className="w-3.5 h-3.5 text-[#25D366]" />
+                      <span className="uppercase text-[10px] text-[#25D366]">SOUND ON</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Center Play/Pause Indicator (Shows when paused or subtly on hover) */}
+              {!isPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[2px] z-10 transition-opacity">
+                  <div className="w-16 h-16 rounded-full bg-white/95 text-[#172022] flex items-center justify-center shadow-2xl pl-1 transform scale-100 hover:scale-110 transition-transform">
+                    <Play className="w-7 h-7 fill-current" />
+                  </div>
+                </div>
+              )}
+
+              {/* Bottom Subtle Tap Hint */}
+              <div className="absolute bottom-4 right-4 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-white/80 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-md border border-white/10">
+                  {isPlaying ? 'Click to Pause' : 'Click to Play'}
+                </span>
+              </div>
             </div>
 
-            {/* Secondary Floating Frosted Card (Overlapping for Premium Editorial Depth) */}
-            <div className="sm:absolute -bottom-8 -left-6 sm:max-w-xs w-full mt-6 sm:mt-0 p-5 bg-white/95 backdrop-blur-md border border-[#DCE3E2] shadow-xl transition-transform duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-none bg-[#174C55] text-white flex items-center justify-center text-xs font-mono font-bold">
+            {/* Overlapping Floating Frosted Card (Architectural Heritage) */}
+            <div className="sm:absolute -bottom-8 -left-6 sm:max-w-xs w-full mt-6 sm:mt-0 p-5 bg-white/95 backdrop-blur-md border border-[#DCE3E2] rounded-lg shadow-xl transition-transform duration-300 hover:-translate-y-1 z-30">
+              <div className="flex items-center gap-3 mb-2.5">
+                <div className="w-9 h-9 rounded-md bg-[#174C55] text-white flex items-center justify-center text-xs font-mono font-bold shadow-sm">
                   25+
                 </div>
                 <div>
@@ -86,7 +178,7 @@ export default function About() {
                     Years of Heritage
                   </h4>
                   <span className="text-[10px] font-mono text-[#6E9297]">
-                    ESTABLISHED 1999
+                    ESTABLISHED 1999 • KERALA
                   </span>
                 </div>
               </div>
@@ -95,15 +187,14 @@ export default function About() {
               </p>
             </div>
 
-            {/* Secondary Overlapping Small Photo (Desktop Only) */}
-            <div className="hidden sm:block absolute -top-6 -left-6 w-36 h-44 overflow-hidden border-2 border-white shadow-lg bg-[#F8F9F7] group">
-              <img
-                src="/images/amcom-bedroom.jpg"
-                alt="AMCOM interior bedroom detailing"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
+            {/* Secondary Accent Detail Badge (Top-Right Floating) */}
+            <div className="hidden md:flex absolute -top-5 -right-5 items-center gap-2 px-3.5 py-2 bg-white/95 backdrop-blur-md border border-[#DCE3E2] rounded-lg shadow-lg z-20">
+              <Sparkles className="w-3.5 h-3.5 text-[#174C55]" />
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#172022] font-medium">
+                100% Real Execution
+              </span>
             </div>
+
           </div>
 
         </div>
@@ -111,3 +202,4 @@ export default function About() {
     </section>
   );
 }
+

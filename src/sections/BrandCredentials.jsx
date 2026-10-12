@@ -3,99 +3,113 @@ import { Award, Clock, ShieldCheck, Compass, Sparkles, CheckCircle2 } from 'luci
 
 const credentials = [
   {
-    number: "SINCE",
-    highlight: "1999",
+    index: "01",
+    tag: "HERITAGE",
     title: "25+ Years",
     subtitle: "Kerala Heritage",
+    description: "Established 1999",
     icon: Award,
   },
   {
-    number: "PREMIUM",
-    highlight: "Materials",
+    index: "02",
+    tag: "MATERIALS",
     title: "Honest Woods",
-    subtitle: "Stone & Travertine",
+    subtitle: "Natural Materials",
+    description: "Stone & Travertine",
     icon: Sparkles,
   },
   {
-    number: "100+",
-    highlight: "Spaces",
-    title: "Crafted Homes",
-    subtitle: "Across Calicut & Kannur",
+    index: "03",
+    tag: "PORTFOLIO",
+    title: "100+ Spaces",
+    subtitle: "Crafted Homes",
+    description: "Across Calicut & Kannur",
     icon: Compass,
   },
   {
-    number: "ON-TIME",
-    highlight: "Handover",
-    title: "Disciplined",
+    index: "04",
+    tag: "DELIVERY",
+    title: "On-Time Handover",
     subtitle: "Turnkey Execution",
+    description: "Disciplined Milestones",
     icon: Clock,
   },
   {
-    number: "QUALITY",
-    highlight: "Assurance",
-    title: "10-Year",
-    subtitle: "Hardware & Joinery",
+    index: "05",
+    tag: "WARRANTY",
+    title: "10-Year Warranty",
+    subtitle: "Quality Assurance",
+    description: "Hardware & Joinery",
     icon: ShieldCheck,
   },
   {
-    number: "LIFELONG",
-    highlight: "Support",
-    title: "Post-Handover",
-    subtitle: "Client Care",
+    index: "06",
+    tag: "ASSISTANCE",
+    title: "Lifelong Care",
+    subtitle: "Post-Handover Care",
+    description: "Dedicated Studio Support",
     icon: CheckCircle2,
   },
 ];
 
 export default function BrandCredentials() {
   return (
-    <section className="py-16 md:py-20 bg-[#F8F9F7] border-b border-[#DCE3E2] relative overflow-hidden select-none">
+    <section className="py-16 md:py-22 bg-[#F8F9F7] border-b border-[#DCE3E2] select-none">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-2 font-semibold">
             ARCHITECTURAL CREDENTIALS
           </span>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-[#172022] tracking-[-0.02em]">
-            PROFESSIONAL INTERIOR DESIGN &amp; CONSTRUCTION
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#172022] tracking-[-0.03em]">
+            PROFESSIONAL INTERIOR DESIGN &amp; CONSULTANCY
           </h2>
-          <div className="w-10 h-[2px] bg-[#174C55] mx-auto mt-4" />
+          <div className="w-12 h-[2px] bg-[#174C55] mx-auto mt-4" />
         </div>
 
-        {/* 6 Circular / Architectural Trust Badges Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-6 lg:gap-8 items-center justify-center">
-          {credentials.map((item, idx) => {
+        {/* 6 Architectural Cards Grid with Elegant Line Hover Effects */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 lg:gap-6">
+          {credentials.map((item) => {
             const IconComponent = item.icon;
             return (
               <div
-                key={idx}
-                className="group flex flex-col items-center text-center cursor-default"
+                key={item.index}
+                className="group relative bg-white rounded-xl p-5 sm:p-6 border border-[#DCE3E2] hover:border-[#174C55] transition-all duration-400 ease-out flex flex-col items-center text-center cursor-default overflow-hidden"
               >
-                {/* Circular Badge Container */}
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-white border border-[#DCE3E2] shadow-sm flex flex-col items-center justify-center p-4 transition-all duration-300 group-hover:scale-105 group-hover:border-[#174C55] group-hover:shadow-md">
-                  
-                  {/* Subtle top icon accent */}
-                  <div className="w-6 h-6 rounded-full bg-[#F1F4F2] group-hover:bg-[#174C55] group-hover:text-white text-[#174C55] flex items-center justify-center mb-1.5 transition-colors duration-300">
-                    <IconComponent className="w-3.5 h-3.5" />
-                  </div>
+                {/* 1. TOP HAIRLINE ACCENT (Gently glows on hover) */}
+                <div className="absolute top-0 inset-x-0 h-[1.5px] bg-transparent group-hover:bg-[#174C55]/20 transition-colors duration-400" />
 
-                  {/* Primary Highlight Text */}
-                  <span className="text-xs sm:text-[13px] font-bold tracking-tight text-[#172022] group-hover:text-[#174C55] transition-colors leading-tight font-sans">
-                    {item.number}
-                  </span>
-                  
-                  <span className="text-[11px] sm:text-xs font-semibold text-[#174C55] tracking-tight leading-tight mb-0.5">
-                    {item.highlight}
-                  </span>
+                {/* Micro Index Number */}
+                <span className="text-[10px] font-mono text-[#687477]/60 group-hover:text-[#174C55] transition-colors mb-3">
+                  {item.index}
+                </span>
 
-                  {/* Secondary descriptor */}
-                  <span className="text-[9px] font-mono text-[#687477] uppercase tracking-wider leading-snug">
-                    {item.subtitle}
-                  </span>
-
-                  {/* Subtle rotating glow border on hover */}
-                  <div className="absolute inset-0 rounded-full border border-transparent group-hover:border-[#174C55]/30 transition-all pointer-events-none" />
+                {/* 2. ICON HOUSING (Smooth floating transition on hover) */}
+                <div className="w-12 h-12 rounded-xl bg-[#F8F9F7] group-hover:bg-[#174C55] text-[#174C55] group-hover:text-white border border-[#DCE3E2] group-hover:border-[#174C55] flex items-center justify-center transition-all duration-400 ease-out group-hover:-translate-y-1">
+                  <IconComponent className="w-5 h-5 transition-transform duration-400 group-hover:scale-110" />
                 </div>
+
+                {/* 3. DYNAMIC EXPANDING ARCHITECTURAL DIVIDER LINE */}
+                <div className="w-4 h-[1.5px] bg-[#DCE3E2] group-hover:w-10 group-hover:bg-[#174C55] transition-all duration-400 ease-out my-3.5" />
+
+                {/* Primary Metric / Headline */}
+                <h3 className="text-xs sm:text-[13px] font-bold text-[#172022] group-hover:text-[#174C55] transition-colors leading-tight font-sans mb-1">
+                  {item.title}
+                </h3>
+
+                {/* Subtitle / Details */}
+                <p className="text-[11px] text-[#687477] font-medium leading-snug">
+                  {item.subtitle}
+                </p>
+
+                {/* Micro Tagline */}
+                <span className="text-[9px] font-mono text-[#6E9297] uppercase tracking-wider mt-1.5 leading-tight">
+                  {item.description}
+                </span>
+
+                {/* 4. SIGNATURE EXPANDING BOTTOM ACCENT LINE */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-[#174C55] group-hover:w-full transition-all duration-500 ease-out" />
               </div>
             );
           })}

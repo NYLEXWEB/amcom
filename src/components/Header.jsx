@@ -1,22 +1,51 @@
-import React, { useState } from 'react';
-import { brandInfo, navLinks } from '../data/siteData';
-import { Menu, X, Phone, ArrowUpRight, MessageSquare } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { brandInfo, navLinks, productNavItems } from '../data/siteData';
+import {
+  Menu,
+  X,
+  Phone,
+  MessageSquare,
+  ChevronDown,
+  ArrowRight,
+  Sparkles,
+} from 'lucide-react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [mobileProductsExpanded, setMobileProductsExpanded] = useState(true);
+  const dropdownTimeoutRef = useRef(null);
 
   const whatsappLink = `https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`;
+
+  const handleMouseEnterProducts = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setProductsDropdownOpen(true);
+  };
+
+  const handleMouseLeaveProducts = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setProductsDropdownOpen(false);
+    }, 200);
+  };
+
+  const handleProductItemClick = (href) => {
+    setProductsDropdownOpen(false);
+    setMobileMenuOpen(false);
+    window.location.hash = href.replace('#', '');
+  };
 
   return (
     <>
       {/* 
         PREMIUM FLOATING FROSTED GLASS NAVBAR
-        Floats seamlessly over the hero section without any dark black overlay.
-        Allows the vibrant architectural imagery to shine through completely.
+        Floats seamlessly over the hero section with high-contrast frosted glass.
       */}
       <header className="absolute top-0 left-0 right-0 z-50 w-full select-none pt-3.5 sm:pt-5 px-3 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-black/35 hover:bg-black/50 backdrop-blur-xl border border-white/20 hover:border-white/35 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-[0_8px_32px_rgba(0,0,0,0.35)] flex items-center justify-between transition-all duration-500">
+          <div className="bg-black/40 hover:bg-black/55 backdrop-blur-xl border border-white/20 hover:border-white/35 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-[0_8px_32px_rgba(0,0,0,0.35)] flex items-center justify-between transition-all duration-500">
             
             {/* LEFT: AMCOM OFFICIAL BRAND LOGO */}
             <a
@@ -33,17 +62,117 @@ export default function Header() {
               </div>
             </a>
 
-            {/* CENTER: DESKTOP NAVIGATION LINKS */}
-            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Main Navigation">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="px-3 py-1.5 rounded-full text-[11px] xl:text-[12px] tracking-[0.14em] uppercase font-semibold text-white/90 hover:text-white hover:bg-white/15 transition-all duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"
-                >
-                  {link.label}
-                </a>
-              ))}
+            {/* CENTER: DESKTOP NAVIGATION LINKS WITH PRODUCTS DROPDOWN */}
+            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-1.5" aria-label="Main Navigation">
+              {navLinks.map((link) => {
+                if (link.hasDropdown) {
+                  return (
+                    <div
+                      key={link.label}
+                      className="relative"
+                      onMouseEnter={handleMouseEnterProducts}
+                      onMouseLeave={handleMouseLeaveProducts}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-[12px] tracking-[0.14em] uppercase font-semibold transition-all duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] ${
+                          productsDropdownOpen
+                            ? 'bg-white/25 text-white'
+                            : 'text-white/90 hover:text-white hover:bg-white/15'
+                        }`}
+                        aria-expanded={productsDropdownOpen}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                            productsDropdownOpen ? 'rotate-180 text-white' : 'text-white/70'
+                          }`}
+                        />
+                      </button>
+
+                      {/* FLOATING LUXURY DROPDOWN MENU */}
+                      <div
+                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-80 xl:w-96 transition-all duration-200 z-50 ${
+                          productsDropdownOpen
+                            ? 'opacity-100 translate-y-0 pointer-events-auto'
+                            : 'opacity-0 -translate-y-2 pointer-events-none'
+                        }`}
+                      >
+                        <div className="bg-[#111618]/95 backdrop-blur-2xl rounded-2xl p-3 border border-white/20 shadow-2xl overflow-hidden ring-1 ring-black/50">
+                          <div className="px-3 py-2 border-b border-white/10 flex items-center justify-between">
+                            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E9297] font-semibold">
+                              INTERIOR PRODUCTS &amp; ROOMS
+                            </span>
+                            <span className="text-[10px] font-mono text-white/50">
+                              6 CATEGORIES
+                            </span>
+                          </div>
+
+                          <div className="grid grid-cols-1 gap-1 py-1">
+                            {productNavItems.map((prod) => (
+                              <a
+                                key={prod.id}
+                                href={prod.href}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleProductItemClick(prod.href);
+                                }}
+                                className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
+                              >
+                                <div>
+                                  <span className="text-xs font-semibold uppercase tracking-wider text-white group-hover:text-[#6E9297] transition-colors block">
+                                    {prod.label}
+                                  </span>
+                                  <span className="text-[11px] text-white/60 group-hover:text-white/80 font-light block">
+                                    {prod.desc}
+                                  </span>
+                                </div>
+                                <ArrowRight className="w-3.5 h-3.5 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                              </a>
+                            ))}
+                          </div>
+
+                          <div className="pt-2 px-3 pb-1 border-t border-white/10">
+                            <a
+                              href="#/products/kitchen"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleProductItemClick('#/products/kitchen');
+                              }}
+                              className="text-[11px] font-mono text-[#6E9297] hover:text-white flex items-center justify-center gap-1 py-1 transition-colors"
+                            >
+                              <span>Explore All Custom Products</span>
+                              <span>&rarr;</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
+                // Regular nav links
+                const isPackages = link.label === 'Packages';
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-[12px] tracking-[0.14em] uppercase font-semibold transition-all duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] ${
+                      isPackages
+                        ? 'bg-[#174C55]/80 hover:bg-[#174C55] text-white border border-white/20'
+                        : 'text-white/90 hover:text-white hover:bg-white/15'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {link.badge && (
+                      <span className="px-1.5 py-0.2 rounded-full text-[9px] font-mono bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 lowercase">
+                        {link.badge}
+                      </span>
+                    )}
+                  </a>
+                );
+              })}
             </nav>
 
             {/* RIGHT: DIRECT CALL BUTTON, WHATSAPP & MOBILE MENU TRIGGER */}
@@ -99,7 +228,7 @@ export default function Header() {
       />
 
       <div
-        className={`fixed top-0 right-0 bottom-0 w-full sm:w-[380px] bg-[#0E1315] text-white z-50 shadow-2xl border-l border-white/15 flex flex-col justify-between transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 bottom-0 w-full sm:w-[380px] bg-[#0E1315] text-white z-50 shadow-2xl border-l border-white/15 flex flex-col justify-between transition-transform duration-300 ease-out overflow-y-auto ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -124,21 +253,71 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Navigation Links in Drawer */}
-          <nav className="mt-8 flex flex-col space-y-4" aria-label="Mobile Navigation">
-            {navLinks.map((link, idx) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between py-2 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/85 hover:text-white border-b border-white/10 hover:border-[#174C55] transition-colors group"
-              >
-                <span>{link.label}</span>
-                <span className="text-xs font-mono text-[#6E9297] group-hover:text-white transition-colors">
-                  0{idx + 1}
-                </span>
-              </a>
-            ))}
+          {/* Navigation Links in Drawer with Expandable Products Accordion */}
+          <nav className="mt-6 flex flex-col space-y-2" aria-label="Mobile Navigation">
+            {navLinks.map((link, idx) => {
+              if (link.hasDropdown) {
+                return (
+                  <div key={link.label} className="border-b border-white/10 pb-2">
+                    <button
+                      type="button"
+                      onClick={() => setMobileProductsExpanded(!mobileProductsExpanded)}
+                      className="w-full flex items-center justify-between py-2 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/90 hover:text-white"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span>{link.label}</span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#174C55] text-white">
+                          6 ROOMS
+                        </span>
+                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#6E9297] transition-transform ${
+                          mobileProductsExpanded ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+
+                    {/* Expandable 6 Product Category Submenu */}
+                    {mobileProductsExpanded && (
+                      <div className="pl-3 pr-1 py-2 space-y-1 bg-white/5 rounded-lg my-1 border border-white/10">
+                        {productNavItems.map((prod) => (
+                          <a
+                            key={prod.id}
+                            href={prod.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="flex items-center justify-between py-2 px-2.5 rounded text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                          >
+                            <span>{prod.label}</span>
+                            <ArrowRight className="w-3 h-3 text-[#6E9297]" />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/85 hover:text-white border-b border-white/10 hover:border-[#174C55] transition-colors group"
+                >
+                  <span className="flex items-center gap-2">
+                    <span>{link.label}</span>
+                    {link.badge && (
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                        {link.badge}
+                      </span>
+                    )}
+                  </span>
+                  <span className="text-xs font-mono text-[#6E9297] group-hover:text-white transition-colors">
+                    0{idx + 1}
+                  </span>
+                </a>
+              );
+            })}
           </nav>
         </div>
 
