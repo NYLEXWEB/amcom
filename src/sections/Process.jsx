@@ -53,7 +53,7 @@ export default function Process() {
         </div>
 
         {/* 4 HORIZONTAL EXPANDING BARS (LEFT TO RIGHT ACCORDION) */}
-        <div className="flex flex-col md:flex-row h-[620px] md:h-[520px] w-full gap-3 md:gap-4 select-none">
+        <div className="flex flex-col md:flex-row h-auto md:h-[520px] w-full gap-3 md:gap-4 select-none">
           {processStepsData.map((step, idx) => {
             const isActive = activeStep === idx;
 
@@ -64,8 +64,8 @@ export default function Process() {
                 onClick={() => setActiveStep(idx)}
                 className={`relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] border border-[#DCE3E2] shadow-sm group ${
                   isActive
-                    ? 'flex-[3.5] md:flex-[3.5] h-[280px] md:h-full border-[#174C55]'
-                    : 'flex-1 md:flex-1 h-[90px] md:h-full opacity-85 hover:opacity-100'
+                    ? 'flex-[3.5] md:flex-[3.5] min-h-[260px] sm:min-h-[280px] md:min-h-0 md:h-full border-[#174C55]'
+                    : 'flex-1 md:flex-1 min-h-[75px] sm:min-h-[85px] md:min-h-0 md:h-full opacity-85 hover:opacity-100'
                 }`}
                 role="button"
                 tabIndex={0}

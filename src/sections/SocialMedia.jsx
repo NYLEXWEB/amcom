@@ -1,156 +1,192 @@
 import React from 'react';
 import { brandInfo } from '../data/siteData';
-import { ArrowUpRight } from 'lucide-react';
-
-const socialChannels = [
-  {
-    name: "Google Business",
-    handle: "4.9 ★ (120+ Reviews)",
-    category: "Verified Profile",
-    url: brandInfo.googleMapsUrl,
-    action: "View Profile",
-    badgeColor: "border-[#4285F4]/30 text-[#1a73e8]",
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 24 24">
-        <path
-          fill="#4285F4"
-          d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-        />
-        <path
-          fill="#34A853"
-          d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-        />
-        <path
-          fill="#FBBC05"
-          d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
-        />
-        <path
-          fill="#EA4335"
-          d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
-        />
-      </svg>
-    ),
-  },
-  {
-    name: "WhatsApp",
-    handle: "+91 9447415588",
-    category: "Direct Studio Chat",
-    url: `https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`,
-    action: "Chat Directly",
-    badgeColor: "border-[#25D366]/40 text-[#25D366]",
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="12" fill="#25D366" />
-        <path
-          fill="white"
-          d="M12.04 4C7.6 4 4 7.6 4 12.04c0 1.54.44 2.98 1.2 4.22L4 20l3.86-1.18c1.2.7 2.58 1.1 4.18 1.1 4.44 0 8.04-3.6 8.04-8.04C20.08 7.6 16.48 4 12.04 4zm4.7 11.36c-.2.56-1.16 1.08-1.6 1.12-.42.04-.94.06-2.76-.68-2.32-.96-3.8-3.32-3.92-3.48-.12-.16-.94-1.24-.94-2.38 0-1.14.6-1.7.82-1.94.2-.22.46-.28.62-.28.16 0 .32 0 .46.02.16.02.36-.06.56.42.2.5.7 1.7.76 1.82.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.26.3-.36.42-.12.12-.24.26-.1.5.14.24.62 1.02 1.34 1.66.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.6-.14 1.16z"
-        />
-      </svg>
-    ),
-  },
-  {
-    name: "Instagram",
-    handle: "@amcom_interiors",
-    category: "Design Portfolio",
-    url: brandInfo.social.instagram.url,
-    action: "Follow Us",
-    badgeColor: "border-[#E1306C]/40 text-[#E1306C]",
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
-        <defs>
-          <radialGradient id="igGrad" cx="30%" cy="107%" r="150%">
-            <stop offset="0%" stopColor="#fdf497" />
-            <stop offset="5%" stopColor="#fdf497" />
-            <stop offset="45%" stopColor="#fd5949" />
-            <stop offset="60%" stopColor="#d6249f" />
-            <stop offset="90%" stopColor="#285AEB" />
-          </radialGradient>
-        </defs>
-        <rect width="24" height="24" rx="6" fill="url(#igGrad)" />
-        <path
-          fill="none"
-          stroke="white"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M17 3.5H7A3.5 3.5 0 0 0 3.5 7v10A3.5 3.5 0 0 0 7 20.5h10a3.5 3.5 0 0 0 3.5-3.5V7A3.5 3.5 0 0 0 17 3.5z"
-        />
-        <circle cx="12" cy="12" r="4" stroke="white" strokeWidth="1.8" fill="none" />
-        <circle cx="16.5" cy="7.5" r="0.9" fill="white" />
-      </svg>
-    ),
-  },
-  {
-    name: "Facebook",
-    handle: "Amcom Interiors",
-    category: "Official Community",
-    url: brandInfo.social.facebook.url,
-    action: "Connect",
-    badgeColor: "border-[#1877F2]/40 text-[#1877F2]",
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="12" fill="#1877F2" />
-        <path
-          fill="white"
-          d="M15.5 12.5H13v7h-3v-7H8v-2.5h2V8.3c0-2 1.2-3.3 3.2-3.3 1 0 1.8.1 1.8.1v2.2h-1.1c-1 0-1.4.6-1.4 1.3v1.4h2.7l-.4 2.5z"
-        />
-      </svg>
-    ),
-  },
-];
+import { ArrowUpRight, Star, Sparkles, MessageCircle, Navigation, Users, CheckCircle2 } from 'lucide-react';
+import { 
+  OriginalInstagramIcon, 
+  OriginalWhatsAppIcon, 
+  OriginalGoogleIcon, 
+  OriginalFacebookIcon 
+} from '../components/Icons';
 
 export default function SocialMedia() {
+  const socialCards = [
+    {
+      id: "instagram",
+      platform: "Instagram",
+      handle: "@amcom_interiors",
+      badge: "PORTFOLIO & STORIES",
+      statusText: "Daily Site Updates",
+      statusDotColor: "bg-[#E1306C]",
+      accentGradient: "from-[#F58529] via-[#DD2A7B] to-[#8134AF]",
+      glowColor: "group-hover:shadow-[0_20px_45px_-12px_rgba(225,48,108,0.25)]",
+      borderColor: "hover:border-[#E1306C]/40",
+      topBannerBg: "bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF]",
+      icon: <OriginalInstagramIcon className="w-9 h-9 shrink-0 drop-shadow-sm" />,
+      tagline: "Visual Portfolios & Reels",
+      description: "Explore curated residential walkthroughs, teak & marble material palettes, and behind-the-scenes craft reels from Kerala.",
+      actionLabel: "Follow on Instagram",
+      actionBg: "group-hover:bg-[#E1306C] group-hover:text-white",
+      url: brandInfo.social.instagram.url,
+      statsPill: (
+        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-[#E1306C] bg-[#FFF0F5] px-2.5 py-1 rounded-full border border-[#E1306C]/20">
+          <Sparkles className="w-3 h-3 text-[#E1306C]" />
+          <span>Active Feed</span>
+        </span>
+      ),
+    },
+    {
+      id: "whatsapp",
+      platform: "WhatsApp",
+      handle: "+91 9447415588",
+      badge: "DIRECT STUDIO DESK",
+      statusText: "Online • Instant Reply",
+      statusDotColor: "bg-[#25D366]",
+      accentGradient: "from-[#25D366] to-[#128C7E]",
+      glowColor: "group-hover:shadow-[0_20px_45px_-12px_rgba(37,211,102,0.25)]",
+      borderColor: "hover:border-[#25D366]/40",
+      topBannerBg: "bg-gradient-to-r from-[#25D366] to-[#128C7E]",
+      icon: <OriginalWhatsAppIcon className="w-9 h-9 shrink-0 drop-shadow-sm" />,
+      tagline: "Instant Project Consultation",
+      description: "Share your floor plan or site photos with our lead designers for immediate feasibility assessment and project estimates.",
+      actionLabel: "Chat on WhatsApp",
+      actionBg: "group-hover:bg-[#25D366] group-hover:text-white",
+      url: `https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`,
+      statsPill: (
+        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-[#128C7E] bg-[#E8F8F0] px-2.5 py-1 rounded-full border border-[#25D366]/20">
+          <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+          <span>Typical Reply: 10m</span>
+        </span>
+      ),
+    },
+    {
+      id: "google",
+      platform: "Google Business",
+      handle: "Puthiyara Rd, Calicut",
+      badge: "VERIFIED STUDIO",
+      statusText: "4.9 ★ (120+ Reviews)",
+      statusDotColor: "bg-[#4285F4]",
+      accentGradient: "from-[#4285F4] via-[#34A853] to-[#FBBC05]",
+      glowColor: "group-hover:shadow-[0_20px_45px_-12px_rgba(66,133,244,0.25)]",
+      borderColor: "hover:border-[#4285F4]/40",
+      topBannerBg: "bg-gradient-to-r from-[#4285F4] via-[#EA4335] via-[#FBBC05] to-[#34A853]",
+      icon: <OriginalGoogleIcon className="w-9 h-9 shrink-0 drop-shadow-sm" />,
+      tagline: "Verified Reviews & Location",
+      description: "Read genuine client experiences across Kozhikode & Kannur. Get precise GPS navigation directly to our design studio.",
+      actionLabel: "View Reviews & Directions",
+      actionBg: "group-hover:bg-[#174C55] group-hover:text-white",
+      url: brandInfo.googleMapsUrl,
+      statsPill: (
+        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-[#B45309] bg-[#FEF3C7] px-2.5 py-1 rounded-full border border-[#F59E0B]/30">
+          <Star className="w-3 h-3 fill-[#F59E0B] text-[#F59E0B]" />
+          <span>4.9 / 5.0 Rating</span>
+        </span>
+      ),
+    },
+    {
+      id: "facebook",
+      platform: "Facebook",
+      handle: "Amcom Interiors",
+      badge: "OFFICIAL COMMUNITY",
+      statusText: "Kerala Design Network",
+      statusDotColor: "bg-[#1877F2]",
+      accentGradient: "from-[#1877F2] to-[#0D6EFD]",
+      glowColor: "group-hover:shadow-[0_20px_45px_-12px_rgba(24,119,242,0.25)]",
+      borderColor: "hover:border-[#1877F2]/40",
+      topBannerBg: "bg-gradient-to-r from-[#1877F2] to-[#0A58CA]",
+      icon: <OriginalFacebookIcon className="w-9 h-9 shrink-0 drop-shadow-sm" />,
+      tagline: "Project Albums & Handover",
+      description: "Comprehensive photographic documentation of full turnkey transformations, living room remodels, and modular kitchen installations.",
+      actionLabel: "Explore Facebook Page",
+      actionBg: "group-hover:bg-[#1877F2] group-hover:text-white",
+      url: brandInfo.social.facebook.url,
+      statsPill: (
+        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-[#1877F2] bg-[#EFF6FF] px-2.5 py-1 rounded-full border border-[#1877F2]/20">
+          <CheckCircle2 className="w-3 h-3 text-[#1877F2]" />
+          <span>Verified Page</span>
+        </span>
+      ),
+    },
+  ];
+
   return (
-    <section id="social" className="py-16 md:py-18 bg-[#F8F9F7] border-b border-[#DCE3E2] relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+    <section id="social" className="py-20 md:py-24 bg-[#F8F9F7] border-b border-[#DCE3E2] relative overflow-hidden">
+      {/* Subtle architectural background grid accents */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(#172022 1px, transparent 1px)`,
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-12 border-b border-[#DCE3E2] gap-6">
-          <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#6E9297] block mb-3">
-              OFFICIAL CHANNELS
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#172022] tracking-[-0.035em]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-14 border-b border-[#DCE3E2] gap-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#174C55]/5 border border-[#174C55]/15 rounded-full mb-3.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#174C55]" />
+              <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#174C55] font-semibold">
+                OFFICIAL PLATFORMS
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#172022] tracking-[-0.035em] leading-tight">
               CONNECT WITH US
             </h2>
           </div>
 
+          <p className="text-xs sm:text-sm text-[#687477] max-w-md font-normal leading-relaxed">
+            Follow our ongoing interior builds, review verified client feedback, or start an immediate project conversation with our principal architects.
+          </p>
         </div>
 
-        {/* 4 Social Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {socialChannels.map((item, idx) => (
+        {/* 4 Premium Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+          {socialCards.map((card) => (
             <a
-              key={idx}
-              href={item.url}
+              key={card.id}
+              href={card.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 sm:p-7 bg-white border border-[#DCE3E2] shadow-sm hover:shadow-xl hover:border-[#174C55] transition-all duration-300 flex flex-col justify-between group rounded-none"
+              className={`group relative bg-white border border-[#DCE3E2] rounded-xl p-7 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1.5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] ${card.glowColor} ${card.borderColor}`}
             >
+              {/* Top Accent Line */}
+              <div className={`absolute top-0 left-0 right-0 h-1.5 rounded-t-xl ${card.topBannerBg} opacity-80 group-hover:opacity-100 transition-opacity`} />
+
               <div>
-                {/* Top Row: Icon + Badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="transition-transform duration-300 group-hover:scale-110">
-                    {item.icon}
+                {/* Top Row: Icon + Badge Pill */}
+                <div className="flex items-center justify-between gap-3 mb-6 pt-1">
+                  <div className="p-2.5 rounded-2xl bg-[#F8F9F7] border border-[#E9EEEC] transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                    {card.icon}
                   </div>
-                  <span className={`text-[10px] font-mono tracking-wider uppercase px-2 py-0.5 border ${item.badgeColor}`}>
-                    {item.category}
-                  </span>
+                  {card.statsPill}
                 </div>
 
-                {/* Platform Name & Handle */}
-                <h3 className="text-xl font-light text-[#172022] tracking-tight group-hover:text-[#174C55] transition-colors mb-1">
-                  {item.name}
-                </h3>
-                <p className="text-xs text-[#687477] font-mono font-medium truncate mb-6">
-                  {item.handle}
+                {/* Subtitle Badge & Platform Name */}
+                <div className="mb-4">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E9297] font-semibold block mb-1">
+                    {card.badge}
+                  </span>
+                  <h3 className="text-xl font-medium text-[#172022] tracking-tight group-hover:text-[#174C55] transition-colors">
+                    {card.handle}
+                  </h3>
+                  <p className="text-xs font-medium text-[#174C55] mt-0.5">
+                    {card.tagline}
+                  </p>
+                </div>
+
+                {/* Body Description */}
+                <p className="text-xs text-[#687477] leading-relaxed mb-6 font-normal">
+                  {card.description}
                 </p>
               </div>
 
-              {/* Bottom Action Link */}
-              <div className="pt-4 border-t border-[#DCE3E2]/60 flex items-center justify-between text-xs font-medium text-[#172022] group-hover:text-[#174C55] transition-colors">
-                <span className="tracking-wide uppercase font-mono text-[11px]">{item.action}</span>
-                <div className="w-7 h-7 rounded-full bg-[#F1F4F2] flex items-center justify-center transition-all duration-300 group-hover:bg-[#174C55] group-hover:text-white">
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+              {/* Bottom Interactive CTA Action */}
+              <div className="pt-4 border-t border-[#EEF2F1] flex items-center justify-between">
+                <span className="text-xs font-semibold tracking-wider uppercase font-mono text-[#172022] group-hover:text-[#174C55] transition-colors">
+                  {card.actionLabel}
+                </span>
+                <div className={`w-8 h-8 rounded-full bg-[#F1F4F2] text-[#172022] flex items-center justify-center transition-all duration-300 shadow-sm ${card.actionBg} group-hover:translate-x-0.5`}>
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
             </a>
@@ -160,3 +196,4 @@ export default function SocialMedia() {
     </section>
   );
 }
+

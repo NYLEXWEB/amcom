@@ -1,85 +1,153 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 
+const heroSlides = [
+  {
+    image: "/hero/IMG-20261012-WA0011.jpg",
+    tagline: "AMCOM INTERIORS • EST. 1999",
+    line1: "Crafting Timeless",
+    line2: "Interiors.",
+    buttonText: "Explore Our Work",
+  },
+  {
+    image: "/hero/IMG-20261012-WA0014.jpg",
+    tagline: "ARCHITECTURAL SPACES • KERALA",
+    line1: "Quiet Luxury in",
+    line2: "Every Detail.",
+    buttonText: "View Selected Spaces",
+  },
+  {
+    image: "/hero/IMG-20261012-WA0042.jpg",
+    tagline: "TURNKEY EXECUTION • CALICUT",
+    line1: "Form, Function &",
+    line2: "Enduring Craft.",
+    buttonText: "Discover Projects",
+  },
+];
+
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-switch slide every 3.5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const currentSlide = heroSlides[currentIndex];
+
   return (
     <section
       id="hero"
-      className="relative h-screen min-h-[600px] max-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#172022]"
+      className="relative h-screen min-h-[580px] max-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#111618] select-none"
     >
-      {/* 1. HERO BACKGROUND VIDEO */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover scale-100"
-        poster="/images/amcom-hero.jpg"
-      >
-        <source src="/hero/flow-5ec0a798-5ad4-4af7-9c4f--erasio.mp4" type="video/mp4" />
-        {/* Fallback if browser doesn't play video */}
-        Your browser does not support the video tag.
-      </video>
+      {/* 1. BACKGROUND SLIDESHOW WITH SMOOTH CROSSFADE & KEN BURNS ZOOM */}
+      {heroSlides.map((slide, idx) => {
+        const isActive = currentIndex === idx;
+        return (
+          <div
+            key={slide.image}
+            className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${
+              isActive
+                ? 'opacity-100 scale-105 z-0'
+                : 'opacity-0 scale-100 -z-10 pointer-events-none'
+            }`}
+          >
+            <img
+              src={slide.image}
+              alt="AMCOM Interiors Architectural Project"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+        );
+      })}
 
-      {/* 2. SUBTLE ARCHITECTURAL OVERLAY (CLEAN, NO HEAVY BLACK FADE) */}
-      <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+      {/* 2. REFINED ARCHITECTURAL OVERLAY (PRESERVES IMAGE CLARITY & TEXT CONTRAST) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/40 z-10 pointer-events-none" />
 
-      {/* Top spacer for floating navbar */}
+      {/* Top spacer for header */}
       <div className="h-20 sm:h-24 shrink-0" />
 
-      {/* 3. HERO MAIN CONTENT (CENTERED & FITTED PERFECTLY IN ONE SCREEN) */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 my-auto">
-        <div className="max-w-2xl sm:max-w-3xl">
-
-
-          {/* Main Headline */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#F8F9F7] leading-[1.08] mb-4 sm:mb-5">
-            Crafting Timeless Interiors <br />
-            <span className="font-normal italic font-serif tracking-normal text-[#F8F9F7]/95">
-              Since 1999.
-            </span>
-          </h1>
-
-          {/* Supporting Text */}
-          <p className="text-sm sm:text-base md:text-lg text-[#F8F9F7]/90 font-light leading-relaxed max-w-xl mb-6 sm:mb-8 tracking-[-0.01em]">
-            Thoughtfully designed interiors where architecture, functionality and timeless aesthetics come together. Serving Kozhikode, Kannur, and across Kerala.
-          </p>
-
-          {/* SINGLE ROUNDED BLACK CTA BUTTON: "Explore Our Work" WITH ROUNDED ARROW */}
-          <div>
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-4 pl-6 sm:pl-7 pr-2 sm:pr-2.5 py-2 sm:py-2.5 bg-black hover:bg-[#172022] text-white rounded-full transition-all duration-300 group shadow-xl border border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <span className="text-xs sm:text-sm font-medium tracking-wide">
-                Explore Our Work
+      {/* 3. DYNAMIC CONTENT: HEADING & NEW PREMIUM BUTTON (NO DESCRIPTION) */}
+      <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 my-auto">
+        <div className="max-w-3xl lg:max-w-4xl">
+          
+          {/* Animated Slide Content Box */}
+          <div
+            key={currentIndex}
+            className="transition-all duration-700 transform animate-fade-in"
+          >
+            {/* Tagline Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/20 mb-3 sm:mb-5 text-white/90 rounded-full">
+              <span className="w-1.5 h-1.5 bg-[#6E9297] rounded-full animate-pulse" />
+              <span className="text-[10px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.25em] uppercase">
+                {currentSlide.tagline}
               </span>
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#172022] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shadow-sm">
-                <ArrowRight className="w-4 h-4 text-[#172022]" />
-              </div>
-            </a>
+            </div>
+
+            {/* Large Bold Architectural Headline (No description) */}
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.04em] text-white leading-[1.05] mb-6 sm:mb-8 uppercase break-words">
+              {currentSlide.line1} <br />
+              <span className="font-light italic font-serif text-[#F8F9F7]/95">
+                {currentSlide.line2}
+              </span>
+            </h1>
+
+            {/* NEW PREMIUM ARCHITECTURAL BUTTON */}
+            <div>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-3 sm:py-4 bg-[#174C55] hover:bg-[#123b42] text-white rounded-full transition-all duration-300 group shadow-[0_10px_30px_rgba(23,76,85,0.45)] border border-white/30 backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase font-mono">
+                  {currentSlide.buttonText}
+                </span>
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#174C55] flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shadow-sm shrink-0">
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                </div>
+              </a>
+            </div>
           </div>
+
         </div>
       </div>
 
-      {/* 4. BOTTOM BAR: LOCATION TAG & SCROLL INDICATOR */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 pb-6 sm:pb-8 shrink-0 flex items-end justify-between border-t border-white/15 pt-4">
-        {/* Location micro-tag */}
-        <div className="flex items-center gap-3 sm:gap-6 text-white/75 text-[10px] sm:text-xs tracking-widest font-light font-mono">
+      {/* 4. BOTTOM BAR: LOCATION TAGS, SLIDE INDICATORS & SCROLL LINK */}
+      <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 pb-5 sm:pb-8 shrink-0 flex items-center justify-between border-t border-white/20 pt-4 gap-2">
+        
+        {/* Left: Location Micro-Tags */}
+        <div className="flex items-center gap-2 sm:gap-4 text-white/75 text-[9px] sm:text-xs tracking-widest font-light font-mono truncate">
           <span>KOZHIKODE</span>
-          <span className="w-1 h-1 bg-white/40" />
-          <span>CALICUT</span>
-          <span className="w-1 h-1 bg-white/40" />
-          <span>KANNUR</span>
+          <span className="w-1 h-1 bg-white/40 hidden sm:inline" />
+          <span className="hidden sm:inline">CALICUT</span>
           <span className="w-1 h-1 bg-white/40" />
           <span>KERALA</span>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Center: Interactive 3-Slide Progress Indicators */}
+        <div className="flex items-center gap-2 shrink-0">
+          {heroSlides.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setCurrentIndex(idx)}
+              className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
+                currentIndex === idx
+                  ? 'w-6 sm:w-8 bg-white'
+                  : 'w-2 bg-white/30 hover:bg-white/60'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Right: Scroll Indicator */}
         <a
           href="#about"
           aria-label="Scroll down to about section"
-          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group cursor-pointer"
+          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group cursor-pointer shrink-0"
         >
           <span className="text-[10px] tracking-[0.25em] font-mono uppercase text-white/60 group-hover:text-white transition-colors hidden sm:inline">
             SCROLL

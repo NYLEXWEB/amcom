@@ -94,7 +94,7 @@ export default function BeforeAfterSlider() {
         <div className="relative max-w-5xl mx-auto">
           <div
             ref={containerRef}
-            className="relative w-full aspect-[16/9] select-none overflow-hidden border border-[#DCE3E2] shadow-sm bg-[#172022] cursor-ew-resize"
+            className="relative w-full aspect-[16/9] select-none overflow-hidden border border-[#DCE3E2] shadow-sm bg-[#172022] cursor-ew-resize touch-none"
             onMouseDown={handleMouseDown}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}

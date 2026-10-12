@@ -41,6 +41,7 @@ export const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
   { label: "Before & After", href: "#before-after" },
+  { label: "Videos", href: "#videos" },
   { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },
 ];
