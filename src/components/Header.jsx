@@ -4,10 +4,8 @@ import {
   Menu,
   X,
   Phone,
-  MessageSquare,
   ChevronDown,
   ArrowRight,
-  Sparkles,
 } from 'lucide-react';
 
 export default function Header() {
@@ -15,8 +13,6 @@ export default function Header() {
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [mobileProductsExpanded, setMobileProductsExpanded] = useState(true);
   const dropdownTimeoutRef = useRef(null);
-
-  const whatsappLink = `https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`;
 
   const handleMouseEnterProducts = () => {
     if (dropdownTimeoutRef.current) {
@@ -40,185 +36,158 @@ export default function Header() {
   return (
     <>
       {/* 
-        PREMIUM FLOATING FROSTED GLASS NAVBAR
-        Floats seamlessly over the hero section with high-contrast frosted glass.
+        SEAMLESSLY MERGED NAVBAR
+        Directly overlays the hero background with no enclosing pill box or separate border.
       */}
-      <header className="absolute top-0 left-0 right-0 z-50 w-full select-none pt-3.5 sm:pt-5 px-3 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-black/40 hover:bg-black/55 backdrop-blur-xl border border-white/20 hover:border-white/35 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-[0_8px_32px_rgba(0,0,0,0.35)] flex items-center justify-between transition-all duration-500">
-            
-            {/* LEFT: AMCOM OFFICIAL BRAND LOGO */}
-            <a
-              href="#hero"
-              className="flex items-center gap-3 group focus:outline-none shrink-0"
-              aria-label="AMCOM Interiors Home"
-            >
-              <div className="bg-white/95 hover:bg-white px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full shadow-sm transition-all duration-300 group-hover:scale-105 border border-white/40 flex items-center">
-                <img
-                  src="/logo-bg.png"
-                  alt="AMCOM Interiors"
-                  className="h-6 sm:h-7 md:h-8 w-auto object-contain"
-                />
-              </div>
-            </a>
+      <header className="absolute top-0 left-0 right-0 z-50 w-full select-none bg-gradient-to-b from-black/80 via-black/35 to-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-5 sm:py-6 flex items-center justify-between">
+          
+          {/* LEFT: AMCOM OFFICIAL BRAND LOGO */}
+          <a
+            href="#hero"
+            className="flex items-center gap-3 group focus:outline-none shrink-0"
+            aria-label="AMCOM Interiors Home"
+          >
+            <div className="bg-white/95 hover:bg-white px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xs shadow-md transition-all duration-300 group-hover:scale-105 border border-white/40 flex items-center">
+              <img
+                src="/logo-bg.png"
+                alt="AMCOM Interiors"
+                className="h-7 sm:h-8 md:h-9 w-auto object-contain"
+              />
+            </div>
+          </a>
 
-            {/* CENTER: DESKTOP NAVIGATION LINKS WITH PRODUCTS DROPDOWN */}
-            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-1.5" aria-label="Main Navigation">
-              {navLinks.map((link) => {
-                if (link.hasDropdown) {
-                  return (
-                    <div
-                      key={link.label}
-                      className="relative"
-                      onMouseEnter={handleMouseEnterProducts}
-                      onMouseLeave={handleMouseLeaveProducts}
+          {/* CENTER: DESKTOP NAVIGATION LINKS WITH PRODUCTS DROPDOWN */}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" aria-label="Main Navigation">
+            {navLinks.map((link) => {
+              if (link.hasDropdown) {
+                return (
+                  <div
+                    key={link.label}
+                    className="relative"
+                    onMouseEnter={handleMouseEnterProducts}
+                    onMouseLeave={handleMouseLeaveProducts}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
+                      className={`inline-flex items-center gap-1.5 text-[12px] xl:text-[13px] tracking-[0.14em] uppercase font-semibold py-1 transition-all duration-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)] cursor-pointer ${
+                        productsDropdownOpen
+                          ? 'text-white border-b-2 border-white'
+                          : 'text-white/90 hover:text-white border-b-2 border-transparent hover:border-white/60'
+                      }`}
+                      aria-expanded={productsDropdownOpen}
                     >
-                      <button
-                        type="button"
-                        onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-[12px] tracking-[0.14em] uppercase font-semibold transition-all duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] ${
-                          productsDropdownOpen
-                            ? 'bg-white/25 text-white'
-                            : 'text-white/90 hover:text-white hover:bg-white/15'
+                      <span>{link.label}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          productsDropdownOpen ? 'rotate-180 text-white' : 'text-white/70'
                         }`}
-                        aria-expanded={productsDropdownOpen}
-                      >
-                        <span>{link.label}</span>
-                        <ChevronDown
-                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                            productsDropdownOpen ? 'rotate-180 text-white' : 'text-white/70'
-                          }`}
-                        />
-                      </button>
+                      />
+                    </button>
 
-                      {/* FLOATING LUXURY DROPDOWN MENU */}
-                      <div
-                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-80 xl:w-96 transition-all duration-200 z-50 ${
-                          productsDropdownOpen
-                            ? 'opacity-100 translate-y-0 pointer-events-auto'
-                            : 'opacity-0 -translate-y-2 pointer-events-none'
-                        }`}
-                      >
-                        <div className="bg-[#111618]/95 backdrop-blur-2xl rounded-2xl p-3 border border-white/20 shadow-2xl overflow-hidden ring-1 ring-black/50">
-                          <div className="px-3 py-2 border-b border-white/10 flex items-center justify-between">
-                            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E9297] font-semibold">
-                              INTERIOR PRODUCTS &amp; ROOMS
-                            </span>
-                            <span className="text-[10px] font-mono text-white/50">
-                              6 CATEGORIES
-                            </span>
-                          </div>
+                    {/* FLOATING LUXURY DROPDOWN MENU */}
+                    <div
+                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-80 xl:w-96 transition-all duration-200 z-50 ${
+                        productsDropdownOpen
+                          ? 'opacity-100 translate-y-0 pointer-events-auto'
+                          : 'opacity-0 -translate-y-2 pointer-events-none'
+                      }`}
+                    >
+                      <div className="bg-[#111618]/95 backdrop-blur-2xl rounded-2xl p-3 border border-white/20 shadow-2xl overflow-hidden ring-1 ring-black/50">
+                        <div className="px-3 py-2 border-b border-white/10 flex items-center justify-between">
+                          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E9297] font-semibold">
+                            INTERIOR PRODUCTS &amp; ROOMS
+                          </span>
+                          <span className="text-[10px] font-mono text-white/50">
+                            6 CATEGORIES
+                          </span>
+                        </div>
 
-                          <div className="grid grid-cols-1 gap-1 py-1">
-                            {productNavItems.map((prod) => (
-                              <a
-                                key={prod.id}
-                                href={prod.href}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  handleProductItemClick(prod.href);
-                                }}
-                                className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
-                              >
-                                <div>
-                                  <span className="text-xs font-semibold uppercase tracking-wider text-white group-hover:text-[#6E9297] transition-colors block">
-                                    {prod.label}
-                                  </span>
-                                  <span className="text-[11px] text-white/60 group-hover:text-white/80 font-light block">
-                                    {prod.desc}
-                                  </span>
-                                </div>
-                                <ArrowRight className="w-3.5 h-3.5 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
-                              </a>
-                            ))}
-                          </div>
-
-                          <div className="pt-2 px-3 pb-1 border-t border-white/10">
+                        <div className="grid grid-cols-1 gap-1 py-1">
+                          {productNavItems.map((prod) => (
                             <a
-                              href="#/products/kitchen"
+                              key={prod.id}
+                              href={prod.href}
                               onClick={(e) => {
                                 e.preventDefault();
-                                handleProductItemClick('#/products/kitchen');
+                                handleProductItemClick(prod.href);
                               }}
-                              className="text-[11px] font-mono text-[#6E9297] hover:text-white flex items-center justify-center gap-1 py-1 transition-colors"
+                              className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
                             >
-                              <span>Explore All Custom Products</span>
-                              <span>&rarr;</span>
+                              <div>
+                                <span className="text-xs font-semibold uppercase tracking-wider text-white group-hover:text-[#6E9297] transition-colors block">
+                                  {prod.label}
+                                </span>
+                                <span className="text-[11px] text-white/60 group-hover:text-white/80 font-light block">
+                                  {prod.desc}
+                                </span>
+                              </div>
+                              <ArrowRight className="w-3.5 h-3.5 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
                             </a>
-                          </div>
+                          ))}
+                        </div>
+
+                        <div className="pt-2 px-3 pb-1 border-t border-white/10">
+                          <a
+                            href="#/products/kitchen"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleProductItemClick('#/products/kitchen');
+                            }}
+                            className="text-[11px] font-mono text-[#6E9297] hover:text-white flex items-center justify-center gap-1 py-1 transition-colors"
+                          >
+                            <span>Explore All Custom Products</span>
+                            <span>&rarr;</span>
+                          </a>
                         </div>
                       </div>
                     </div>
-                  );
-                }
-
-                // Regular nav links
-                const isPackages = link.label === 'Packages';
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-[12px] tracking-[0.14em] uppercase font-semibold transition-all duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] ${
-                      isPackages
-                        ? 'bg-[#174C55]/80 hover:bg-[#174C55] text-white border border-white/20'
-                        : 'text-white/90 hover:text-white hover:bg-white/15'
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {link.badge && (
-                      <span className="px-1.5 py-0.2 rounded-full text-[9px] font-mono bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 lowercase">
-                        {link.badge}
-                      </span>
-                    )}
-                  </a>
+                  </div>
                 );
-              })}
-            </nav>
+              }
 
-            {/* RIGHT: DIRECT CALL BUTTON, WHATSAPP & MOBILE MENU TRIGGER */}
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-              {/* WhatsApp Quick Chat Icon */}
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#25D366]/20 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/40 transition-all duration-300 shadow-sm"
-                aria-label="Chat with AMCOM on WhatsApp"
-                title="Chat on WhatsApp"
-              >
-                <MessageSquare className="w-4 h-4" />
-              </a>
+              // Regular clean links without separate pill background or pricing highlights
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-[12px] xl:text-[13px] tracking-[0.14em] uppercase font-semibold text-white/90 hover:text-white py-1 transition-all duration-200 relative border-b-2 border-transparent hover:border-white/60 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </nav>
 
-              {/* CALL NOW Pill Button */}
-              <a
-                href={`tel:${brandInfo.primaryPhoneRaw}`}
-                className="inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 bg-[#174C55] hover:bg-[#123b42] text-white text-xs sm:text-[12px] font-semibold tracking-wider uppercase rounded-full border border-white/30 shadow-[0_4px_16px_rgba(23,76,85,0.4)] hover:shadow-[0_6px_20px_rgba(23,76,85,0.6)] transition-all duration-300 group"
-                aria-label={`Call AMCOM at ${brandInfo.primaryPhone}`}
-              >
-                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                  <Phone className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
-                </div>
-                <span className="hidden sm:inline">CALL NOW</span>
-                <span className="sm:hidden font-mono text-[11px]">CALL</span>
-              </a>
+          {/* RIGHT: CIRCULAR PHONE BUTTON & MOBILE MENU TRIGGER (No CALL NOW text, No message icon) */}
+          <div className="flex items-center gap-3 shrink-0">
+            {/* Direct Call Circular Button (Icon only) */}
+            <a
+              href={`tel:${brandInfo.primaryPhoneRaw}`}
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-md backdrop-blur-xs group"
+              aria-label={`Call AMCOM at ${brandInfo.primaryPhone}`}
+              title={`Call AMCOM: ${brandInfo.primaryPhone}`}
+            >
+              <Phone className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-white group-hover:scale-110 transition-transform" />
+            </a>
 
-              {/* HAMBURGER MENU BUTTON */}
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(true)}
-                className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/25 text-white border border-white/20 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                aria-expanded={mobileMenuOpen}
-                aria-label="Toggle navigation drawer"
-              >
-                <Menu className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-            </div>
-
+            {/* Hamburger Menu Button (for Mobile/Tablet) */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="lg:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 flex items-center justify-center transition-colors focus:outline-none cursor-pointer"
+              aria-expanded={mobileMenuOpen}
+              aria-label="Toggle navigation drawer"
+            >
+              <Menu className="w-5 h-5 text-white" />
+            </button>
           </div>
+
         </div>
       </header>
 
-      {/* FULL-SCREEN / SLIDE-OUT MOBILE & EXPANDED MENU DRAWER */}
+      {/* FULL-SCREEN / SLIDE-OUT MOBILE MENU DRAWER */}
       <div
         className={`fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
@@ -235,7 +204,7 @@ export default function Header() {
         <div className="p-6 sm:p-8">
           {/* Drawer Header with Logo and Close */}
           <div className="flex items-center justify-between pb-6 border-b border-white/15">
-            <div className="bg-white/95 px-2.5 py-1 rounded-full border border-white/30">
+            <div className="bg-white/95 px-3 py-1.5 rounded-xs border border-white/30">
               <img
                 src="/logo-bg.png"
                 alt="AMCOM Interiors"
@@ -246,7 +215,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-white/70 hover:text-white rounded-full bg-white/10 transition-colors"
+              className="p-2 text-white/70 hover:text-white rounded-full bg-white/10 transition-colors cursor-pointer"
               aria-label="Close menu"
             >
               <X className="w-5 h-5" />
@@ -262,11 +231,11 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={() => setMobileProductsExpanded(!mobileProductsExpanded)}
-                      className="w-full flex items-center justify-between py-2 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/90 hover:text-white"
+                      className="w-full flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/90 hover:text-white cursor-pointer"
                     >
                       <span className="flex items-center gap-2">
                         <span>{link.label}</span>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#174C55] text-white">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/15 text-white">
                           6 ROOMS
                         </span>
                       </span>
@@ -302,16 +271,9 @@ export default function Header() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/85 hover:text-white border-b border-white/10 hover:border-[#174C55] transition-colors group"
+                  className="flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/85 hover:text-white border-b border-white/10 hover:border-white transition-colors group"
                 >
-                  <span className="flex items-center gap-2">
-                    <span>{link.label}</span>
-                    {link.badge && (
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-                        {link.badge}
-                      </span>
-                    )}
-                  </span>
+                  <span>{link.label}</span>
                   <span className="text-xs font-mono text-[#6E9297] group-hover:text-white transition-colors">
                     0{idx + 1}
                   </span>
@@ -321,7 +283,7 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* Drawer Footer: Call and WhatsApp buttons */}
+        {/* Drawer Footer: Direct Call button */}
         <div className="p-6 sm:p-8 bg-black/60 border-t border-white/15 space-y-3">
           <p className="text-[11px] text-white/50 uppercase tracking-widest font-mono">
             Direct Studio Contact
@@ -329,20 +291,10 @@ export default function Header() {
 
           <a
             href={`tel:${brandInfo.primaryPhoneRaw}`}
-            className="w-full flex items-center justify-center gap-2.5 py-3 bg-white text-black text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-zinc-200 transition-colors"
+            className="w-full flex items-center justify-center gap-2.5 py-3 bg-white text-black text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-zinc-200 transition-colors shadow-sm"
           >
-            <Phone className="w-4 h-4 text-[#174C55]" />
+            <Phone className="w-4 h-4 text-[#172022]" />
             <span>Call {brandInfo.primaryPhone}</span>
-          </a>
-
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors shadow-sm"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>Chat on WhatsApp</span>
           </a>
         </div>
       </div>

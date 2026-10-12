@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   ArrowRight, 
   Volume2, 
@@ -12,9 +12,58 @@ import {
 } from 'lucide-react';
 
 export default function About() {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false); // Default sound is ON as requested
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    // Initial state: do not play immediately on page load
+    video.pause();
+    video.muted = false;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // User reached About / video section: play video!
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => {
+                  setIsPlaying(true);
+                })
+                .catch(() => {
+                  // If browser autoplay policy requires mute on initial programmatic trigger
+                  video.muted = true;
+                  setIsMuted(true);
+                  video.play()
+                    .then(() => setIsPlaying(true))
+                    .catch(() => {});
+                });
+            }
+          } else {
+            // User scrolled away from About section: pause video
+            video.pause();
+            setIsPlaying(false);
+          }
+        });
+      },
+      {
+        threshold: 0.25, // Trigger when 25% of the video container is visible
+      }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -22,8 +71,7 @@ export default function About() {
       videoRef.current.pause();
       setIsPlaying(false);
     } else {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     }
   };
 
@@ -104,16 +152,15 @@ export default function About() {
             
             {/* Primary Video Container */}
             <div 
+              ref={containerRef}
               onClick={togglePlay}
               className="relative aspect-[4/3] sm:aspect-[16/11] md:aspect-[16/10] overflow-hidden rounded-xl bg-[#0F1719] border border-[#DCE3E2] shadow-2xl group cursor-pointer"
             >
-              {/* HTML5 Autoplaying Video */}
+              {/* HTML5 Video: Plays when scrolled into view, defaults to sound on */}
               <video
                 ref={videoRef}
                 src="/about/VID-20261012-WA0062.mp4"
-                autoPlay
                 loop
-                muted={isMuted}
                 playsInline
                 preload="metadata"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
@@ -129,28 +176,29 @@ export default function About() {
                   <span className="uppercase">STUDIO WALKTHROUGH</span>
                 </div>
 
-                {/* Sound Toggle Button (Clickable) */}
+                {/* Sound Toggle Button (Clickable, Default Sound On) */}
                 <button
                   type="button"
                   onClick={toggleMute}
-                  className="pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/25 text-white text-[11px] font-mono tracking-wider transition-all duration-200 cursor-pointer shadow-md"
+                  className="pointer-events-auto inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/65 hover:bg-black/90 backdrop-blur-md border border-white/25 text-white text-[11px] font-mono tracking-wider transition-all duration-200 cursor-pointer shadow-md"
                   aria-label={isMuted ? "Unmute video audio" : "Mute video audio"}
+                  title={isMuted ? "Turn Sound On" : "Mute Sound"}
                 >
                   {isMuted ? (
                     <>
                       <VolumeX className="w-3.5 h-3.5 text-[#6E9297]" />
-                      <span className="uppercase text-[10px]">SOUND OFF</span>
+                      <span className="uppercase text-[10px] text-white/80">SOUND OFF</span>
                     </>
                   ) : (
                     <>
-                      <Volume2 className="w-3.5 h-3.5 text-[#25D366]" />
-                      <span className="uppercase text-[10px] text-[#25D366]">SOUND ON</span>
+                      <Volume2 className="w-3.5 h-3.5 text-[#25D366] animate-pulse" />
+                      <span className="uppercase text-[10px] text-[#25D366] font-semibold">SOUND ON</span>
                     </>
                   )}
                 </button>
               </div>
 
-              {/* Center Play/Pause Indicator (Shows when paused or subtly on hover) */}
+              {/* Center Play/Pause Indicator (Shows when paused) */}
               {!isPlaying && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[2px] z-10 transition-opacity">
                   <div className="w-16 h-16 rounded-full bg-white/95 text-[#172022] flex items-center justify-center shadow-2xl pl-1 transform scale-100 hover:scale-110 transition-transform">
@@ -202,4 +250,5 @@ export default function About() {
     </section>
   );
 }
+
 

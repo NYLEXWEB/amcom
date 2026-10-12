@@ -76,11 +76,11 @@ export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
             <button
               type="button"
               onClick={onBackToHome}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wider uppercase rounded-full border border-white/20 transition-colors"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#172022] border border-white/30 flex items-center justify-center transition-all duration-200 shadow-sm shrink-0"
+              aria-label="Back to Home"
+              title="Back to Home"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-[#6E9297]" />
-              <span className="hidden sm:inline">Back to Home</span>
-              <span className="sm:hidden">Home</span>
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <a

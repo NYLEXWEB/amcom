@@ -61,38 +61,75 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
 
   return (
     <div className="min-h-screen bg-[#F8F9F7] text-[#172022] font-sans selection:bg-[#174C55] selection:text-white">
-      {/* 1. TOP STICKY NAVIGATION BAR */}
-      <header className="sticky top-0 z-50 bg-[#111618]/95 backdrop-blur-md text-white border-b border-white/10 py-3 sm:py-3.5 transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          
-          {/* Back & Brand */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            <button
-              type="button"
-              onClick={onBackToHome}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wider uppercase rounded-full border border-white/20 transition-colors"
-            >
-              <ArrowLeft className="w-3.5 h-3.5 text-[#6E9297]" />
-              <span className="hidden sm:inline">Back to Home</span>
-              <span className="sm:hidden">Home</span>
-            </button>
+      {/* 1. TOP FLOATING NAVBAR MERGED WITH HERO BANNER */}
+      <header className="absolute top-0 left-0 right-0 z-50 w-full select-none pt-4 sm:pt-6 px-3 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white/10 hover:bg-white/15 backdrop-blur-xl border border-white/25 rounded-full px-3 sm:px-5 py-2 sm:py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.35)] flex items-center justify-between gap-3 sm:gap-4 transition-all duration-300">
+            
+            {/* Left: Back Arrow Key Only & Logo */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <button
+                type="button"
+                onClick={onBackToHome}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#172022] border border-white/30 flex items-center justify-center transition-all duration-200 shadow-sm shrink-0"
+                aria-label="Back to Home"
+                title="Back to Home"
+              >
+                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
 
-            <a
-              href="#hero"
-              onClick={(e) => {
-                e.preventDefault();
-                onBackToHome();
-              }}
-              className="flex items-center gap-2"
-            >
-              <div className="bg-white/95 p-1 rounded-sm shadow-sm border border-white/30">
-                <img src="/logo-bg.png" alt="AMCOM Interiors" className="h-6 sm:h-7 w-auto object-contain" />
-              </div>
-            </a>
+              <a
+                href="#hero"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onBackToHome();
+                }}
+                className="shrink-0 flex items-center"
+              >
+                <div className="bg-white/95 hover:bg-white px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full shadow-sm border border-white/40 hover:scale-105 transition-all">
+                  <img src="/logo-bg.png" alt="AMCOM Interiors" className="h-6 sm:h-7 md:h-7.5 w-auto object-contain" />
+                </div>
+              </a>
+            </div>
+
+            {/* Center: Expanded Room Categories with Clean White Theme */}
+            <nav className="hidden lg:flex items-center space-x-1.5 xl:space-x-2 bg-black/30 p-1 rounded-full border border-white/20">
+              {productCategories.map((cat) => {
+                const isActive = cat.id === currentCategory.id;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => handleCategoryChange(cat.id)}
+                    className={`px-4 xl:px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.1em] transition-all duration-200 whitespace-nowrap ${
+                      isActive
+                        ? 'bg-white text-[#172022] font-bold shadow-md scale-[1.02]'
+                        : 'text-white/90 hover:text-white hover:bg-white/15'
+                    }`}
+                  >
+                    {cat.navLabel}
+                  </button>
+                );
+              })}
+            </nav>
+
+            {/* Right: WhatsApp Button Only (Phone number removed as requested) */}
+            <div className="flex items-center gap-2 shrink-0">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs sm:text-[13px] font-semibold tracking-wider uppercase rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
+
           </div>
 
-          {/* Quick Room Category Switcher Dropdown / Pills */}
-          <div className="hidden lg:flex items-center space-x-1 bg-black/40 p-1 rounded-full border border-white/15">
+          {/* Mobile / Tablet Horizontal Category Scroll Strip */}
+          <div className="lg:hidden mt-2.5 px-2 overflow-x-auto scrollbar-none flex gap-2 py-1">
             {productCategories.map((cat) => {
               const isActive = cat.id === currentCategory.id;
               return (
@@ -100,10 +137,10 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
                   key={cat.id}
                   type="button"
                   onClick={() => handleCategoryChange(cat.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all ${
                     isActive
-                      ? 'bg-[#174C55] text-white shadow-md'
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                      ? 'bg-white text-[#172022] font-bold shadow-sm'
+                      : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
                   }`}
                 >
                   {cat.navLabel}
@@ -111,67 +148,24 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
               );
             })}
           </div>
-
-          {/* Right Action: Call & Estimate CTA */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href={`tel:${brandInfo.primaryPhoneRaw}`}
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold uppercase tracking-wider rounded-full border border-white/20 transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#6E9297]" />
-              <span className="hidden md:inline">{brandInfo.primaryPhone}</span>
-              <span className="md:hidden">Call</span>
-            </a>
-
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-all shadow-sm"
-            >
-              <MessageSquare className="w-3.5 h-3.5" />
-              <span>WhatsApp</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Mobile / Tablet Horizontal Category Scroll Strip */}
-        <div className="lg:hidden mt-2 pt-2 border-t border-white/10 px-4 overflow-x-auto scrollbar-none flex gap-2">
-          {productCategories.map((cat) => {
-            const isActive = cat.id === currentCategory.id;
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => handleCategoryChange(cat.id)}
-                className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all ${
-                  isActive
-                    ? 'bg-[#174C55] text-white font-bold'
-                    : 'bg-white/10 text-white/75 hover:bg-white/20'
-                }`}
-              >
-                {cat.navLabel}
-              </button>
-            );
-          })}
         </div>
       </header>
 
-      {/* 2. D'LIFE-INSPIRED HERO BANNER */}
-      <section className="relative w-full h-[360px] sm:h-[440px] md:h-[500px] overflow-hidden select-none bg-black">
+      {/* 2. D'LIFE-INSPIRED HERO BANNER (MERGED WITH TOP NAVBAR) */}
+      <section className="relative w-full min-h-[480px] sm:min-h-[540px] md:min-h-[600px] flex items-center overflow-hidden select-none bg-black pt-28 sm:pt-36 pb-16">
         {/* Background Image */}
         <img
           src={currentCategory.heroImage}
           alt={currentCategory.heroTitle}
-          className="w-full h-full object-cover object-center filter brightness-[0.82] transition-transform duration-700 ease-out hover:scale-105"
+          className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.82] transition-transform duration-700 ease-out hover:scale-105"
         />
 
-        {/* Dark Vignette & Gradient Overlays */}
+        {/* Dark Vignette & Gradient Overlays Merged with Navbar */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/45 to-black/85" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
 
         {/* Hero Content Overlay (Matching reference layout) */}
-        <div className="absolute inset-0 max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 flex flex-col justify-center items-start z-10">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 w-full flex flex-col justify-center items-start z-10">
           <div className="inline-block px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] mb-3">
             AMCOM BESPOKE INTERIORS • CALICUT
           </div>

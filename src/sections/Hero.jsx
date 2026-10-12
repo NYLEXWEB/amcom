@@ -118,10 +118,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent z-20 pointer-events-none" />
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/70 via-black/25 to-transparent z-20 pointer-events-none" />
 
-      {/* Top spacer for floating header */}
-      <div className="h-24 sm:h-28 shrink-0" />
+      {/* Top spacer for merged header */}
+      <div className="h-20 sm:h-24 shrink-0" />
 
-      {/* 3. DYNAMIC HERO CONTENT: HEADLINE & PREMIUM TEAL PILL BUTTON */}
+      {/* 3. DYNAMIC HERO CONTENT: HEADLINE & TIMELESS ARCHITECTURAL BUTTON */}
       <div className="relative z-30 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 my-auto">
         <div className="max-w-3xl lg:max-w-4xl">
           
@@ -131,8 +131,8 @@ export default function Hero() {
             className="transition-all duration-500 transform animate-fade-in"
           >
             {/* Tagline Frosted Glass Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-md border border-white/25 mb-4 sm:mb-6 text-white rounded-full shadow-lg">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-md border border-white/20 mb-4 sm:mb-6 text-white rounded-full shadow-lg">
+              <span className="w-1.5 h-1.5 bg-white/80 rounded-full" />
               <span className="text-[10px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.24em] uppercase text-white/95">
                 {currentSlide.tagline}
               </span>
@@ -146,17 +146,17 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* PREMIUM ARCHITECTURAL ACTION BUTTON */}
+            {/* PREMIUM ARCHITECTURAL ACTION BUTTON (Clean Monochrome Luxury) */}
             <div>
               <a
                 href="#projects"
-                className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#174C55] hover:bg-[#123b42] text-white rounded-full transition-all duration-300 group shadow-[0_12px_35px_rgba(23,76,85,0.55)] border border-white/30 backdrop-blur-sm hover:scale-[1.03] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-3.5 sm:py-4 bg-white hover:bg-zinc-100 text-[#172022] rounded-full transition-all duration-300 group shadow-[0_12px_35px_rgba(0,0,0,0.45)] border border-white/40 hover:scale-[1.03] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase font-mono">
+                <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase font-mono text-[#172022]">
                   {currentSlide.buttonText}
                 </span>
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#174C55] flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shadow-sm shrink-0">
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#172022] text-white flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shadow-sm shrink-0">
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                 </div>
               </a>
             </div>
