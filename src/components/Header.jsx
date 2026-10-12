@@ -86,25 +86,28 @@ export default function Header() {
                       />
                     </button>
 
-                    {/* FLOATING LUXURY DROPDOWN MENU */}
+                    {/* FLOATING LUXURY WHITE DROPDOWN MENU */}
                     <div
-                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-80 xl:w-96 transition-all duration-200 z-50 ${
+                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-3.5 w-84 sm:w-96 transition-all duration-300 ease-out z-50 ${
                         productsDropdownOpen
                           ? 'opacity-100 translate-y-0 pointer-events-auto'
                           : 'opacity-0 -translate-y-2 pointer-events-none'
                       }`}
                     >
-                      <div className="bg-[#111618]/95 backdrop-blur-2xl rounded-2xl p-3 border border-white/20 shadow-2xl overflow-hidden ring-1 ring-black/50">
-                        <div className="px-3 py-2 border-b border-white/10 flex items-center justify-between">
-                          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E9297] font-semibold">
+                      <div className="bg-white/98 backdrop-blur-2xl rounded-2xl border border-[#DCE3E2] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.18),0_0_1px_rgba(0,0,0,0.08)] overflow-hidden ring-1 ring-black/5">
+                        
+                        {/* Header Bar */}
+                        <div className="px-4 py-3 bg-[#F8F9F7] border-b border-[#E9EEEC] flex items-center justify-between">
+                          <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#174C55] font-bold">
                             INTERIOR PRODUCTS &amp; ROOMS
                           </span>
-                          <span className="text-[10px] font-mono text-white/50">
+                          <span className="text-[10px] font-mono text-[#687477] bg-white px-2 py-0.5 rounded-full border border-[#DCE3E2] font-medium">
                             6 CATEGORIES
                           </span>
                         </div>
 
-                        <div className="grid grid-cols-1 gap-1 py-1">
+                        {/* Items List with Animated Hover Effects */}
+                        <div className="p-2 space-y-1">
                           {productNavItems.map((prod) => (
                             <a
                               key={prod.id}
@@ -113,34 +116,43 @@ export default function Header() {
                                 e.preventDefault();
                                 handleProductItemClick(prod.href);
                               }}
-                              className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
+                              className="group relative flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-[#F1F6F6] transition-all duration-200 text-left cursor-pointer overflow-hidden"
                             >
-                              <div>
-                                <span className="text-xs font-semibold uppercase tracking-wider text-white group-hover:text-[#6E9297] transition-colors block">
+                              {/* Animated Left Accent Indicator */}
+                              <span className="absolute left-0 top-2 bottom-2 w-1 bg-[#174C55] rounded-r-full opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+
+                              <div className="pl-1 transition-transform duration-200 group-hover:translate-x-1.5">
+                                <span className="text-xs font-bold uppercase tracking-wider text-[#172022] group-hover:text-[#174C55] transition-colors block">
                                   {prod.label}
                                 </span>
-                                <span className="text-[11px] text-white/60 group-hover:text-white/80 font-light block">
+                                <span className="text-[11px] text-[#687477] group-hover:text-[#172022] font-normal transition-colors block">
                                   {prod.desc}
                                 </span>
                               </div>
-                              <ArrowRight className="w-3.5 h-3.5 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
+
+                              {/* Interactive Arrow Button */}
+                              <div className="w-7 h-7 rounded-full bg-[#F8F9F7] group-hover:bg-[#174C55] flex items-center justify-center transition-all duration-200 shadow-xs shrink-0 group-hover:scale-105">
+                                <ArrowRight className="w-3.5 h-3.5 text-[#687477] group-hover:text-white transition-all duration-200 group-hover:translate-x-0.5" />
+                              </div>
                             </a>
                           ))}
                         </div>
 
-                        <div className="pt-2 px-3 pb-1 border-t border-white/10">
+                        {/* Footer Explore Link */}
+                        <div className="px-4 py-2.5 bg-[#F8F9F7] border-t border-[#E9EEEC]">
                           <a
                             href="#/products/kitchen"
                             onClick={(e) => {
                               e.preventDefault();
                               handleProductItemClick('#/products/kitchen');
                             }}
-                            className="text-[11px] font-mono text-[#6E9297] hover:text-white flex items-center justify-center gap-1 py-1 transition-colors"
+                            className="text-[11px] font-mono uppercase tracking-wider text-[#174C55] hover:text-[#123b42] font-semibold flex items-center justify-center gap-1.5 py-1 transition-colors group cursor-pointer"
                           >
                             <span>Explore All Custom Products</span>
-                            <span>&rarr;</span>
+                            <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                           </a>
                         </div>
+
                       </div>
                     </div>
                   </div>
