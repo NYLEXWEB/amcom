@@ -42,24 +42,7 @@ export const productCategories = [
         image: "/Amcom/IMG-20261012-WA0005.jpg",
         features: ["Full-extension wire baskets", "Maximum space utilization", "Heavy-load bearing glides"],
       },
-      {
-        title: "Kitchen Island & Breakfast Bar",
-        desc: "Multifunctional central islands featuring waterfall quartz counters, under-counter wine fridges, bar stool seating, and prep sinks.",
-        image: "/images/amcom-kitchen.jpg",
-        features: ["Waterfall stone edge", "Breakfast counter overhang", "Integrated prep sink & power popups"],
-      },
-      {
-        title: "Cutlery & Spice Organizers",
-        desc: "Custom beechwood and stainless steel modular drawer inserts to keep spices, cutlery, knives, and kitchen essentials in pristine order.",
-        image: "/Amcom/IMG-20261012-WA0006.jpg",
-        features: ["Modular dividers", "Anti-slip drawer mats", "Dedicated spice bottle pullouts"],
-      },
-      {
-        title: "Appliance Garages & Chimney Housing",
-        desc: "Seamless cabinetry concealing coffee stations, microwave/oven tall units, and flush-integrated suction chimneys.",
-        image: "/Amcom/IMG-20261012-WA0017.jpg",
-        features: ["Heat-resistant lining", "Hidden roller shutters", "Precision ventilation shafts"],
-      },
+
     ],
     layouts: [
       {
@@ -140,24 +123,6 @@ export const productCategories = [
         image: "/hero/IMG-20261012-WA0011.jpg",
         features: ["Dedicated accessory island", "LED-lit garment hanging rods", "Smoked glass divider partitions"],
       },
-      {
-        title: "Dressing Units & Vanity Mirrors",
-        desc: "Minimal floating vanity dressers with backlit round or arch mirrors, velvet-lined cosmetic drawers, and matching poufs.",
-        image: "/Amcom/IMG-20261012-WA0016.jpg",
-        features: ["Touch-sensor LED mirrors", "Soft-close cosmetic drawers", "Space-saving floating design"],
-      },
-      {
-        title: "Floating Bedside Tables",
-        desc: "Wall-hung floating nightstands with wireless charging cutouts, USB power modules, and push-to-open drawer mechanisms.",
-        image: "/hero/IMG-20261012-WA0011.jpg",
-        features: ["Clean floating look", "Cable concealment", "Matching bed headboard integration"],
-      },
-      {
-        title: "Work & Study Alcoves",
-        desc: "Integrated bedroom work desks with floating book ledges, acoustic felt backdrops, and ergonomic chair clearance.",
-        image: "/Amcom/IMG-20261012-WA0018.jpg",
-        features: ["Slimline laptop desk", "Overhead shelf ledges", "Ambient reading sconces"],
-      },
     ],
     layouts: [
       {
@@ -202,7 +167,7 @@ export const productCategories = [
     shortTitle: "Dining Room",
     heroTitle: "Customized Dining Room",
     heroSubtitle: "For Memorable Gatherings",
-    heroImage: "/Amcom/IMG-20261012-WA0007.jpg",
+    heroImage: "/Amcom/Dining.jpg",
     breadcrumb: "Dining Room",
     overviewTitle: "Custom-made Dining Spaces",
     overviewText:
@@ -238,24 +203,7 @@ export const productCategories = [
         image: "/images/amcom-kitchen.jpg",
         features: ["Seamless waterfall quartz", "Built-in stemware racks", "Breakfast stool seating"],
       },
-      {
-        title: "Dining Handwash Vanities",
-        desc: "Designer dining hand-wash counters featuring stone basin vessels, water-resistant cabinetry, and fluted panel mirrors.",
-        image: "/Amcom/IMG-20261012-WA0012.jpg",
-        features: ["Moisture-resistant WPC carcass", "Countertop basin integration", "LED mirror framing"],
-      },
-      {
-        title: "Architectural Spatial Partitions",
-        desc: "CNC cut metal screens, vertical wooden slats, and double-sided curio cabinets gracefully defining the dining zone.",
-        image: "/Amcom/IMG-20261012-WA0032.jpg",
-        features: ["Semi-permeable light flow", "Acoustic timber baffles", "Curio display niches"],
-      },
-      {
-        title: "Dining Feature Wall & Murals",
-        desc: "Textured lime-plaster accent walls, fluted wainscoting, and large format art ledges elevating the room atmosphere.",
-        image: "/Amcom/IMG-20261012-WA0030.jpg",
-        features: ["Fluted charcoal panels", "Linear wall lighting", "Low-maintenance finishes"],
-      },
+
     ],
     layouts: [
       {
@@ -329,24 +277,6 @@ export const productCategories = [
         desc: "Vertical timber slat backdrops, marble-look sintered stone panels, and upholstered wall treatments dampening echoes.",
         image: "/Amcom/IMG-20261012-WA0030.jpg",
         features: ["Acoustic sound dampening", "Seamless joint lines", "Backlit warm illumination channels"],
-      },
-      {
-        title: "Architectural Room Dividers",
-        desc: "Freestanding floor-to-ceiling metal and wood partition screens separating foyer from formal living without closing off light.",
-        image: "/Amcom/IMG-20261012-WA0032.jpg",
-        features: ["Custom CNC laser cut patterns", "Solid wood upright posts", "Integrated display cubbies"],
-      },
-      {
-        title: "False Ceiling & Magnetic Lighting",
-        desc: "Multi-layered gypsum ceiling designs featuring recessed COB warm downlights, magnetic track channels, and perimeter coves.",
-        image: "/Amcom/IMG-20261012-WA0026.jpg",
-        features: ["Zero glare recessed lighting", "Concealed AC duct grills", "Dimmable smart lighting setups"],
-      },
-      {
-        title: "Custom Sofas & Coffee Tables",
-        desc: "Bespoke sectional seating crafted with high-density foam, stain-resistant premium fabrics, and matching nested coffee tables.",
-        image: "/Amcom/IMG-20261012-WA0009.jpg",
-        features: ["Hardwood kiln-dried internal frames", "High resilience foam", "Custom dimensions to suit space"],
       },
     ],
     layouts: [
@@ -422,24 +352,7 @@ export const productCategories = [
         image: "/Amcom/IMG-20261012-WA0030.jpg",
         features: ["Pre-finished wood slats", "Seamless hidden wall fastening", "Integrated LED channels"],
       },
-      {
-        title: "Designer Bathroom & Wash Vanities",
-        desc: "Waterproof floating sink vanities with quartz wash counters, LED backlit smart touch mirrors, and deep moisture-proof drawers.",
-        image: "/Amcom/IMG-20261012-WA0012.jpg",
-        features: ["100% WPC waterproof carcass", "Soft-close vanity drawers", "Defogger touch mirrors"],
-      },
-      {
-        title: "Architectural Partition Dividers",
-        desc: "Open shelving room screens and fluted glass partitions separating zones while allowing ventilation and daylight to pass freely.",
-        image: "/Amcom/IMG-20261012-WA0032.jpg",
-        features: ["Double-sided display cubbies", "Minimal floor fixings", "Timber & metal combination"],
-      },
-      {
-        title: "Staircase Storage & Under-Stair Joinery",
-        desc: "Smart space maximization transforming under-stair vacuums into wine displays, shoe libraries, or compact home offices.",
-        image: "/Amcom/IMG-20261012-WA0041.jpg",
-        features: ["Custom angled push drawers", "Concealed pantry doors", "Display alcoves"],
-      },
+     
     ],
     layouts: [
       {
@@ -514,24 +427,7 @@ export const productCategories = [
         image: "/Amcom/IMG-20261012-WA0010.jpg",
         features: ["Pinch-proof soft dampers", "Child-accessible heights", "Chalkboard / whiteboard door options"],
       },
-      {
-        title: "Ergonomic Study Desks & Pinboards",
-        desc: "Dedicated learning workstations with cable grommets, cork pinboards, overhead book cubbies, and LED task lighting.",
-        image: "/Amcom/IMG-20261012-WA0018.jpg",
-        features: ["Magnetic pinboard backing", "Adjustable book shelves", "Safe concealed wiring"],
-      },
-      {
-        title: "Toy Storage & Modular Cubbies",
-        desc: "Accessible low-height toy bins, display shelves for trophies and legos, and pullout baskets encouraging tidy organization.",
-        image: "/Amcom/IMG-20261012-WA0015.jpg",
-        features: ["Easy-to-clean scratch-proof laminates", "Deep modular bins", "Open display alcoves"],
-      },
-      {
-        title: "Playful Accent Walls & Wall Murals",
-        desc: "Whimsical wallpaper murals, geometric paint patterns, and acoustic pinboards creating an inspiring imagination zone.",
-        image: "/Amcom/IMG-20261012-WA0030.jpg",
-        features: ["Washable wallpaper materials", "Custom wall murals", "Warm glowing nightlights"],
-      },
+
     ],
     layouts: [
       {

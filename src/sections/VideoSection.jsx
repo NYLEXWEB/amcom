@@ -120,17 +120,7 @@ export default function VideoSection({ onNavigateToVideos }) {
                   </div>
                 </div>
 
-                {/* Minimal Details Below Video */}
-                <div className="mt-3.5 flex items-start justify-between gap-2">
-                  <div>
-                    <h3 className="text-sm font-medium text-[#172022] tracking-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs font-mono text-[#687477] mt-0.5">
-                      {item.location} • {item.tag}
-                    </p>
-                  </div>
-                </div>
+
               </div>
             );
           })}

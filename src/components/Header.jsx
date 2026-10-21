@@ -48,11 +48,11 @@ export default function Header() {
             className="flex items-center gap-3 group focus:outline-none shrink-0"
             aria-label="AMCOM Interiors Home"
           >
-            <div className="bg-white/95 hover:bg-white px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xs shadow-md transition-all duration-300 group-hover:scale-105 border border-white/40 flex items-center">
+            <div className="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xs transition-all duration-300 group-hover:scale-105 flex items-center">
               <img
                 src="/logo-bg.png"
                 alt="AMCOM Interiors"
-                className="h-7 sm:h-8 md:h-9 w-auto object-contain"
+                className="h-12 sm:h-16 md:h-1AMCOM INTERIORS • EST. 1999 • KERALA8 w-auto object-contain"
               />
             </div>
           </a>

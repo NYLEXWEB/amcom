@@ -410,43 +410,6 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
         </div>
       </section>
 
-      {/* 7. REAL AMCOM CRAFT GALLERY */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-14 sm:py-20">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#6E9297] font-semibold block mb-1">
-              REAL PROJECT SHOWCASE
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-light text-[#172022] tracking-tight">
-              Executed {currentCategory.shortTitle} Projects in Kerala
-            </h3>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {currentCategory.gallery.map((item, gIdx) => (
-            <div
-              key={gIdx}
-              className="group relative rounded-lg overflow-hidden h-64 bg-zinc-200 border border-[#DCE3E2] shadow-xs"
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="text-[10px] font-mono uppercase text-[#6E9297] block">
-                  AMCOM CALICUT
-                </span>
-                <p className="text-xs sm:text-sm font-semibold tracking-wide leading-snug">
-                  {item.title}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* 8. ESTIMATE & CONSULTATION CTA SECTION */}
       <section className="bg-gradient-to-br from-[#174C55] to-[#0F333A] text-white py-14 sm:py-20 px-6 sm:px-10 lg:px-12 relative overflow-hidden">
@@ -482,36 +445,7 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
         </div>
       </section>
 
-      {/* 9. EXPLORE OTHER PRODUCT CATEGORIES BOTTOM SWITCHER */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-14 border-t border-[#DCE3E2]">
-        <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-[#687477] mb-6 text-center font-semibold">
-          EXPLORE OTHER ROOM CATEGORIES
-        </h4>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-          {productCategories.map((cat) => {
-            const isActive = cat.id === currentCategory.id;
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => handleCategoryChange(cat.id)}
-                className={`p-3.5 sm:p-4 rounded-lg border text-center transition-all ${
-                  isActive
-                    ? 'bg-[#174C55] text-white border-[#174C55] shadow-sm'
-                    : 'bg-white hover:bg-zinc-100 text-[#172022] border-[#DCE3E2]'
-                }`}
-              >
-                <span className="text-xs sm:text-sm font-semibold block mb-1">
-                  {cat.navLabel}
-                </span>
-                <span className={`text-[10px] block ${isActive ? 'text-white/70' : 'text-[#687477]'}`}>
-                  From {cat.priceStarting}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
+
 
       {/* 10. FREE ESTIMATE MODAL */}
       {showConsultModal && (

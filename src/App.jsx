@@ -8,7 +8,6 @@ import ServicesPage from './sections/ServicesPage';
 import VideosPage from './sections/VideosPage';
 import GalleryPage from './sections/GalleryPage';
 import PackagesPage from './sections/PackagesPage';
-import PackagesSection from './sections/PackagesSection';
 import ProductDetailPage from './sections/ProductDetailPage';
 import Projects from './sections/Projects';
 import BeforeAfterSlider from './sections/BeforeAfterSlider';
@@ -173,8 +172,7 @@ export default function App() {
         {/* 5. Services: Asymmetrical Grid linking to separate Services Page */}
         <Services onNavigateToServices={handleNavigateToServices} />
 
-        {/* 6. Packages Section (Requested in Audio 1: transparent pricing & packages) */}
-        <PackagesSection onNavigateToPackages={handleNavigateToPackages} />
+
 
         {/* 7. Selected Projects */}
         <Projects />

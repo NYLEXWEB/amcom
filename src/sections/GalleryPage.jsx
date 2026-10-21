@@ -159,47 +159,7 @@ export default function GalleryPage({ onBackToHome }) {
 
       {/* 3. MAIN GALLERY CONTENT & CATEGORY FILTERS */}
       <main className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14 flex-1 w-full">
-        {/* Category Filter Tabs */}
-        <div className="mb-10">
-          <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#DCE3E2]">
-            <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4 text-[#174C55]" />
-              <span className="text-xs font-mono uppercase tracking-wider text-[#687477]">
-                Filter by Space ({filteredItems.length} Photographs)
-              </span>
-            </div>
-            <span className="text-xs font-mono text-[#687477] hidden sm:inline">
-              Click any image for full-screen view &amp; inquiry
-            </span>
-          </div>
-
-          <div className="flex items-center flex-wrap gap-2">
-            {galleryCategories.map((cat) => {
-              const isSelected = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                    isSelected
-                      ? 'bg-[#174C55] text-white shadow-sm ring-1 ring-[#174C55]'
-                      : 'bg-white text-[#172022] border border-[#DCE3E2] hover:bg-zinc-100'
-                  }`}
-                >
-                  <span>{cat.label}</span>
-                  <span className={`ml-2 text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
-                    isSelected ? 'bg-white/20 text-white' : 'bg-zinc-100 text-[#687477]'
-                  }`}>
-                    {cat.id === 'all'
-                      ? galleryItems.length
-                      : galleryItems.filter((i) => i.categorySlug === cat.id).length}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+ 
 
         {/* 4. GALLERY PHOTO GRID (D'LIFE Inspired) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
@@ -228,12 +188,7 @@ export default function GalleryPage({ onBackToHome }) {
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-                  {/* Top Category Badge */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 bg-black/60 backdrop-blur-sm text-white border border-white/20">
-                      {item.category}
-                    </span>
-                  </div>
+
 
                   {/* Top Right Zoom Icon Trigger */}
                   <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-200">
@@ -242,49 +197,9 @@ export default function GalleryPage({ onBackToHome }) {
                     </div>
                   </div>
 
-                  {/* Bottom Location Indicator */}
-                  <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between text-white/90 text-xs">
-                    <div className="flex items-center gap-1 drop-shadow-sm font-medium">
-                      <MapPin className="w-3.5 h-3.5 text-[#25D366]" />
-                      <span>{item.location}</span>
-                    </div>
-                    <span className="text-[11px] font-mono text-white/70">
-                      #{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
-                    </span>
-                  </div>
                 </div>
 
-                {/* Card Information */}
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3
-                      className="text-lg font-normal text-[#172022] tracking-tight group-hover:text-[#174C55] transition-colors mb-2 cursor-pointer"
-                      onClick={() => setLightboxIndex(idx)}
-                    >
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-[#687477] line-clamp-2 leading-relaxed mb-4 font-light">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Specs & Quick WhatsApp Link */}
-                  <div className="pt-3 border-t border-[#DCE3E2] flex items-center justify-between gap-3 text-xs">
-                    <span className="text-[11px] font-mono text-[#687477] truncate" title={item.specs}>
-                      {item.specs}
-                    </span>
-                    <a
-                      href={waItemLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[#174C55] hover:text-[#0f3238] font-semibold text-xs tracking-wide shrink-0 transition-colors"
-                      title="Inquire about this design"
-                    >
-                      <span>Inquire</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-                </div>
+           
               </div>
             );
           })}

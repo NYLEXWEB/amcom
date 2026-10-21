@@ -41,8 +41,8 @@ export default function ServicesPage({ onBackToHome }) {
 
           {/* Center Brand Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={onBackToHome}>
-            <div className="bg-white p-1 sm:p-1.5 rounded-sm border border-[#DCE3E2] shadow-xs">
-              <img src="/logo-bg.png" alt="AMCOM Interiors" className="h-6 sm:h-8 w-auto object-contain" />
+            <div className=" p-1 sm:p-1.5 rounded-sm ">
+              <img src="/logo-bg.png" alt="AMCOM Interiors" className="h-8 sm:h-12 w-auto object-contain" />
             </div>
             <span className="text-[11px] font-mono tracking-widest text-[#687477] hidden md:inline uppercase">
               WHAT WE DO
@@ -81,10 +81,7 @@ export default function ServicesPage({ onBackToHome }) {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white/90 text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] mb-4 sm:mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#174C55] animate-pulse" />
-            <span>AMCOM INTERIORS • EST. 1999 • KERALA</span>
-          </div>
+          
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] mb-4">
             Long-lasting Home Interiors <br />

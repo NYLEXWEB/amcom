@@ -289,17 +289,10 @@ export default function VideosPage({ onBackToHome }) {
 
                 {/* Card Details */}
                 <div className="p-3.5 flex flex-col justify-between flex-1">
-                  <div>
-                    <h3 className="text-sm font-medium text-[#172022] tracking-tight leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs font-mono text-[#687477] mt-1">
-                      {item.location} • {item.tag}
-                    </p>
-                  </div>
+
 
                   {/* WhatsApp Direct Link */}
-                  <div className="mt-3 pt-3 border-t border-[#DCE3E2] flex items-center justify-between">
+                  <div className="flex items-center justify-between">
                     <span className="text-[10px] font-mono uppercase text-[#687477]">
                       {item.duration}
                     </span>

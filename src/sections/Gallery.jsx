@@ -112,12 +112,8 @@ export default function Gallery({ onNavigateToGallery }) {
 
                 {/* Bottom Details */}
                 <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 flex items-end justify-between">
-                  <div>
 
-                    <h3 className="text-sm sm:text-base font-light text-white tracking-[-0.01em]">
-                      {item.title}
-                    </h3>
-                  </div>
+
 
                   <div className="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -156,11 +152,7 @@ export default function Gallery({ onNavigateToGallery }) {
 
                 {/* Bottom Details */}
                 <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 flex items-end justify-between">
-                  <div>
-                    <h3 className="text-sm sm:text-base font-light text-white tracking-[-0.01em]">
-                      {item.title}
-                    </h3>
-                  </div>
+
 
                   <div className="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <ArrowUpRight className="w-3.5 h-3.5" />

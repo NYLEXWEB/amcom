@@ -4,7 +4,7 @@ export const allServicesList = [
     number: "01",
     title: "Interior Decorators",
     category: "Design & Planning",
-    image: "/images/amcom-hero.jpg",
+    image: "/services/Interior Decorators.jpg",
     description: "Complete spatial styling, color curation, and tactile interior design tailored to modern Kerala residential lifestyles.",
   },
   {
@@ -12,7 +12,7 @@ export const allServicesList = [
     number: "02",
     title: "Building Solutions",
     category: "Civil & Structural",
-    image: "/images/amcom-after.jpg",
+    image: "/services/Building Solutions.jpg",
     description: "End-to-end structural alterations, MEP coordination, civil modifications, and turnkey building renovation solutions.",
   },
   {
@@ -20,7 +20,7 @@ export const allServicesList = [
     number: "03",
     title: "Modular Kitchen Cabinets",
     category: "Kitchen & Dining",
-    image: "/images/amcom-kitchen.jpg",
+    image: "/services/Modular Kitchen Cabinets.png",
     description: "Engineered modular kitchens with handleless cabinetry, Blum hardware, honed quartz worktops, and custom pantry pullouts.",
   },
   {
@@ -28,7 +28,7 @@ export const allServicesList = [
     number: "04",
     title: "Bedroom Set",
     category: "Private Suites",
-    image: "/images/amcom-bedroom.jpg",
+    image: "/services/Bedroom Set.png",
     description: "Custom platform beds, integrated fluted headboards, ergonomic nightstands, and ambient LED cove lighting systems.",
   },
   {
@@ -36,7 +36,7 @@ export const allServicesList = [
     number: "05",
     title: "Customised Furniture",
     category: "Bespoke Millwork",
-    image: "/Amcom/IMG-20261012-WA0007.jpg",
+    image: "/services/Customised Furniture.png",
     description: "Bespoke dining tables, console tables, lounge chairs, and bench seating handcrafted using premium teak and natural veneers.",
   },
   {
@@ -44,7 +44,7 @@ export const allServicesList = [
     number: "06",
     title: "Wardrobe",
     category: "Storage Solutions",
-    image: "/Amcom/IMG-20261012-WA0010.jpg",
+    image: "/services/Wardrobe.png",
     description: "Floor-to-ceiling sliding and hinged wardrobes with tinted fluted glass, interior sensor lighting, and tailored organizing inserts.",
   },
   {
@@ -52,7 +52,7 @@ export const allServicesList = [
     number: "07",
     title: "TV Cabinets",
     category: "Living Spaces",
-    image: "/images/amcom-after.jpg",
+    image: "/services/TV Cabinets.png",
     description: "Floating acoustic TV consoles with concealed cable routing, vertical timber slat backdrops, and honed stone ledges.",
   },
   {
@@ -60,7 +60,7 @@ export const allServicesList = [
     number: "08",
     title: "Wash & Bathroom Cabinets",
     category: "Bathrooms",
-    image: "/Amcom/IMG-20261012-WA0012.jpg",
+    image: "/services/Wash & Bathroom Cabinets.png",
     description: "Waterproof vanity units, quartz wash counters, LED backlit mirrors, and moisture-resistant sanitary storage.",
   },
   {
@@ -68,7 +68,7 @@ export const allServicesList = [
     number: "09",
     title: "Book Shelves",
     category: "Storage Solutions",
-    image: "/Amcom/IMG-20261012-WA0015.jpg",
+    image: "/services/Book Shelves.png",
     description: "Architectural floor-to-ceiling open shelving with integrated reading spotlights, display alcoves, and solid wood frames.",
   },
   {
@@ -76,7 +76,7 @@ export const allServicesList = [
     number: "10",
     title: "Crockery Shelves",
     category: "Kitchen & Dining",
-    image: "/Amcom/IMG-20261012-WA0017.jpg",
+    image: "/services/Crockery Shelves.png",
     description: "Dining display cabinetry featuring warm fluted glass shutters, aluminum framing, and concealed warm LED shelf illumination.",
   },
   {
@@ -84,7 +84,7 @@ export const allServicesList = [
     number: "11",
     title: "Study | Work Table",
     category: "Workspaces",
-    image: "/Amcom/IMG-20261012-WA0018.jpg",
+    image: "/services/Study  Work Table.png",
     description: "Ergonomic home office desks with cable management, floating overhead bookshelves, and acoustic backing panels.",
   },
   {
@@ -92,7 +92,7 @@ export const allServicesList = [
     number: "12",
     title: "WPC Doors & Windows",
     category: "Doors & Windows",
-    image: "/Amcom/IMG-20261012-WA0020.jpg",
+    image: "/services/WPC Doors & Windows.png",
     description: "100% waterproof and termite-proof Wood Plastic Composite doors and framing engineered for Kerala's high humidity.",
   },
   {
@@ -100,7 +100,7 @@ export const allServicesList = [
     number: "13",
     title: "uPVC Doors & Windows",
     category: "Doors & Windows",
-    image: "/Amcom/IMG-20261012-WA0021.jpg",
+    image: "/services/uPVC Doors & Windows.png",
     description: "High-performance soundproof and weather-sealed multi-chamber uPVC sliding windows and casement balcony doors.",
   },
   {
@@ -108,7 +108,7 @@ export const allServicesList = [
     number: "14",
     title: "FRP Doors & Frames",
     category: "Doors & Windows",
-    image: "/Amcom/IMG-20261012-WA0024.jpg",
+    image: "/services/FRP Doors & Frames.png",
     description: "Fiber-Reinforced Plastic doors with realistic timber grain textures, ideal for wet areas, balconies, and utility washrooms.",
   },
   {
@@ -116,7 +116,7 @@ export const allServicesList = [
     number: "15",
     title: "Aluminium Doors & Windows",
     category: "Doors & Windows",
-    image: "/images/amcom-hero.jpg",
+    image: "/services/Aluminium Doors & Windows.png",
     description: "Slimline architectural anodized and powder-coated aluminum sliding systems with double-glazed acoustic performance.",
   },
   {
@@ -124,7 +124,7 @@ export const allServicesList = [
     number: "16",
     title: "False Ceilings",
     category: "Architectural Finishes",
-    image: "/Amcom/IMG-20261012-WA0026.jpg",
+    image: "/services/False Ceilings.png",
     description: "Gypsum and moisture-resistant ceiling designs featuring concealed LED cove channels, magnetic track lights, and acoustic baffles.",
   },
   {
@@ -132,7 +132,7 @@ export const allServicesList = [
     number: "17",
     title: "Floorings",
     category: "Architectural Finishes",
-    image: "/images/amcom-after.jpg",
+    image: "/services/Floorings.png",
     description: "Precision installation of large format honed porcelain tiles, natural travertine stone, microcement, and engineered hardwood.",
   },
   {
@@ -140,7 +140,7 @@ export const allServicesList = [
     number: "18",
     title: "Wall Panellings",
     category: "Architectural Finishes",
-    image: "/Amcom/IMG-20261012-WA0030.jpg",
+    image: "/services/Wall Panellings.png",
     description: "Fluted charcoal louvers, acoustic wooden slats, fabric-upholstered panels, and textured lime-wash feature wall treatments.",
   },
   {
@@ -148,7 +148,7 @@ export const allServicesList = [
     number: "19",
     title: "Dry Wall & Partitions",
     category: "Civil & Structural",
-    image: "/Amcom/IMG-20261012-WA0032.jpg",
+    image: "/services/Dry Wall & Partitions.png",
     description: "Acoustic gypsum partitions, glass and metal room dividers, and modular spatial screens for living and office zones.",
   },
 ];
