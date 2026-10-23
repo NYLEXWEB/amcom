@@ -28,7 +28,7 @@ export const brandInfo = {
     },
     facebook: {
       handle: "Amcom Interiors",
-      url: "https://www.facebook.com/search/top?q=Amcom%20Interiors",
+      url: "https://www.facebook.com/share/1F33LBgoCd/",
     },
   },
   googleMapsUrl: "https://maps.app.goo.gl/Q5qoXDvVehWhZNMc8",
