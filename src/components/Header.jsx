@@ -36,11 +36,43 @@ export default function Header() {
   return (
     <>
       {/* 
-        SEAMLESSLY MERGED NAVBAR
-        Directly overlays the hero background with no enclosing pill box or separate border.
+        SEAMLESSLY MERGED NAVBAR WITH WHITE FOGGY THEME
+        Dense white fog on the left gives high contrast to the AMCOM logo,
+        softly shading and fading to transparent towards the right side.
       */}
-      <header className="absolute top-0 left-0 right-0 z-50 w-full select-none bg-gradient-to-b from-black/80 via-black/35 to-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-5 sm:py-6 flex items-center justify-between">
+      <header className="absolute top-0 left-0 right-0 z-50 w-full select-none overflow-hidden">
+        {/* 1. White Foggy Theme Gradient (Solid white at logo on left, shading out smoothly to transparent on right) */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.90) 18%, rgba(255, 255, 255, 0.62) 36%, rgba(255, 255, 255, 0.28) 54%, rgba(255, 255, 255, 0.08) 72%, rgba(255, 255, 255, 0) 88%, transparent 100%)',
+          }}
+        />
+
+        {/* 2. Frosted Glass Fog Mist (Backdrop blur feathered from left to right) */}
+        <div
+          className="absolute inset-0 pointer-events-none backdrop-blur-md"
+          style={{
+            maskImage:
+              'linear-gradient(90deg, black 0%, black 22%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.12) 65%, transparent 82%)',
+            WebkitMaskImage:
+              'linear-gradient(90deg, black 0%, black 22%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.12) 65%, transparent 82%)',
+          }}
+        />
+
+        {/* 3. Right-side subtle contrast overlay for phone button and rightmost links */}
+        <div
+          className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/45 via-black/15 to-transparent"
+          style={{
+            maskImage:
+              'linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.6) 75%, black 100%)',
+            WebkitMaskImage:
+              'linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.6) 75%, black 100%)',
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-5 sm:py-6 flex items-center justify-between">
           
           {/* LEFT: AMCOM OFFICIAL BRAND LOGO */}
           <a
@@ -52,7 +84,7 @@ export default function Header() {
               <img
                 src="/logo-bg.png"
                 alt="AMCOM Interiors"
-                className="h-12 sm:h-16 md:h-1AMCOM INTERIORS • EST. 1999 • KERALA8 w-auto object-contain"
+                className="h-11 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300 drop-shadow-xs"
               />
             </div>
           </a>
