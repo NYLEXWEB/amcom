@@ -142,7 +142,7 @@ export default function Hero() {
             {/* PREMIUM ARCHITECTURAL ACTION BUTTON (Clean Monochrome Luxury) */}
             <div>
               <a
-                href="#/services"
+                href="/services"
                 className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-3.5 sm:py-4 bg-white hover:bg-zinc-100 text-[#172022] rounded-full transition-all duration-300 group shadow-[0_12px_35px_rgba(0,0,0,0.45)] border border-white/40 hover:scale-[1.03] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase font-mono text-[#172022]">
