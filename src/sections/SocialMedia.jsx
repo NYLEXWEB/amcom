@@ -31,7 +31,7 @@ export default function SocialMedia() {
     {
       id: "whatsapp",
       platform: "WhatsApp",
-      handle: "+91 9447415588",
+      handle: brandInfo.primaryPhone,
       badge: "DIRECT STUDIO DESK",
       statusText: "Online • Instant Reply",
       statusDotColor: "bg-[#25D366]",

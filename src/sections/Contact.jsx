@@ -177,23 +177,22 @@ _Submitted via AMCOM Interiors Official Portal_`;
                   </span>
                 </a>
 
-                <a
-                  href={`tel:${brandInfo.secondaryPhoneRaw}`}
-                  className="flex items-center justify-between p-3 rounded-lg bg-[#F8F9F7] hover:bg-[#F1F4F2] border border-[#E4ECEB] transition-colors group"
+                <div
+                  className="flex items-center justify-between p-3 rounded-lg bg-[#F8F9F7]/70 border border-[#E4ECEB]"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#174C55]/10 flex items-center justify-center text-[#174C55]">
+                    <div className="w-8 h-8 rounded-full bg-stone-200/60 flex items-center justify-center text-stone-500">
                       <Phone className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-mono text-[#687477] block">Studio Desk</span>
-                      <span className="text-sm font-medium text-[#172022] tracking-wide">{brandInfo.secondaryPhone}</span>
+                      <span className="text-[11px] font-mono text-[#687477] block">Secondary Line (Showcase)</span>
+                      <span className="text-sm font-medium text-[#172022]/80 tracking-wide">{brandInfo.secondaryPhone}</span>
                     </div>
                   </div>
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#174C55] font-semibold group-hover:underline">
-                    Call Direct
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-stone-400 font-semibold">
+                    Showcase
                   </span>
-                </a>
+                </div>
               </div>
             </div>
 
@@ -316,7 +315,7 @@ _Submitted via AMCOM Interiors Official Portal_`;
                       <input
                         type="tel"
                         required
-                        placeholder="e.g. 9447415588"
+                        placeholder="e.g. 7012839079"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg bg-[#F8F9F7] border border-[#DCE3E2] text-sm text-[#172022] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#174C55] focus:bg-white transition-colors"

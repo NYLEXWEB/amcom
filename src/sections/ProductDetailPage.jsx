@@ -16,6 +16,7 @@ import {
   Calendar,
   Compass,
 } from 'lucide-react';
+import { OriginalWhatsAppIcon } from '../components/Icons';
 
 export default function ProductDetailPage({ initialCategory = 'kitchen', onBackToHome, onSelectCategory }) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(initialCategory);
@@ -119,9 +120,11 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs sm:text-[13px] font-semibold tracking-wider uppercase rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs sm:text-[13px] font-semibold tracking-wider uppercase rounded-full shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                  <OriginalWhatsAppIcon className="w-3 h-3" />
+                </div>
                 <span>WhatsApp</span>
               </a>
             </div>
@@ -156,7 +159,7 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
         {/* Background Image */}
         <img
           src={currentCategory.heroImage}
-          alt={currentCategory.heroTitle}
+          alt={`${currentCategory.heroTitle} - ${currentCategory.shortTitle} Design in Kozhikode Kerala by AMCOM Interiors`}
           className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.82] transition-transform duration-700 ease-out hover:scale-105"
         />
 
@@ -193,39 +196,14 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full border border-white/30 transition-all duration-300 flex items-center gap-2"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full shadow-md transition-all duration-300 flex items-center gap-2"
             >
-              <MessageSquare className="w-4 h-4 text-[#25D366]" />
+              <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                <OriginalWhatsAppIcon className="w-3 h-3" />
+              </div>
               <span>Chat With Designer</span>
             </a>
           </div>
-        </div>
-
-        {/* Floating Quick Badges on Right Side (Reference Inspired) */}
-        <div className="hidden md:flex flex-col gap-2 absolute right-6 top-1/2 -translate-y-1/2 z-20">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:pr-4 transition-all"
-            title="Chat on WhatsApp"
-          >
-            <MessageSquare className="w-5 h-5" />
-            <span className="text-xs font-semibold uppercase tracking-wider max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap">
-              WhatsApp
-            </span>
-          </a>
-          <button
-            type="button"
-            onClick={() => setShowConsultModal(true)}
-            className="group flex items-center gap-2 bg-[#174C55] text-white p-3 rounded-full shadow-lg hover:pr-4 transition-all"
-            title="Request Free Estimate"
-          >
-            <Sparkles className="w-5 h-5" />
-            <span className="text-xs font-semibold uppercase tracking-wider max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap">
-              Free Estimate
-            </span>
-          </button>
         </div>
       </section>
 
@@ -318,7 +296,8 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
               <div className="relative h-48 sm:h-56 overflow-hidden bg-zinc-100">
                 <img
                   src={elem.image}
-                  alt={elem.title}
+                  alt={`${elem.title} - ${currentCategory.shortTitle} customized by AMCOM Interiors`}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-3 left-3 bg-[#111618]/80 backdrop-blur-sm text-white px-2.5 py-1 rounded text-[11px] font-mono">
@@ -495,7 +474,7 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
                   required
                   value={clientPhone}
                   onChange={(e) => setClientPhone(e.target.value)}
-                  placeholder="e.g. +91 94474 15588"
+                  placeholder="e.g. +91 70128 39079"
                   className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-[#DCE3E2] focus:border-[#174C55] focus:outline-none bg-[#F8F9F7]"
                 />
               </div>
@@ -516,9 +495,11 @@ export default function ProductDetailPage({ initialCategory = 'kitchen', onBackT
 
               <button
                 type="submit"
-                className="w-full py-3 bg-[#174C55] hover:bg-[#123b42] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-md transition-all flex items-center justify-center gap-2 mt-2"
+                className="w-full py-3 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-md transition-all flex items-center justify-center gap-2 mt-2"
               >
-                <Send className="w-4 h-4" />
+                <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                  <OriginalWhatsAppIcon className="w-3 h-3" />
+                </div>
                 <span>Submit &amp; Chat on WhatsApp</span>
               </button>
             </form>

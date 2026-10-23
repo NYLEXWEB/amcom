@@ -1,0 +1,34 @@
+# robots.txt for AMCOM Interiors (https://amcominteriors.com)
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Dedicated Search & AI Web Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# AI Search & Knowledge Engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# XML Sitemap Location
+Sitemap: https://amcominteriors.com/sitemap.xml

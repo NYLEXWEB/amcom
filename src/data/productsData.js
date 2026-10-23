@@ -14,7 +14,7 @@ export const productCategories = [
     priceStarting: "₹1,45,000",
     priceUnit: "starting customized package",
     deliveryTimeline: "35 - 40 Days",
-    warranty: "10 Years Replacement Warranty",
+    warranty: "5 Years Replacement Warranty",
     materialGrade: "BWP 710 Marine Plywood (Boiling Water Proof)",
     hardwareBrand: "Blum & Hettich German Soft-Close Fittings",
     highlights: [
@@ -95,7 +95,7 @@ export const productCategories = [
     priceStarting: "₹1,25,000",
     priceUnit: "starting bedroom suite",
     deliveryTimeline: "30 - 35 Days",
-    warranty: "10 Years Replacement Warranty",
+    warranty: "5 Years Replacement Warranty",
     materialGrade: "Calibrated Hardwood Plywood with Marine Core",
     hardwareBrand: "Hettich Soft-Close Hinges & Telescopic Heavy Glides",
     highlights: [
@@ -175,7 +175,7 @@ export const productCategories = [
     priceStarting: "₹95,000",
     priceUnit: "starting dining ensemble",
     deliveryTimeline: "25 - 30 Days",
-    warranty: "10 Years Replacement Warranty",
+    warranty: "5 Years Replacement Warranty",
     materialGrade: "Solid Teak Wood & BWP 710 Plywood with Natural Veneers",
     hardwareBrand: "German Aluminum Framing & Soft-Close Hinges",
     highlights: [
@@ -250,7 +250,7 @@ export const productCategories = [
     priceStarting: "₹1,15,000",
     priceUnit: "starting living room ensemble",
     deliveryTimeline: "25 - 35 Days",
-    warranty: "10 Years Replacement Warranty",
+    warranty: "5 Years Replacement Warranty",
     materialGrade: "Marine Plywood, Natural Veneers & Acoustic Louvers",
     hardwareBrand: "Concealed Heavy-Duty Mounting Hardware & Soft-Close Glides",
     highlights: [
@@ -324,7 +324,7 @@ export const productCategories = [
     priceStarting: "₹65,000",
     priceUnit: "starting custom unit",
     deliveryTimeline: "20 - 30 Days",
-    warranty: "10 Years Replacement Warranty",
+    warranty: "5 Years Replacement Warranty",
     materialGrade: "Marine Grade Plywood, WPC & Solid Hardwood",
     hardwareBrand: "German Concealed Hinges & LED Channel Drivers",
     highlights: [
@@ -399,7 +399,7 @@ export const productCategories = [
     priceStarting: "₹1,10,000",
     priceUnit: "starting kids bedroom suite",
     deliveryTimeline: "25 - 35 Days",
-    warranty: "10 Years Replacement Warranty",
+    warranty: "5 Years Replacement Warranty",
     materialGrade: "Certified Eco-Friendly Plywood with Non-Toxic Laminates",
     hardwareBrand: "Child-Safe Soft-Close Hinges & Heavy-Duty Anti-Tip Hardware",
     highlights: [

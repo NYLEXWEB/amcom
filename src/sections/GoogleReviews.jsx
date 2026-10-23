@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { brandInfo } from '../data/siteData';
-import { Star, ExternalLink, ThumbsUp, CheckCircle2 } from 'lucide-react';
+import { Star, ThumbsUp, CheckCircle2, PenLine, ExternalLink } from 'lucide-react';
 
 const reviewsData = [
   {
@@ -117,15 +117,27 @@ export default function GoogleReviews() {
                 </div>
               </div>
 
-              <a
-                href={brandInfo.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 bg-[#1a73e8] hover:bg-[#1557b0] text-white text-xs font-medium rounded-full transition-colors"
-              >
-                <span>View on Google</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href={brandInfo.googleReviewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-[#F8F9FA] text-[#1a73e8] border border-[#DADCE0] hover:border-[#1a73e8] text-xs font-medium rounded-full shadow-sm hover:shadow transition-all"
+                >
+                  <PenLine className="w-3.5 h-3.5 text-[#1a73e8]" />
+                  <span>Write a review</span>
+                </a>
+
+                <a
+                  href={brandInfo.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 bg-[#1a73e8] hover:bg-[#1557b0] text-white text-xs font-medium rounded-full transition-colors"
+                >
+                  <span>View on Google</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
 
           </div>
@@ -230,20 +242,6 @@ export default function GoogleReviews() {
             );
           })}
         </div>
-
-        {/* Bottom Link to Google Maps */}
-        <div className="mt-8 text-center sm:hidden">
-          <a
-            href={brandInfo.googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-[#1a73e8] hover:text-[#1557b0] font-medium"
-          >
-            <span>Read all 120+ reviews on Google Maps</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
-        </div>
-
       </div>
     </section>
   );

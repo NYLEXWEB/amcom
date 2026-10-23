@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- 1. Homepage: Premium Interior Design & Construction Kozhikode -->
+  <url>
+    <loc>https://amcominteriors.com/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://amcominteriors.com/images/amcom-hero.jpg</image:loc>
+      <image:title>AMCOM Interiors Kozhikode - Premium Turnkey Interior Architecture</image:title>
+      <image:caption>Crafting timeless residential and commercial interiors in Kozhikode, Calicut, and Kerala since 1999</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. Services: Turnkey Execution, Modular Joinery & Renovation -->
+  <url>
+    <loc>https://amcominteriors.com/services</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://amcominteriors.com/hero/IMG-20261012-WA0014.jpg</image:loc>
+      <image:title>Turnkey Interior Execution Services Kerala</image:title>
+    </image:image>
+  </url>
+
+  <!-- 3. Interior Packages & Budget Estimation -->
+  <url>
+    <loc>https://amcominteriors.com/packages</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 4. Modular Kitchens Kozhikode -->
+  <url>
+    <loc>https://amcominteriors.com/products/kitchen</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://amcominteriors.com/images/amcom-kitchen.jpg</image:loc>
+      <image:title>Custom Modular Kitchens Calicut Kerala</image:title>
+    </image:image>
+  </url>
+
+  <!-- 5. Bedroom Suites & Custom Wardrobes -->
+  <url>
+    <loc>https://amcominteriors.com/products/bedroom</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://amcominteriors.com/images/amcom-bedroom.jpg</image:loc>
+      <image:title>Master Bedroom Suite Interiors Kannur Kozhikode</image:title>
+    </image:image>
+  </url>
+
+  <!-- 6. Living Room & TV Console Entertainment Walls -->
+  <url>
+    <loc>https://amcominteriors.com/products/living-room</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://amcominteriors.com/images/amcom-after.jpg</image:loc>
+      <image:title>Contemporary Living Room Interiors Kozhikode</image:title>
+    </image:image>
+  </url>
+
+  <!-- 7. Dining Room & Crockery Units -->
+  <url>
+    <loc>https://amcominteriors.com/products/dining-room</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 8. Decorative Units & Foyer Partitions -->
+  <url>
+    <loc>https://amcominteriors.com/products/decorative-units</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 9. Kids Room & Study Spaces -->
+  <url>
+    <loc>https://amcominteriors.com/products/kids-room</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://amcominteriors.com/images/amcom-kids-room.jpg</image:loc>
+      <image:title>Kids Bedroom and Study Furniture Kerala</image:title>
+    </image:image>
+  </url>
+
+  <!-- 10. Curated Architectural Gallery -->
+  <url>
+    <loc>https://amcominteriors.com/gallery</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 11. On-Site Real Project Videos -->
+  <url>
+    <loc>https://amcominteriors.com/videos</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 12. About AMCOM Interiors: 25+ Years Legacy -->
+  <url>
+    <loc>https://amcominteriors.com/about</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- 13. Contact & Calicut Studio Consultation Desk -->
+  <url>
+    <loc>https://amcominteriors.com/contact</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { brandInfo, navLinks, productNavItems } from '../data/siteData';
 import {
   Menu,
@@ -8,11 +8,41 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
-export default function Header() {
+export default function Header({ variant = 'transparent', currentHash }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [mobileProductsExpanded, setMobileProductsExpanded] = useState(true);
+  const getCurrentRoute = () => {
+    if (typeof window === 'undefined') return '/';
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    const hash = window.location.hash || '';
+    return { path, hash };
+  };
+
+  const [routeInfo, setRouteInfo] = useState(getCurrentRoute);
   const dropdownTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setRouteInfo(getCurrentRoute());
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
+
+  const isLinkActive = (href) => {
+    const cleanHref = href.replace(/^#\/?/, '/');
+    const { path, hash } = routeInfo;
+    
+    if (cleanHref === '/' || cleanHref === '') {
+      return (path === '/' && (!hash || hash === '#/' || hash === '#' || hash === '#hero'));
+    }
+    return path === cleanHref || hash === `#${cleanHref}` || hash === `/#${cleanHref}` || (currentHash && currentHash.includes(cleanHref));
+  };
 
   const handleMouseEnterProducts = () => {
     if (dropdownTimeoutRef.current) {
@@ -27,64 +57,94 @@ export default function Header() {
     }, 200);
   };
 
-  const handleProductItemClick = (href) => {
+  const navigateClean = (targetHref) => {
     setProductsDropdownOpen(false);
     setMobileMenuOpen(false);
-    window.location.hash = href.replace('#', '');
+    const cleanPath = targetHref.replace(/^#\/?/, '/');
+    try {
+      window.history.pushState(null, '', cleanPath);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    } catch {
+      window.location.hash = cleanPath;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleProductItemClick = (href) => {
+    navigateClean(href);
+  };
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const cleanPath = href.replace(/^#\/?/, '/');
+    if (cleanPath === '/' && routeInfo.path === '/' && (!routeInfo.hash || routeInfo.hash === '#/')) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    navigateClean(cleanPath);
+  };
+
+  const isLight = variant === 'light';
 
   return (
     <>
-      {/* 
-        SEAMLESSLY MERGED NAVBAR WITH WHITE FOGGY THEME
-        Dense white fog on the left gives high contrast to the AMCOM logo,
-        softly shading and fading to transparent towards the right side.
-      */}
-      <header className="absolute top-0 left-0 right-0 z-50 w-full select-none overflow-hidden">
-        {/* 1. White Foggy Theme Gradient (Solid white at logo on left, shading out smoothly to transparent on right) */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.90) 18%, rgba(255, 255, 255, 0.62) 36%, rgba(255, 255, 255, 0.28) 54%, rgba(255, 255, 255, 0.08) 72%, rgba(255, 255, 255, 0) 88%, transparent 100%)',
-          }}
-        />
+      <header
+        className={
+          isLight
+            ? 'sticky top-0 z-50 w-full select-none bg-[#F8F9F7]/95 backdrop-blur-md border-b border-[#DCE3E2] shadow-xs'
+            : 'absolute top-0 left-0 right-0 z-50 w-full select-none'
+        }
+      >
+        {/* Transparent mode overlays (Foggy Theme) */}
+        {!isLight && (
+          <>
+            {/* 1. White Foggy Theme Gradient */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.92) 16%, rgba(255, 255, 255, 0.65) 32%, rgba(255, 255, 255, 0.28) 48%, rgba(255, 255, 255, 0.08) 64%, transparent 80%)',
+              }}
+            />
 
-        {/* 2. Frosted Glass Fog Mist (Backdrop blur feathered from left to right) */}
-        <div
-          className="absolute inset-0 pointer-events-none backdrop-blur-md"
-          style={{
-            maskImage:
-              'linear-gradient(90deg, black 0%, black 22%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.12) 65%, transparent 82%)',
-            WebkitMaskImage:
-              'linear-gradient(90deg, black 0%, black 22%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.12) 65%, transparent 82%)',
-          }}
-        />
+            {/* 2. Frosted Glass Fog Mist */}
+            <div
+              className="absolute inset-0 pointer-events-none backdrop-blur-md"
+              style={{
+                maskImage:
+                  'linear-gradient(90deg, black 0%, black 22%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.12) 65%, transparent 82%)',
+                WebkitMaskImage:
+                  'linear-gradient(90deg, black 0%, black 22%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.12) 65%, transparent 82%)',
+              }}
+            />
 
-        {/* 3. Right-side subtle contrast overlay for phone button and rightmost links */}
-        <div
-          className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/45 via-black/15 to-transparent"
-          style={{
-            maskImage:
-              'linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.6) 75%, black 100%)',
-            WebkitMaskImage:
-              'linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.6) 75%, black 100%)',
-          }}
-        />
+            {/* 3. Right-side subtle contrast overlay */}
+            <div
+              className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/45 via-black/15 to-transparent"
+              style={{
+                maskImage:
+                  'linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.6) 75%, black 100%)',
+                WebkitMaskImage:
+                  'linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.6) 75%, black 100%)',
+              }}
+            />
+          </>
+        )}
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-5 sm:py-6 flex items-center justify-between">
+        <div className={`relative w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 flex items-center justify-between ${isLight ? 'py-3.5 sm:py-4' : 'py-4 sm:py-5'}`}>
           
           {/* LEFT: AMCOM OFFICIAL BRAND LOGO */}
           <a
-            href="#hero"
+            href="#/"
+            onClick={(e) => handleNavClick(e, '#/')}
             className="flex items-center gap-3 group focus:outline-none shrink-0"
             aria-label="AMCOM Interiors Home"
           >
-            <div className="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xs transition-all duration-300 group-hover:scale-105 flex items-center">
+            <div className={`transition-all duration-300 group-hover:scale-105 flex items-center ${isLight ? 'p-1' : 'px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xs'}`}>
               <img
                 src="/logo-bg.png"
                 alt="AMCOM Interiors"
-                className="h-11 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300 drop-shadow-xs"
+                className={`w-auto object-contain transition-all duration-300 ${isLight ? 'h-9 sm:h-11 md:h-12' : 'h-11 sm:h-14 md:h-16 drop-shadow-xs'}`}
               />
             </div>
           </a>
@@ -92,6 +152,8 @@ export default function Header() {
           {/* CENTER: DESKTOP NAVIGATION LINKS WITH PRODUCTS DROPDOWN */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" aria-label="Main Navigation">
             {navLinks.map((link) => {
+              const active = isLinkActive(link.href);
+
               if (link.hasDropdown) {
                 return (
                   <div
@@ -103,18 +165,22 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                      className={`inline-flex items-center gap-1.5 text-[12px] xl:text-[13px] tracking-[0.14em] uppercase font-semibold py-1 transition-all duration-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)] cursor-pointer ${
-                        productsDropdownOpen
-                          ? 'text-white border-b-2 border-white'
-                          : 'text-white/90 hover:text-white border-b-2 border-transparent hover:border-white/60'
+                      className={`inline-flex items-center gap-1.5 text-[12px] xl:text-[13px] tracking-[0.14em] uppercase font-semibold py-1 transition-all duration-200 cursor-pointer ${
+                        isLight
+                          ? active || productsDropdownOpen
+                            ? 'text-[#174C55] border-b-2 border-[#174C55] font-bold'
+                            : 'text-[#172022]/80 hover:text-[#174C55] border-b-2 border-transparent hover:border-[#174C55]/40'
+                          : productsDropdownOpen || active
+                            ? 'text-white border-b-2 border-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]'
+                            : 'text-white/90 hover:text-white border-b-2 border-transparent hover:border-white/60 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]'
                       }`}
                       aria-expanded={productsDropdownOpen}
                     >
                       <span>{link.label}</span>
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          productsDropdownOpen ? 'rotate-180 text-white' : 'text-white/70'
-                        }`}
+                          productsDropdownOpen ? 'rotate-180' : ''
+                        } ${isLight ? 'text-[#174C55]' : 'text-white/80'}`}
                       />
                     </button>
 
@@ -188,12 +254,21 @@ export default function Header() {
                 );
               }
 
-              // Regular clean links without separate pill background or pricing highlights
+              // Regular clean links
               return (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-[12px] xl:text-[13px] tracking-[0.14em] uppercase font-semibold text-white/90 hover:text-white py-1 transition-all duration-200 relative border-b-2 border-transparent hover:border-white/60 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-[12px] xl:text-[13px] tracking-[0.14em] uppercase font-semibold py-1 transition-all duration-200 relative ${
+                    isLight
+                      ? active
+                        ? 'text-[#174C55] font-bold border-b-2 border-[#174C55]'
+                        : 'text-[#172022]/80 hover:text-[#174C55] border-b-2 border-transparent hover:border-[#174C55]/40'
+                      : active
+                        ? 'text-white border-b-2 border-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]'
+                        : 'text-white/90 hover:text-white border-b-2 border-transparent hover:border-white/60 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]'
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -201,27 +276,45 @@ export default function Header() {
             })}
           </nav>
 
-          {/* RIGHT: CIRCULAR PHONE BUTTON & MOBILE MENU TRIGGER (No CALL NOW text, No message icon) */}
-          <div className="flex items-center gap-3 shrink-0">
-            {/* Direct Call Circular Button (Icon only) */}
+          {/* RIGHT: WHATSAPP & CALL NOW PILL BUTTONS (Desktop) + 3-LINE MENU TRIGGER (Mobile) */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* WhatsApp Pill Button (Visible on Desktop only) */}
             <a
-              href={`tel:${brandInfo.primaryPhoneRaw}`}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-md backdrop-blur-xs group"
-              aria-label={`Call AMCOM at ${brandInfo.primaryPhone}`}
-              title={`Call AMCOM: ${brandInfo.primaryPhone}`}
+              href={`https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 shrink-0"
+              aria-label="Chat on WhatsApp"
             >
-              <Phone className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-white group-hover:scale-110 transition-transform" />
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.78 14.07c-.24.67-1.39 1.3-1.92 1.35-.51.05-1.13.08-3.32-.82-2.79-1.15-4.58-3.99-4.72-4.18-.14-.19-1.13-1.49-1.13-2.87 0-1.37.72-2.04.99-2.32.24-.27.55-.33.74-.33.19 0 .38 0 .55.03.19.03.44-.08.68.5.24.6.85 2.04.91 2.19.08.14.12.31.03.5-.1.19-.14.31-.28.47-.14.17-.31.36-.44.5-.14.14-.28.31-.12.6.17.28.74 1.22 1.61 1.99 1.1 1 2.04 1.3 2.33 1.44.28.14.46.12.63-.08.17-.19.72-.85.91-1.13.19-.28.39-.24.65-.14.27.09 1.68.8 1.98.94.28.14.47.22.55.33.08.12.08.72-.16 1.4z" />
+              </svg>
+              <span>WHATSAPP</span>
             </a>
 
-            {/* Hamburger Menu Button (for Mobile/Tablet) */}
+            {/* Call Now Pill Button (Visible on Desktop only) */}
+            <a
+              href={`tel:${brandInfo.primaryPhoneRaw}`}
+              className="hidden lg:inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#174C55] hover:bg-[#123d44] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 shrink-0"
+              aria-label={`Call AMCOM at ${brandInfo.primaryPhone}`}
+            >
+              <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white stroke-[2.2] shrink-0" />
+              <span>CALL NOW</span>
+            </a>
+
+            {/* Three Lines / Hamburger Menu Button (Visible on Mobile & Tablet) */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 flex items-center justify-center transition-colors focus:outline-none cursor-pointer"
+              className={`lg:hidden w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 cursor-pointer ${
+                isLight
+                  ? 'bg-white hover:bg-zinc-100 text-[#172022] border border-[#DCE3E2] shadow-sm'
+                  : 'bg-white/15 hover:bg-white/25 text-white border border-white/30 shadow-md backdrop-blur-xs'
+              }`}
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation drawer"
             >
-              <Menu className="w-5 h-5 text-white" />
+              <Menu className={`w-5 h-5 ${isLight ? 'text-[#172022]' : 'text-white'}`} />
             </button>
           </div>
 
@@ -238,8 +331,10 @@ export default function Header() {
       />
 
       <div
-        className={`fixed top-0 right-0 bottom-0 w-full sm:w-[380px] bg-[#0E1315] text-white z-50 shadow-2xl border-l border-white/15 flex flex-col justify-between transition-transform duration-300 ease-out overflow-y-auto ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-0 right-0 bottom-0 w-full sm:w-[380px] bg-[#0E1315] text-white z-50 shadow-2xl border-l border-white/15 flex flex-col justify-between transition-all duration-300 ease-out overflow-y-auto ${
+          mobileMenuOpen
+            ? 'translate-x-0 opacity-100 pointer-events-auto visible'
+            : 'translate-x-full opacity-0 pointer-events-none invisible'
         }`}
       >
         <div className="p-6 sm:p-8">
@@ -266,13 +361,17 @@ export default function Header() {
           {/* Navigation Links in Drawer with Expandable Products Accordion */}
           <nav className="mt-6 flex flex-col space-y-2" aria-label="Mobile Navigation">
             {navLinks.map((link, idx) => {
+              const active = isLinkActive(link.href);
+
               if (link.hasDropdown) {
                 return (
                   <div key={link.label} className="border-b border-white/10 pb-2">
                     <button
                       type="button"
                       onClick={() => setMobileProductsExpanded(!mobileProductsExpanded)}
-                      className="w-full flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/90 hover:text-white cursor-pointer"
+                      className={`w-full flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold cursor-pointer ${
+                        active ? 'text-white font-bold' : 'text-white/90 hover:text-white'
+                      }`}
                     >
                       <span className="flex items-center gap-2">
                         <span>{link.label}</span>
@@ -311,10 +410,12 @@ export default function Header() {
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold text-white/85 hover:text-white border-b border-white/10 hover:border-white transition-colors group"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`flex items-center justify-between py-2.5 text-sm sm:text-base tracking-[0.08em] uppercase font-semibold border-b border-white/10 hover:border-white transition-colors group ${
+                    active ? 'text-white border-white' : 'text-white/85 hover:text-white'
+                  }`}
                 >
-                  <span>{link.label}</span>
+                  <span className={active ? 'text-[#25D366]' : ''}>{link.label}</span>
                   <span className="text-xs font-mono text-[#6E9297] group-hover:text-white transition-colors">
                     0{idx + 1}
                   </span>
@@ -324,19 +425,33 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* Drawer Footer: Direct Call button */}
+        {/* Drawer Footer: WhatsApp & Call Now buttons */}
         <div className="p-6 sm:p-8 bg-black/60 border-t border-white/15 space-y-3">
           <p className="text-[11px] text-white/50 uppercase tracking-widest font-mono">
             Direct Studio Contact
           </p>
 
-          <a
-            href={`tel:${brandInfo.primaryPhoneRaw}`}
-            className="w-full flex items-center justify-center gap-2.5 py-3 bg-white text-black text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-zinc-200 transition-colors shadow-sm"
-          >
-            <Phone className="w-4 h-4 text-[#172022]" />
-            <span>Call {brandInfo.primaryPhone}</span>
-          </a>
+          <div className="grid grid-cols-2 gap-3">
+            <a
+              href={`https://wa.me/${brandInfo.whatsappNumber}?text=${encodeURIComponent(brandInfo.whatsappDefaultMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 py-3 bg-[#25D366] text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-[#20ba5a] transition-colors shadow-sm"
+            >
+              <svg className="w-4 h-4 text-white fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.78 14.07c-.24.67-1.39 1.3-1.92 1.35-.51.05-1.13.08-3.32-.82-2.79-1.15-4.58-3.99-4.72-4.18-.14-.19-1.13-1.49-1.13-2.87 0-1.37.72-2.04.99-2.32.24-.27.55-.33.74-.33.19 0 .38 0 .55.03.19.03.44-.08.68.5.24.6.85 2.04.91 2.19.08.14.12.31.03.5-.1.19-.14.31-.28.47-.14.17-.31.36-.44.5-.14.14-.28.31-.12.6.17.28.74 1.22 1.61 1.99 1.1 1 2.04 1.3 2.33 1.44.28.14.46.12.63-.08.17-.19.72-.85.91-1.13.19-.28.39-.24.65-.14.27.09 1.68.8 1.98.94.28.14.47.22.55.33.08.12.08.72-.16 1.4z" />
+              </svg>
+              <span>WHATSAPP</span>
+            </a>
+
+            <a
+              href={`tel:${brandInfo.primaryPhoneRaw}`}
+              className="flex items-center justify-center gap-2 py-3 bg-[#174C55] text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-[#123d44] transition-colors shadow-sm"
+            >
+              <Phone className="w-3.5 h-3.5 text-white stroke-[2.2] shrink-0" />
+              <span>CALL NOW</span>
+            </a>
+          </div>
         </div>
       </div>
     </>

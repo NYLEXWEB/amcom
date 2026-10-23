@@ -37,7 +37,7 @@ const credentials = [
   {
     index: "05",
     tag: "WARRANTY",
-    title: "10-Year Warranty",
+    title: "5-Year Warranty",
     subtitle: "Quality Assurance",
     description: "Hardware & Joinery",
     icon: ShieldCheck,

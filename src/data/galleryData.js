@@ -418,7 +418,7 @@ export const galleryItems = [
     location: 'Kozhikode, Kerala',
     image: '/hero/IMG-20261012-WA0011.jpg',
     description: 'Comprehensive turnkey transformation of a 4,200 sq.ft contemporary residence including civil alterations, electrical MEP, and bespoke joinery.',
-    specs: 'Turnkey Handover, 45-day Execution, 10-Year Warranty',
+    specs: 'Turnkey Handover, 45-day Execution, 5-Year Warranty',
   },
   {
     id: 'trn-02',

@@ -6,11 +6,11 @@ export const brandInfo = {
   yearsOfExperience: "25+",
   spacesCrafted: "100+",
   locationBadge: "Calicut",
-  primaryPhone: "+91 9447415588",
-  secondaryPhone: "+91 7012839079",
-  primaryPhoneRaw: "9447415588",
-  secondaryPhoneRaw: "7012839079",
-  whatsappNumber: "919447415588",
+  primaryPhone: "+91 70128 39079",
+  secondaryPhone: "+91 94474 15588",
+  primaryPhoneRaw: "7012839079",
+  secondaryPhoneRaw: "9447415588",
+  whatsappNumber: "917012839079",
   address: {
     building: "O.N.I, M. Complex, 17/1169D",
     street: "Puthiyara Rd, near Sabas School",
@@ -31,26 +31,28 @@ export const brandInfo = {
       url: "https://www.facebook.com/search/top?q=Amcom%20Interiors",
     },
   },
-  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=ONI+M+Complex+Puthiyara+Rd+near+Sabas+School+Arayidathupalam+Kozhikode+Kerala+673004",
+  googleMapsUrl: "https://maps.app.goo.gl/Q5qoXDvVehWhZNMc8",
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJowXBhaZZpjsRR85KLoWjYmo",
   whatsappDefaultMsg: "Hello AMCOM Interiors, I would like to discuss an interior project.",
 };
 
 export const productNavItems = [
-  { id: "kitchen", label: "Kitchen", href: "#/products/kitchen", desc: "Modular Kitchens & Islands" },
-  { id: "bedroom", label: "Bedroom", href: "#/products/bedroom", desc: "Master Suites & Wardrobes" },
-  { id: "dining-room", label: "Dining Room", href: "#/products/dining-room", desc: "Crockery Units & Dining Sets" },
-  { id: "living-room", label: "Living Room", href: "#/products/living-room", desc: "TV Consoles & Wall Paneling" },
-  { id: "decorative-units", label: "Decorative Units", href: "#/products/decorative-units", desc: "Foyer, Partitions & Shelves" },
-  { id: "kids-room", label: "Kids Room", href: "#/products/kids-room", desc: "Bunk Beds & Study Spaces" },
+  { id: "kitchen", label: "Kitchen", href: "/products/kitchen", desc: "Modular Kitchens & Islands" },
+  { id: "bedroom", label: "Bedroom", href: "/products/bedroom", desc: "Master Suites & Wardrobes" },
+  { id: "dining-room", label: "Dining Room", href: "/products/dining-room", desc: "Crockery Units & Dining Sets" },
+  { id: "living-room", label: "Living Room", href: "/products/living-room", desc: "TV Consoles & Wall Paneling" },
+  { id: "decorative-units", label: "Decorative Units", href: "/products/decorative-units", desc: "Foyer, Partitions & Shelves" },
+  { id: "kids-room", label: "Kids Room", href: "/products/kids-room", desc: "Bunk Beds & Study Spaces" },
 ];
 
 export const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Products", href: "#/products", hasDropdown: true },
-  { label: "Packages", href: "#packages" },
-  { label: "Services", href: "#/services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Products", href: "/products", hasDropdown: true },
+  { label: "Services", href: "/services" },
+  { label: "Packages", href: "/packages" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const stats = [

@@ -46,7 +46,7 @@ export default function CTA() {
             
             {/* 1. START A CONVERSATION BUTTON: ALL-WHITE BUTTON, BLACK TEXT, BLACK CIRCLE WITH WHITE ARROW */}
             <a
-              href="#contact"
+              href="#/contact"
               className="inline-flex items-center justify-between gap-4 pl-7 pr-2.5 py-2.5 sm:py-3 bg-white hover:bg-zinc-100 text-black rounded-full transition-all duration-300 group shadow-xl border border-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <span className="text-sm font-semibold tracking-wide text-black pl-1">

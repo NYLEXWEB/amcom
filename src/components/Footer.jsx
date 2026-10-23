@@ -36,7 +36,7 @@ export default function Footer() {
     },
     {
       name: "WhatsApp",
-      handle: "+91 9447415588",
+      handle: brandInfo.primaryPhone,
       url: whatsappLink,
       icon: <OriginalWhatsAppIcon className="w-5 h-5" />,
       hoverBorder: "hover:border-[#25D366]/60 hover:bg-[#25D366]/10",
@@ -110,7 +110,7 @@ export default function Footer() {
               {services.map((svc) => (
                 <li key={svc.number}>
                   <a
-                    href="#services"
+                    href="/services"
                     className="text-xs text-white/70 hover:text-white transition-colors flex items-center gap-1.5 group font-light"
                   >
                     <ChevronRight className="w-3 h-3 text-[#6E9297] transition-transform group-hover:translate-x-0.5 opacity-60 group-hover:opacity-100" />
@@ -193,12 +193,9 @@ export default function Footer() {
                     >
                       {brandInfo.primaryPhone} (Lead Desk)
                     </a>
-                    <a
-                      href={`tel:${brandInfo.secondaryPhoneRaw}`}
-                      className="text-white/70 hover:text-white block transition-colors font-mono"
-                    >
+                    <span className="text-white/50 block font-mono text-xs pt-0.5">
                       {brandInfo.secondaryPhone} (Studio Line)
-                    </a>
+                    </span>
                   </div>
                 </div>
               </div>

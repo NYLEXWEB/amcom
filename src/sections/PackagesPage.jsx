@@ -23,6 +23,7 @@ import {
   FileText,
   BadgeCheck,
 } from 'lucide-react';
+import { OriginalWhatsAppIcon } from '../components/Icons';
 
 export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
   const [activeTab, setActiveTab] = useState('full-home'); // 'full-home' | 'single-room'
@@ -147,7 +148,7 @@ export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs font-mono text-white/80">
             <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/15">
               <ShieldCheck className="w-4 h-4 text-[#6E9297]" />
-              10-Year Replacement Warranty
+              5-Year Replacement Warranty
             </span>
             <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/15">
               <Clock className="w-4 h-4 text-[#6E9297]" />
@@ -314,9 +315,11 @@ export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
                     <button
                       type="button"
                       onClick={() => handleWhatsAppBooking(pkg.name, pkg.startingPrice)}
-                      className="w-full sm:flex-1 py-3 bg-[#174C55] hover:bg-[#123b42] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition-all text-center flex items-center justify-center gap-2"
+                      className="w-full sm:flex-1 py-3 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm hover:shadow-md transition-all text-center flex items-center justify-center gap-2"
                     >
-                      <MessageSquare className="w-4 h-4 text-[#25D366]" />
+                      <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                        <OriginalWhatsAppIcon className="w-3 h-3" />
+                      </div>
                       <span>Book Package on WhatsApp</span>
                     </button>
                     <a
@@ -341,7 +344,7 @@ export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
                 Need Interiors For Just One Room?
               </h3>
               <p className="text-xs sm:text-sm text-[#687477]">
-                Get our standalone room packages with the same BWP 710 marine plywood quality and 10-year warranty.
+                Get our standalone room packages with the same BWP 710 marine plywood quality and 5-year warranty.
               </p>
             </div>
 
@@ -383,9 +386,12 @@ export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
                   <button
                     type="button"
                     onClick={() => handleWhatsAppBooking(room.title, room.price)}
-                    className="w-full py-2.5 bg-[#174C55] hover:bg-[#123b42] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all"
+                    className="w-full py-2.5 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2"
                   >
-                    Enquire on WhatsApp
+                    <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                      <OriginalWhatsAppIcon className="w-3 h-3" />
+                    </div>
+                    <span>Enquire on WhatsApp</span>
                   </button>
                 </div>
               ))}
@@ -499,9 +505,11 @@ export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all text-center flex items-center justify-center gap-2 shadow-sm"
+                    className="w-full py-2.5 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all text-center flex items-center justify-center gap-2 shadow-sm"
                   >
-                    <MessageSquare className="w-4 h-4" />
+                    <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                      <OriginalWhatsAppIcon className="w-3 h-3" />
+                    </div>
                     <span>Get Detailed BOQ on WhatsApp</span>
                   </a>
                 </div>
@@ -617,9 +625,11 @@ export default function PackagesPage({ onBackToHome, onNavigateToProduct }) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3.5 bg-white text-[#174C55] hover:bg-zinc-100 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-all text-center flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-all text-center flex items-center justify-center gap-2"
             >
-              <MessageSquare className="w-4 h-4 text-[#25D366]" />
+              <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                <OriginalWhatsAppIcon className="w-3 h-3" />
+              </div>
               <span>Send Plan on WhatsApp</span>
             </a>
             <a

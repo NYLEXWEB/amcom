@@ -15,6 +15,7 @@ import {
   Search,
   CheckCircle2,
 } from 'lucide-react';
+import { OriginalWhatsAppIcon } from '../components/Icons';
 
 export default function VideosPage({ onBackToHome }) {
   const [activeCategory, setActiveCategory] = useState('ALL');
@@ -303,9 +304,9 @@ export default function VideosPage({ onBackToHome }) {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-mono uppercase tracking-wider text-[#174C55] hover:text-[#123b42] font-semibold"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#25D366]/10 hover:bg-[#25D366] text-[#128C7E] hover:text-white rounded-md text-[11px] font-mono uppercase tracking-wider font-semibold transition-all duration-200"
                     >
-                      <MessageSquare className="w-3 h-3" />
+                      <OriginalWhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
                       <span>Consult</span>
                     </a>
                   </div>
@@ -408,9 +409,11 @@ export default function VideosPage({ onBackToHome }) {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#174C55] hover:bg-[#123b42] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors"
+                  className="w-full flex items-center justify-center gap-2.5 py-3 bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa4f] text-white text-xs font-semibold uppercase tracking-wider rounded-full shadow-md transition-all"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
+                  <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shrink-0 shadow-xs">
+                    <OriginalWhatsAppIcon className="w-3 h-3" />
+                  </div>
                   <span>Enquire on WhatsApp</span>
                 </a>
               </div>

@@ -14,14 +14,14 @@ const heroSlides = [
     tagline: "ARCHITECTURAL SPACES • KERALA",
     line1: "Quiet Luxury in",
     line2: "Every Detail.",
-    buttonText: "View Selected Spaces",
+    buttonText: "Explore Our Work",
   },
   {
     image: "/hero/IMG-20261012-WA0042.jpg",
     tagline: "TURNKEY EXECUTION • CALICUT",
     line1: "Form, Function &",
     line2: "Enduring Craft.",
-    buttonText: "Discover Projects",
+    buttonText: "Discover Services",
   },
 ];
 
@@ -99,7 +99,7 @@ export default function Hero() {
             >
               <img
                 src={slide.image}
-                alt="AMCOM Interiors Architectural Project"
+                alt={`${slide.tagline} - ${slide.line1} ${slide.line2} by AMCOM Interiors Kozhikode`}
                 className={`w-full h-full object-cover object-center transition-transform duration-6000 ease-out ${
                   isCurrent ? 'scale-105' : 'scale-100'
                 }`}
@@ -132,7 +132,7 @@ export default function Hero() {
           >
 
             {/* Large Bold Architectural Headline with crisp drop shadow */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[-0.035em] text-white leading-[1.04] mb-6 sm:mb-8 uppercase break-words drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.035em] text-white leading-[1.06] mb-6 sm:mb-8 uppercase break-words drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
               {currentSlide.line1} <br />
               <span className="font-light italic font-serif text-[#F8F9F7] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
                 {currentSlide.line2}
@@ -142,7 +142,7 @@ export default function Hero() {
             {/* PREMIUM ARCHITECTURAL ACTION BUTTON (Clean Monochrome Luxury) */}
             <div>
               <a
-                href="#projects"
+                href="#/services"
                 className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-3.5 sm:py-4 bg-white hover:bg-zinc-100 text-[#172022] rounded-full transition-all duration-300 group shadow-[0_12px_35px_rgba(0,0,0,0.45)] border border-white/40 hover:scale-[1.03] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase font-mono text-[#172022]">

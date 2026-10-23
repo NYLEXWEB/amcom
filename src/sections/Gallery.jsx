@@ -101,7 +101,7 @@ export default function Gallery({ onNavigateToGallery }) {
                 {/* Image */}
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} - ${item.category} in ${item.location} by AMCOM Interiors`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -140,7 +140,7 @@ export default function Gallery({ onNavigateToGallery }) {
                 {/* Image */}
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} - ${item.category} in ${item.location} by AMCOM Interiors`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
